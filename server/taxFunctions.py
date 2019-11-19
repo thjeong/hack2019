@@ -36,6 +36,33 @@ def _simple_tax_calc(n_of_members, net_income, table_file_dir = './'):
     ipo = spi.splrep(x, y, k=1)
     return spi.splev(net_income, ipo).max()
 
+def simple_tax_calc(net_income, table_file_dir):
+    """
+    실수령액으로 연봉 (얼추)계산
+    :param net_income:
+    :param table_file_dir:
+    :return:
+    """
+    import scipy.interpolate as spi
+    import numpy as np
+    import os
+    import pandas as pd
+    df = pd.read_csv(os.path.join(table_file_dir,'total_salary_table.tsv'),sep='\t')
+    if net_income <=103751760: # 연봉 1.5억에 해당하는 실수령액
+        x = np.array(df['실수령액'])
+        y = np.array(df['연봉'])
+        ipo = spi.splrep(x, y, k=1)
+        total_salary = spi.splev(net_income,ipo).max()
+    else:
+        A = np.vstack([np.array(df['실수령액']), np.ones(len(df))]).T
+        w = np.linalg.lstsq(A, np.array(df['공제비율']))[0]
+        deduce_ratio = net_income * w[0] + w[1]
+        total_salary = net_income * deduce_ratio
+    return total_salary
+
+
+
+
 
 # 총 급여액으로 근로소득공제금액 계산
 def getEarnedIncomeDeduction(total_salary):
