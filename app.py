@@ -1,6 +1,6 @@
 from flask import Flask, send_file, request, make_response
 
-app = Flask(__name__, static_url_path='', static_folder='static/dist/hack2019')
+app = Flask(__name__, static_url_path='', static_folder='dist/hack2019')
 
 @app.route('/')
 def index():
