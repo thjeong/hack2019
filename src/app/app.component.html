@@ -1,7 +1,13 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
-      This is the expansion title
+      <div *ngIf="currentUser">
+        <div>{{currentUser.username}}</div>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      </div>
+      <div *ngIf="!currentUser">
+        Not logged in yet
+      </div>
     </mat-panel-title>
     <mat-panel-description>
       This is a summary of the content
@@ -9,6 +15,7 @@
   </mat-expansion-panel-header>
 
   <p>This is the primary content of the panel.</p>
+  <login-cmp></login-cmp>
 
 </mat-expansion-panel>
 

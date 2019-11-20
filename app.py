@@ -10,7 +10,7 @@ def index():
 
 @app.route('/login', methods=["POST"])
 def login():
-    a = request.form
+    a = request.json
     response = login_func(a['userid'])
     return response
 
