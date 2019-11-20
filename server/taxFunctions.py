@@ -43,15 +43,15 @@ def getEarnedIncomeDeduction(total_salary):
     :return: 근로소득공제금액
     """
     if total_salary <= 5000000: # 500만원 이하. 급여액의 70%
-        return total_salary * 0.7
+        return int(total_salary * 0.7)
     elif total_salary <= 15000000: # 500만원초과, 1500만원 이하
-        return 3500000 + (total_salary - 5000000) * 0.4
+        return int(3500000 + (total_salary - 5000000) * 0.4)
     elif total_salary <= 45000000: # 1500만원 초과, 4500만원 이하
-        return 7500000 + (total_salary - 15000000) * 0.15
+        return int(7500000 + (total_salary - 15000000) * 0.15)
     elif total_salary <= 100000000: # 4500만원 초과, 1억 이하
-        return 12000000 + (total_salary - 45000000) * 0.05
+        return int(12000000 + (total_salary - 45000000) * 0.05)
     else: # 1억원 초과
-        return 14750000 + (total_salary - 100000000) * 0.02
+        return int(14750000 + (total_salary - 100000000) * 0.02)
 
 # 공제대상 가족수로 인적공제금액 계산
 def getPersonalAllowance(n_of_members):
@@ -72,7 +72,7 @@ def getTmpPensionInsuranceDeduction(total_salary):
         return 156600 # 290000 * 0.045 * 12
     elif total_salary/12 >= 4490000:
         return 2424600 # 4490000 * 0.045 * 12
-    return total_salary * 0.045
+    return int(total_salary * 0.045)
 
 # 총급여액과 공제대상자 수로 특별소득공제 얼추 계산
 def getTmpSpecIncomeDeduction(total_salary, n_of_members):
@@ -84,33 +84,33 @@ def getTmpSpecIncomeDeduction(total_salary, n_of_members):
     """
     if total_salary <= 30000000:
         if n_of_members == 1:
-            return 3100000 + total_salary * 0.04
+            return int(3100000 + total_salary * 0.04)
         elif n_of_members == 2:
-            return 3600000 + total_salary * 0.04
+            return int(3600000 + total_salary * 0.04)
         else:
-            return 5000000 + total_salary * 0.07 + max(total_salary - 40000000, 0) * 0.04
+            return int(5000000 + total_salary * 0.07 + max(total_salary - 40000000, 0) * 0.04)
     elif total_salary <= 45000000:
         if n_of_members == 1:
-            return 3100000 + total_salary * 0.04 - (total_salary - 30000000) * 0.05
+            return int(3100000 + total_salary * 0.04 - (total_salary - 30000000) * 0.05)
         elif n_of_members == 2:
-            return 3600000 + total_salary * 0.04 - (total_salary - 30000000) * 0.05
+            return int(3600000 + total_salary * 0.04 - (total_salary - 30000000) * 0.05)
         else:
-            return 5000000 + total_salary * 0.07 - (total_salary - 30000000) * 0.05 \
-                   + max(total_salary - 40000000, 0) * 0.04
+            return int(5000000 + total_salary * 0.07 - (total_salary - 30000000) * 0.05 \
+                   + max(total_salary - 40000000, 0) * 0.04)
     elif total_salary <= 70000000:
         if n_of_members == 1:
-            return 3100000 + total_salary * 0.015
+            return int(3100000 + total_salary * 0.015)
         elif n_of_members == 2:
-            return 3600000 + total_salary * 0.02
+            return int(3600000 + total_salary * 0.02)
         else:
-            return 5000000 + total_salary * 0.05 + (total_salary - 40000000) * 0.04
+            return int(5000000 + total_salary * 0.05 + (total_salary - 40000000) * 0.04)
     else:
         if n_of_members == 1:
-            return 3100000 + total_salary * 0.005
+            return int(3100000 + total_salary * 0.005)
         elif n_of_members == 2:
-            return 3600000 + total_salary * 0.01
+            return int(3600000 + total_salary * 0.01)
         else:
-            return 5000000 + total_salary * 0.03 + (total_salary - 40000000) * 0.04
+            return int(5000000 + total_salary * 0.03 + (total_salary - 40000000) * 0.04)
 
 
 # 과세표준금액으로 산출세액 계산
@@ -154,7 +154,7 @@ def getTax(std_assessment):
         tax_amt = 174600000 + max_ratio_amt * max_ratio
     acc_tax_ratio = tax_amt / std_assessment
 
-    return tax_amt, acc_tax_ratio, txt_msg, max_ratio_amt, max_ratio
+    return int(tax_amt), acc_tax_ratio, txt_msg, max_ratio_amt, max_ratio
 
 
 # input 신용/체크/현금영수증 이용금액(각각. 세금, 공과금, 통신비, 상품권구입, 신차구입, 해외사용은 제외한 금액)
@@ -202,4 +202,24 @@ def getCreditCrdEtcDeduction(credit_crd_use, debit_crd_use, cash_use, trad_marke
         public_trans_deduction = min(public_trans_use * 0.4, public_trans_deduction_limit)
         book_show_deduction = min(book_show_use * 0.3, book_show_deduction_limit)
 
-        return crd_etc_deduction, trad_market_deduction, public_trans_deduction, book_show_deduction
+        return int(crd_etc_deduction), int(trad_market_deduction), int(public_trans_deduction), int(book_show_deduction)
+
+def getHouseSaving(house_saving_amt, total_salary, householder_tf=0):
+    """
+    주택청약저축에 따른 소득공제금액 계산
+    총급여 7천이하 & 무주택만 40% 공제, 공제한도 240만
+    :param house_saving_amt:
+    :return:
+    """
+    if total_salary > 70000000 or householder_tf ==1:
+        return 0
+    return min(int(house_saving_amt * 0.4), 2400000)
+
+def getMyStock(my_stock):
+    """
+    우리사주 : 공제한도 400만원
+    :param my_stock:
+    :return:
+    """
+    return max(my_stock, 4000000)
+

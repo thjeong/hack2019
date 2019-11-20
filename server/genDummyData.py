@@ -109,8 +109,19 @@ def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3
     df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*2)).astype(int)
     df['매출일자'] = df['승인일시'].str[:8]
     del df['승인일시'], df['가맹점번호']
-    df.rename(columns = {'승인금액':'매출전표금액','가맹점명':'이용가맹점명','카드뒷세자리':'이용카드뒷세자리'},inplace=True)
+    df.rename(columns = {'승인금액':'매출전표금액','가맹점명':'이용가맹점명','카드뒷세자리':'이용카드뒷세자리'}, inplace=True)
     return df
+
+def genSHBhousesaving(seed):
+    """
+    10만원 이상 ~ 100만원 이하 1만원 단위로 random return
+    :param seed:
+    :return:
+    """
+    random.seed(seed)
+    random_number = random.random()
+    return int(round(random_number * 1000000,-4))
+
 
 def genUserNm(userid):
     userid_dict = {'user2': '오상혁', 'user3': '정태환', 'user4': '이정은'}
