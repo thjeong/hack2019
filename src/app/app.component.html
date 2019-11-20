@@ -5,7 +5,7 @@
         <div>{{currentUser.username}}</div>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
       </div>
-      <div *ngIf="!currentUser">
+      <div *ngIf="currentUser == null">
         Not logged in yet
       </div>
     </mat-panel-title>

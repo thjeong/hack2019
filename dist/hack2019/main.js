@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <mat-panel-title>\n      <div *ngIf=\"currentUser\">\n        <div>{{currentUser.username}}</div>\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\n      </div>\n      <div *ngIf=\"!currentUser\">\n        Not logged in yet\n      </div>\n    </mat-panel-title>\n    <mat-panel-description>\n      This is a summary of the content\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n\n  <p>This is the primary content of the panel.</p>\n  <login-cmp></login-cmp>\n\n</mat-expansion-panel>\n\n<router-outlet></router-outlet>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <mat-panel-title>\n      <div *ngIf=\"currentUser\">\n        <div>{{currentUser.username}}</div>\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\n      </div>\n      <div *ngIf=\"currentUser == null\">\n        Not logged in yet\n      </div>\n    </mat-panel-title>\n    <mat-panel-description>\n      This is a summary of the content\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n\n  <p>This is the primary content of the panel.</p>\n  <login-cmp></login-cmp>\n\n</mat-expansion-panel>\n\n<router-outlet></router-outlet>\n");
 
 /***/ }),
 
@@ -4096,6 +4096,7 @@ var LoginComponent = /** @class */ (function () {
         this.authenticationService.login(this.f.userid.value) //, this.f.password.value)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(function (data) {
+            _this.loading = false;
             _this.router.navigate([_this.returnUrl]);
         }, function (error) {
             _this.alertService.error(error);
