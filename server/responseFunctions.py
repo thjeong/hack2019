@@ -1,5 +1,5 @@
 import json
-from server.genDummyData import genSHBAccountTrans
+from server.genDummyData import genSHBAccountTrans, genUserNm
 from server.taxFunctions import simple_tax_calc
 # from genDummyData import genSHBAccountTrans
 # from taxFunctions import simple_tax_calc
@@ -14,5 +14,5 @@ def login_func(userid, year='2018'):
     shb_trans_df = genSHBAccountTrans(userid)
     net_income = shb_trans_df[shb_trans_df['적요'].str.contains('급여')]['입금'].sum()
     total_salary = simple_tax_calc(net_income, 'server/data/')
-    output_json = json.dumps({'userid' : userid, 'total_salary': total_salary})
+    output_json = json.dumps({'userid' : userid, 'username': genUserNm(userid), 'total_salary': total_salary})
     return output_json

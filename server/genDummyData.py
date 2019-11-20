@@ -81,7 +81,12 @@ def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3
     df.rename(columns = {'승인금액':'매출전표금액','가맹점명':'이용가맹점명','카드뒷세자리':'이용카드뒷세자리'},inplace=True)
     return df
 
-
+def genUserNm(userid):
+    userid_dict = {'user2':'오상혁','user3':'정태환','user4':'이정은'}
+    usernm = userid_dict.get(userid)
+    if usernm == None:
+        usernm = 'unknown user'
+    return usernm
 
 def testRandom(seed):
     random.seed(seed)
