@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <mat-panel-title>\n      This is the expansion title\n    </mat-panel-title>\n    <mat-panel-description>\n      This is a summary of the content\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n\n  <p>This is the primary content of the panel.</p>\n  <login-cmp></login-cmp>\n\n</mat-expansion-panel>\n\n<router-outlet></router-outlet>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel>\n  <mat-expansion-panel-header>\n    <mat-panel-title>\n      <div *ngIf=\"currentUser\">\n        <div>{{currentUser.username}}</div>\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\n      </div>\n      <div *ngIf=\"!currentUser\">\n        Not logged in yet\n      </div>\n    </mat-panel-title>\n    <mat-panel-description>\n      This is a summary of the content\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n\n  <p>This is the primary content of the panel.</p>\n  <login-cmp></login-cmp>\n\n</mat-expansion-panel>\n\n<router-outlet></router-outlet>\n");
 
 /***/ }),
 
@@ -3936,18 +3936,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_services */ "./src/app/_services/index.ts");
+
+
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
-        this.title = 'hack2019';
+    function AppComponent(router, authenticationService) {
+        var _this = this;
+        this.router = router;
+        this.authenticationService = authenticationService;
+        this.authenticationService.currentUser.subscribe(function (x) { return _this.currentUser = x; });
     }
+    AppComponent.prototype.logout = function () {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+    };
+    AppComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _services__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"] }
+    ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")).default]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _services__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"]])
     ], AppComponent);
     return AppComponent;
 }());
