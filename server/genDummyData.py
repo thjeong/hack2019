@@ -32,7 +32,7 @@ def genSHBAccountTrans(seed, amt=5000, max_n_of_trans_digit = 2):
 
 def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3):
     """
-    국내사용내역조회 dummy data 생성
+    신용카드 국내사용내역조회 dummy data 생성
     :param seed:
     :param input_aprvamt:
     :param stt_date:
@@ -40,10 +40,10 @@ def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
     :param max_n_of_trans_digit:
     :return:
     """
-    random.seed(seed)
+    random.seed(seed+stt_date+end_date)
     random_number = random.random()
     n_of_trans = int(random_number*(10**max_n_of_trans_digit))
-    list_of_mct_nm = ['이마트왕십리','현대그린푸드','신한생명','가야성','장칼국수','보건옥','지방','서울버스','서울지하철','XX전통시장']
+    list_of_mct_nm = ['이마트왕십리','현대그린푸드','신한생명','가야성','장칼국수','보건옥','지방세','서울버스','서울지하철','XX전통시장','XX도서']
     output_list = []
     date_idx = 0
     for i in range(n_of_trans):
@@ -57,7 +57,38 @@ def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
         aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),10))+1)
         cardno = str(int(random_number * 1000))
         retlno = '{:010d}'.format(i)[:10]
-        retlname = list_of_mct_nm[int(np.mod(int(random_number * i),10))]
+        retlname = list_of_mct_nm[int(np.mod(int(random_number * i),len(list_of_mct_nm)))]
+        output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
+    return pd.DataFrame(output_list,columns=['승인일시','승인번호','승인금액','카드뒷세자리','가맹점번호','가맹점명'])
+
+def genSHDTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3):
+    """
+    체크카드 국내사용내역조회 dummy data 생성
+    :param seed:
+    :param input_aprvamt:
+    :param stt_date:
+    :param end_date:
+    :param max_n_of_trans_digit:
+    :return:
+    """
+    random.seed(seed+stt_date+end_date)
+    random_number = random.random()
+    n_of_trans = int(random_number*(10**max_n_of_trans_digit))
+    list_of_mct_nm = ['서울버스','서울지하철','XX전통시장','XX도서','신한생명','보건옥','가야성','장칼국수','이마트왕십리','현대그린푸드','지방세']
+    output_list = []
+    date_idx = 0
+    for i in range(n_of_trans):
+        aprvdate = (datetime.datetime.strptime(stt_date,"%Y%m%d") + datetime.timedelta(days=date_idx)).strftime("%Y%m%d")
+        if aprvdate == end_date: # 마지막날짜보다 뒤로 가면 그냥 거래일자는 end date과 동일하게 세
+            date_idx = 0
+        else:
+            date_idx += 1
+        aprvtime = aprvdate + '{:012d}'.format(i)
+        aprvno = '{:08d}'.format(i)[:8]
+        aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),3))+1)
+        cardno = str(int(random_number * 1000))
+        retlno = '{:010d}'.format(i)[:10]
+        retlname = list_of_mct_nm[int(np.mod(int(random_number * i),len(list_of_mct_nm)))]
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
     return pd.DataFrame(output_list,columns=['승인일시','승인번호','승인금액','카드뒷세자리','가맹점번호','가맹점명'])
 
@@ -82,11 +113,8 @@ def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3
     return df
 
 def genUserNm(userid):
-    userid_dict = {'user2':'오상혁','user3':'정태환','user4':'이정은'}
-    usernm = userid_dict.get(userid)
-    if usernm == None:
-        usernm = 'unknown user'
-    return usernm
+    userid_dict = {'user2': '오상혁', 'user3': '정태환', 'user4': '이정은'}
+    return userid_dict.get(userid)
 
 def testRandom(seed):
     random.seed(seed)
