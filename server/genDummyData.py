@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import datetime
 
-def genSHBAccountTrans(seed, amt, max_n_of_trans_digit = 2):
+def genSHBAccountTrans(seed, amt=5000, max_n_of_trans_digit = 2):
     """
     은행거래내역 dummy data 생성기
     :param seed:

@@ -1,41 +1,4 @@
-# 세후 급여액으로 (세전)총급여액 계산 망했음.
-def _simple_tax_calc(n_of_members, net_income, table_file_dir = './'):
-    import scipy.interpolate as spi
-    import numpy as np
-    import pandas as pd
-    import json
-    import os
-    with open(os.path.join(table_file_dir, 'max_tax.json')) as f:
-        max_tax = json.load(f)  # 공제대상가족 인원수별 세후 1억원 급여자의 월세액
-    df = pd.read_csv(os.path.join(table_file_dir, 'tax_table.tsv'), sep='\t')
-    # net income이 일정금액(세전월급여 1억원 이상에 해당하는 금액) 이상이면 별도 테이블 참조
-    over120M_pt = df.tail(1)[str(n_of_members)].iloc[0]  # 세전 월 1억(연12억) 이상의 실수령액
-    if net_income > over120M_pt:
-        tmp_total_salary = (net_income + max_tax[str(n_of_members)] * 12 - 10000000 * 12 * 0.98 * 0.35) / (
-        1 - 0.98 * 0.35)
-        if tmp_total_salary / 12 > 14000000:
-            tmp_total_salary = (
-                               net_income + max_tax[str(n_of_members)] * 12 + 1372000 - 14000000 * 12 * 0.98 * 0.38) / (
-                               1 - 0.98 * 0.38)
-        elif tmp_total_salary / 12 > 28000000:
-            tmp_total_salary = (net_income + max_tax[str(n_of_members)] * 12 + 6585600 - 28000000 * 12 * 0.98 * 0.4) / (
-            1 - 0.98 * 0.4)
-        elif tmp_total_salary / 12 > 45000000:
-            tmp_total_salary = (net_income + max_tax[
-                str(n_of_members)] * 12 + 13249600 - 45000000 * 12 * 0.98 * 0.42) / (1 - 0.98 * 0.42)
-        return tmp_total_salary
-    x = np.array(df[str(n_of_members)])
-    y = np.array(df['total_income'])
-    split_idx = np.where(y == 70080000)[0][0]
-    if net_income >= x[split_idx]:
-        x = x[split_idx:]
-        y = y[split_idx:]
-    else:
-        x = x[:split_idx]
-        y = y[:split_idx]
-    ipo = spi.splrep(x, y, k=1)
-    return spi.splev(net_income, ipo).max()
-
+# 세후 급여액으로 (세전)총급여액 계산
 def simple_tax_calc(net_income, table_file_dir):
     """
     실수령액으로 연봉 (얼추)계산
@@ -51,14 +14,22 @@ def simple_tax_calc(net_income, table_file_dir):
     if net_income <=103751760: # 연봉 1.5억에 해당하는 실수령액
         x = np.array(df['실수령액'])
         y = np.array(df['연봉'])
+        split_idx = np.where(y == 122000000)[0][0]
+        if net_income >= x[split_idx]:
+            x = x[split_idx:]
+            y = y[split_idx:]
+        else:
+            x = x[:split_idx]
+            y = y[:split_idx]
         ipo = spi.splrep(x, y, k=1)
         total_salary = spi.splev(net_income,ipo).max()
+        # deduce_ratio = 1 - net_income / total_salary
     else:
         A = np.vstack([np.array(df['실수령액']), np.ones(len(df))]).T
         w = np.linalg.lstsq(A, np.array(df['공제비율']))[0]
         deduce_ratio = net_income * w[0] + w[1]
-        total_salary = net_income * deduce_ratio
-    return total_salary
+        total_salary = net_income / (1-deduce_ratio)
+    return max(int(total_salary), 0)
 
 
 
