@@ -15,13 +15,13 @@ def login():
     return response
 
 @app.route('/summary1', methods=['POST'])
-def sumarry1():
+def summary1():
     a = request.json
     response = incomeDeduction1(a['userid'], a['total_salary'])
     return response
 
 @app.route('/summary2', methods=['POST'])
-def sumarry1():
+def summary2():
     a = request.json
     response = incomeDeduction2(a)
     return response

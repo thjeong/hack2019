@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import datetime
 
+
 def genSHBAccountTrans(seed, amt=5000, max_n_of_trans_digit = 2):
     """
     은행거래내역 dummy data 생성기
@@ -29,6 +30,7 @@ def genSHBAccountTrans(seed, amt=5000, max_n_of_trans_digit = 2):
 
         output_list.append([str(inout_idx), in_amt, in_amt, out_amt, out_amt, text_data,''])
     return pd.DataFrame(output_list,columns=['입지구분','입금','입금_MASK','출금','출금_MASK','적요','거래점'])
+
 
 def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3):
     """
@@ -61,6 +63,7 @@ def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
     return pd.DataFrame(output_list,columns=['승인일시','승인번호','승인금액','카드뒷세자리','가맹점번호','가맹점명'])
 
+
 def genSHDTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3):
     """
     체크카드 국내사용내역조회 dummy data 생성
@@ -88,9 +91,10 @@ def genSHDTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
         aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),3))+1)
         cardno = str(int(random_number * 1000))
         retlno = '{:010d}'.format(i)[:10]
-        retlname = list_of_mct_nm[int(np.mod(int(random_number * i),len(list_of_mct_nm)))]
+        retlname = list_of_mct_nm[int(np.mod(int(random_number * i), len(list_of_mct_nm)))]
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
-    return pd.DataFrame(output_list,columns=['승인일시','승인번호','승인금액','카드뒷세자리','가맹점번호','가맹점명'])
+    return pd.DataFrame(output_list, columns=['승인일시', '승인번호', '승인금액', '카드뒷세자리', '가맹점번호', '가맹점명'])
+
 
 def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3):
     """
@@ -105,11 +109,11 @@ def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3
     random.seed(seed)
     random_number = random.random()
     df = genSHCTrans(seed, input_aprvamt,stt_date,end_date,max_n_of_trans_digit)
-    df['적립예정표인트율'] = 0.001 * int(random_number * 10 + 1)
+    df['적립예정포인트율'] = 0.001 * int(random_number * 10 + 1)
     df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*2)).astype(int)
     df['매출일자'] = df['승인일시'].str[:8]
     del df['승인일시'], df['가맹점번호']
-    df.rename(columns = {'승인금액':'매출전표금액','가맹점명':'이용가맹점명','카드뒷세자리':'이용카드뒷세자리'}, inplace=True)
+    df.rename(columns={'승인금액': '매출전표금액', '가맹점명': '이용가맹점명', '카드뒷세자리': '이용카드뒷세자리'}, inplace=True)
     return df
 
 def genSHBhousesaving(seed):

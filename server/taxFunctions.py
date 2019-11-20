@@ -1,4 +1,7 @@
 # 세후 급여액으로 (세전)총급여액 계산
+from server.genDummyData import genSHCBill
+import datetime
+
 def simple_tax_calc(net_income, table_file_dir):
     """
     실수령액으로 연봉 (얼추)계산
@@ -175,7 +178,7 @@ def getCreditCrdEtcDeduction(credit_crd_use, debit_crd_use, cash_use, trad_marke
     :return:
     """
     total_use = credit_crd_use + debit_crd_use + cash_use
-    deduction_min_use = total_salary * 0.25
+    hudle = total_salary * 0.25
 
     book_show_deduction_limit = 0
     trad_market_deduction_limit = 1000000
@@ -189,18 +192,18 @@ def getCreditCrdEtcDeduction(credit_crd_use, debit_crd_use, cash_use, trad_marke
     else:
         deduction_limit = 2000000
 
-    if total_use <= deduction_min_use:
-        return 0, 0, 0, 0
+    trad_market_deduction = min(trad_market_use * 0.4, trad_market_deduction_limit)
+    public_trans_deduction = min(public_trans_use * 0.4, public_trans_deduction_limit)
+    book_show_deduction = min(book_show_use * 0.3, book_show_deduction_limit)
+
+    if total_use <= hudle:
+        return 0, int(trad_market_deduction), int(public_trans_deduction), int(book_show_deduction)
     else:
-        if credit_crd_use > deduction_min_use: # 신용카드만으로 공제문턱(총급여의 25%) 넘었을 때
-            crd_etc_deduction = min((credit_crd_use - deduction_min_use) * 0.15 + (debit_crd_use + cash_use) * 0.3,
+        if credit_crd_use > hudle: # 신용카드만으로 공제문턱(총급여의 25%) 넘었을 때
+            crd_etc_deduction = min((credit_crd_use - hudle) * 0.15 + (debit_crd_use + cash_use) * 0.3,
                                     deduction_limit)
         else:
-            crd_etc_deduction = min((total_use - deduction_min_use) * 0.3, deduction_limit)
-
-        trad_market_deduction = min(trad_market_use * 0.4, trad_market_deduction_limit)
-        public_trans_deduction = min(public_trans_use * 0.4, public_trans_deduction_limit)
-        book_show_deduction = min(book_show_use * 0.3, book_show_deduction_limit)
+            crd_etc_deduction = min((total_use - hudle) * 0.3, deduction_limit)
 
         return int(crd_etc_deduction), int(trad_market_deduction), int(public_trans_deduction), int(book_show_deduction)
 
@@ -223,3 +226,38 @@ def getMyStock(my_stock):
     """
     return max(my_stock, 4000000)
 
+def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, total_salary, deduction_limit,
+                       unit_amt = 10000):
+    """
+    전년 신용카드 이용/청구내역 집계해서 신용카드 이용혜택율 계산(1만원당)
+    max_ratio와 현재기준 신용/체크/현금 이용금액으로 절세혜택 계산 (1만원당) - 공제한도 감안해야
+    :param userid:
+    :param max_ratio:
+    :return:
+    """
+    # 전년도 신용카드 이용/청구내역 집계해서 신용카드 이용혜택율 계산
+    # TODO: 전년도 신용카드 청구내역 api 호출 & parsing module
+    input_aprvamt = 5000
+    prev_y_df = genSHCBill(userid, input_aprvamt, '20180101', '20181231')
+    prev_y_df['적립예정포인트'] = prev_y_df['매출전표금액'] * prev_y_df['적립예정포인트율']
+    prev_y_df['할인금액'] = prev_y_df['매출전표금액'] - prev_y_df['청구원금금액']
+    benefit_ratio = int(prev_y_df['적립예정포인트'].sum() + prev_y_df['할인금액'].sum()) / int(prev_y_df['매출전표금액'].sum())
+
+    crd_benefit = unit_amt * benefit_ratio
+    # max_ratio와 현재기준 신용/체크/현금 이용금액으로 절세혜택 계산
+    # 합계가 25%를 못넘은 경우
+    huddle = total_salary * 0.25
+    if crd_card_use + deb_card_use + cash_use < huddle:
+        crd_tax_benefit = 0
+        cash_deb_tax_benefit = 0
+    # 합계는 25%를 넘었는데, 신용카드만으로는 25% 못넘은 경우
+    elif crd_card_use < huddle:
+        crd_tax_benefit = unit_amt * 0.3 * max_ratio
+        cash_deb_tax_benefit = unit_amt * 0.3 * max_ratio
+    # 신용카드만으로 25% 넘은 경우
+    else:
+        crd_tax_benefit = unit_amt * 0.3 * max_ratio
+
+
+
+    return None
