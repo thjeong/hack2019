@@ -24,17 +24,17 @@
 <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
     <mat-expansion-panel-header >
       <mat-panel-title>
-        소득공제 요약
+        소득공제 항목
       </mat-panel-title>
       <mat-panel-description>
           <div *ngIf="currentUser">
-            <div>{{currentUser.username}}님은.. </div>
+            <div>{{currentUser.username}}님의 소득공제 항목을 입력/조회합니다 </div>
           </div>
           <div *ngIf="currentUser == null">
             로그인이 필요합니다
           </div>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <!-- <summary-cmp></summary-cmp> -->
+    <summary-cmp></summary-cmp>
   </mat-expansion-panel>
 <router-outlet></router-outlet>

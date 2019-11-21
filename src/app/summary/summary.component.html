@@ -1,0 +1,30 @@
+<form [formGroup]="summaryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="earned_income_deduce">근로소득공제</label>
+            <input placeholder=""  type="text" formControlName="earned_income_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.earned_income_deduce.errors }" />
+            <div *ngIf="submitted && f.earned_income_deduce.errors" class="invalid-feedback">
+                <div *ngIf="f.earned_income_deduce.errors.required">Input is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="personal_allowance">인적공제</label>
+            <input placeholder=""  type="text" formControlName="personal_allowance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.personal_allowance.errors }" />
+            <div *ngIf="submitted && f.personal_allowance.errors" class="invalid-feedback">
+                <div *ngIf="f.personal_allowance.errors.required">Input is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pension_insurance_deduce">연금보험료공제</label>
+            <input placeholder=""  type="text" formControlName="pension_insurance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }" />
+            <div *ngIf="submitted && f.pension_insurance_deduce.errors" class="invalid-feedback">
+                <div *ngIf="f.pension_insurance_deduce.errors.required">Input is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary" style="float: left; margin-right: 10px;">Login</button>
+            <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            
+            <!-- <a routerLink="/register" class="btn btn-link">Register</a> -->
+            
+        </div>
+    </form>
