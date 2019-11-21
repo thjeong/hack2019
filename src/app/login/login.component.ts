@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
+    
+    @Output() setStepInApp = new EventEmitter<number>();
 
     constructor(
         private formBuilder: FormBuilder,
@@ -54,11 +56,17 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.loading = false;
-                    this.router.navigate([this.returnUrl]);
+                    this.setStepInApp.emit(1);
+                    //this.router.navigate([this.returnUrl]);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+
+    logout() {
+        this.authenticationService.logout();
+//        this.router.navigate(['/login']);
     }
 }

@@ -9,10 +9,12 @@ import { User } from '@/_models';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    private host_ip:string;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
+        this.host_ip = window.location.origin;
     }
 
     public get currentUserValue(): User {
@@ -20,7 +22,8 @@ export class AuthenticationService {
     }
 
     login(userid: string) { //, password: string) {
-        return this.http.post<any>(`http://localhost:5000/login`, { userid }) //, password })
+        console.log('login to '+ this.host_ip);
+        return this.http.post<any>(this.host_ip + '/login', { userid }) //, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user) { // && user.token) {

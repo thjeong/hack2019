@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 
 import {LoginComponent} from './login/login.component';
 
@@ -26,6 +28,8 @@ import {LoginComponent} from './login/login.component';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatExpansionModule,
+    MatInputModule,
+    MatButtonModule,
     AppRoutingModule
   ],
   providers: [],
