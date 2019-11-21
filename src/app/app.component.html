@@ -1,22 +1,40 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
+<mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+  <mat-expansion-panel-header class='login'>
     <mat-panel-title>
-      <div *ngIf="currentUser">
+      <h3 style='color:darkred'>naytax!</h3>
+      <!-- <div *ngIf="currentUser">
         <div>{{currentUser.username}}</div>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
       </div>
       <div *ngIf="currentUser == null">
         Not logged in yet
-      </div>
+      </div> -->
     </mat-panel-title>
     <mat-panel-description>
-      This is a summary of the content
+        <div *ngIf="currentUser">
+          {{currentUser.username}}님 안녕하세요
+        </div>
+        <div *ngIf="currentUser == null">
+          로그인이 필요합니다
+        </div>
     </mat-panel-description>
   </mat-expansion-panel-header>
-
-  <p>This is the primary content of the panel.</p>
-  <login-cmp></login-cmp>
-
+  <login-cmp (setStepInApp)="setStep($event)"></login-cmp>
 </mat-expansion-panel>
-
+<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header >
+      <mat-panel-title>
+        소득공제 요약
+      </mat-panel-title>
+      <mat-panel-description>
+          <div *ngIf="currentUser">
+            <div>{{currentUser.username}}님은.. </div>
+          </div>
+          <div *ngIf="currentUser == null">
+            로그인이 필요합니다
+          </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <!-- <summary-cmp></summary-cmp> -->
+  </mat-expansion-panel>
 <router-outlet></router-outlet>
