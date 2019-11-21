@@ -18,7 +18,7 @@ def login_func(userid, year='2018'):
     return output_json
 
 
-def incomeDeduction1(userid, total_salary, stt_date='20190101', end_date=datetime.datetime.now().strftime('%Y%m%d')):
+def summary(userid, total_salary, stt_date='20190101', end_date=datetime.datetime.now().strftime('%Y%m%d')):
     """
     근로소득공제금액, 인적공제금액(default 150만), 연금보험료공제, 특별소득공제,
     신용/체크/현금영수증 이용금액, 공제금액, 총급여25%문턱금
@@ -48,7 +48,7 @@ def incomeDeduction1(userid, total_salary, stt_date='20190101', end_date=datetim
     deb_card_df = genSHDTrans(userid, input_aprvamt, stt_date, end_date)
     # 공제대상 제외거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     crd_card_use = crd_card_df[~crd_card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장')]['승인금액'].sum()
-    deb_card_use = deb_card_df[~deb_card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장')]['승인금액'].sum()
+    deb_card_use = deb_card_df[~deb_card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시')]['승인금액'].sum()
 
     #대중교통, 전통시장, 도서/공연 이용금액(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     public_trans_use = crd_card_df[crd_card_df['가맹점명'].str.contains('버스|지하철')]['승인금액'].sum()\
@@ -59,8 +59,9 @@ def incomeDeduction1(userid, total_salary, stt_date='20190101', end_date=datetim
                    + deb_card_df[deb_card_df['가맹점명'].str.contains('도서')]['승인금액'].sum()
 
     crd_etc_deduce, trad_market_deduce, \
-    public_trans_deduce, book_show_deduce = getCreditCrdEtcDeduction(crd_card_use, deb_card_use, 0, trad_market_use,
-                                                                     public_trans_use, book_use, total_salary)
+    public_trans_deduce, book_show_deduce, \
+    dummy1, dummy2, dummy3 = getCreditCrdEtcDeduction(crd_card_use, deb_card_use, 0, trad_market_use, public_trans_use,
+                                                      book_use, total_salary)
     # 주택청약저축
     # TODO: 주택청약저축 내역 api 호출 & 집계하는 module...
     house_saving = genSHBhousesaving(userid)
@@ -75,7 +76,7 @@ def incomeDeduction1(userid, total_salary, stt_date='20190101', end_date=datetim
                    'crd_card_use': int(crd_card_use), 'deb_card_use': int(deb_card_use), 'cash_use': 0,
                    'crd_etc_use_amt': int(crd_card_use + deb_card_use),
                    'crd_etc_deduce': crd_etc_deduce,
-                   'crd_etc_deduce_huddle': int(total_salary * 0.25),
+                   'crd_etc_deduce_hurdle': int(total_salary * 0.25),
                    'public_trans_use': int(public_trans_use),
                    'public_trans_deduce': public_trans_deduce,
                    'trad_market_use': int(trad_market_use),
@@ -91,7 +92,7 @@ def incomeDeduction1(userid, total_salary, stt_date='20190101', end_date=datetim
     return json.dumps(output_dict)
 
 
-def incomeDeduction2(input_json, stt_date='20190101', end_date=datetime.datetime.now().strftime('%Y%m%d')):
+def detail(input_json, unit_amt=10000):
     """
     ㅇㅇㅇㅇㅇㅇ
     :param input_json:
@@ -100,12 +101,8 @@ def incomeDeduction2(input_json, stt_date='20190101', end_date=datetime.datetime
     :return:
     """
     input_dict = json.loads(input_json)
-    userid = input_dict['userid']
-    total_salary = input_dict['total_salary']
-    n_of_members = input_dict['n_of_members']
-    crd_card_use = input_dict['crd_card_use']
-    deb_card_use = input_dict['deb_card_use']
-    cash_use = input_dict['cash_use']
+    userid, total_salary, n_of_members = input_dict['userid'], input_dict['total_salary'], input_dict['n_of_members']
+    crd_card_use, deb_card_use, cash_use = input_dict['crd_card_use'], input_dict['deb_card_use'], input_dict['cash_use']
     public_trans_use = input_dict['public_trans_use']
     trad_market_use = input_dict['trad_market_use']
     book_use = input_dict['book_use']
@@ -123,9 +120,14 @@ def incomeDeduction2(input_json, stt_date='20190101', end_date=datetime.datetime
     #특별소득공제
     spec_income_deduce = input_dict['spec_income_deduce']
 
+    crd_etc_use_amt = crd_card_use + deb_card_use + cash_use
+    hurdle = total_salary * 0.25
     crd_etc_deduce, trad_market_deduce, \
-    public_trans_deduce, book_show_deduce = getCreditCrdEtcDeduction(crd_card_use, deb_card_use, cash_use, trad_market_use,
-                                                                     public_trans_use, book_use, total_salary)
+    public_trans_deduce, book_show_deduce, \
+    crd_card_deduce_valid_amt, \
+    deb_cash_deduce_valid_amt,  \
+    crd_etc_deduction_limit= getCreditCrdEtcDeduction(crd_card_use, deb_card_use, cash_use, trad_market_use,
+                                                      public_trans_use, book_use, total_salary)
     # 주택청약저축
     house_saving_deduce = getHouseSaving(house_saving, total_salary, householder_tf)
     # 우리사주
@@ -138,9 +140,11 @@ def incomeDeduction2(input_json, stt_date='20190101', end_date=datetime.datetime
                    'pension_insurance_deduce': pension_insurance_deduce,
                    'spec_income_deduce': spec_income_deduce,
                    'crd_card_use': int(crd_card_use), 'deb_card_use': int(deb_card_use), 'cash_use': cash_use,
-                   'crd_etc_use_amt': int(crd_card_use + deb_card_use + cash_use),
+                   'crd_etc_use_amt': int(crd_etc_use_amt),
+                   'crd_card_deduce_valid_amt': crd_card_deduce_valid_amt,
+                   'deb_cash_deduce_valid_amt': deb_cash_deduce_valid_amt,
                    'crd_etc_deduce': crd_etc_deduce,
-                   'crd_etc_deduce_huddle': int(total_salary * 0.25),
+                   'crd_etc_deduce_hurdle': int(hurdle), 'crd_etc_deduction_limit': crd_etc_deduction_limit,
                    'public_trans_use': int(public_trans_use),
                    'public_trans_deduce': public_trans_deduce,
                    'trad_market_use': int(trad_market_use),
@@ -154,23 +158,38 @@ def incomeDeduction2(input_json, stt_date='20190101', end_date=datetime.datetime
         if i.endswith('deduce'):
             total_deduce += j
     output_dict['total_deduce'] = total_deduce
-    return json.dumps(output_dict)
 
-
-def incomeDeductionResult(input_json):
-    input_dict = json.loads(input_json)
-    userid = input_dict['userid']
-    total_salary = input_dict['total_salary']
-    total_deduce = input_dict['total_deduce']
+    # 현재 소득공제 현황 내용 만들기
     std_assessment = total_salary - total_deduce
     tax_amt, acc_tax_ratio, txt_msg, max_ratio_amt, max_ratio = getTax(std_assessment)
-    output_dict = {'userid': userid,
-                   'total_salary': total_salary,
-                   'total_deduce': total_deduce,
-                   'std_assessment': std_assessment,
-                   'tax_amt': tax_amt,
-                   'acc_tax_ratio': acc_tax_ratio,
-                   'txt_msg': txt_msg,
-                   'max_ratio': max_ratio
-                   }
+    output_dict['std_assessment'] = std_assessment
+    output_dict['tax_amt'] = tax_amt
+    output_dict['acc_tax_ratio'] = acc_tax_ratio
+    output_dict['txt_msg'] = txt_msg
+    output_dict['max_ratio'] = max_ratio
+
+    # 신용체크현금소득공제 상세현황 만들기
+    hurdle_ramains = hurdle - crd_etc_use_amt  # 허들 넘기까지 남은 금액
+    output_dict['hurdle_remains'] = hurdle_ramains
+    result = getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, total_salary,
+                                crd_etc_deduction_limit, crd_etc_deduce, unit_amt)
+    output_dict['crd_tax_benefit'] = result[0]
+    output_dict['deb_cash_tax_benefit'] = result[1]
+    output_dict['crd_benefit'] = result[2]
+    output_dict['crd_benefit_ratio'] = result[3]
+    output_dict['crd_benefit_sum'] = result[4]
+
+    # 대중교통, 전통시장 소득공제 상세현황 만들기
+    output_dict['public_trans_deduce_limit'] = 1000000
+    output_dict['trad_market_deduce_limit'] = 1000000
+
+    if crd_etc_use_amt >= hurdle and public_trans_deduce < 1000000:
+        output_dict['public_trans_benefit'] = unit_amt * 0.4 * max_ratio
+    else:
+        output_dict['public_trans_benefit'] = 0
+    if crd_etc_use_amt >= hurdle and trad_market_deduce < 1000000:
+        output_dict['trad_market_benefit'] = unit_amt * 0.4 * max_ratio
+    else:
+        output_dict['trad_market_benefit'] = 0
+
     return json.dumps(output_dict)
