@@ -18,7 +18,7 @@ def login_func(userid, year='2018'):
     return output_json
 
 
-def summary(userid, total_salary, stt_date='20190101', end_date=datetime.datetime.now().strftime('%Y%m%d')):
+def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.datetime.now().strftime('%Y%m%d')):
     """
     근로소득공제금액, 인적공제금액(default 150만), 연금보험료공제, 특별소득공제,
     신용/체크/현금영수증 이용금액, 공제금액, 총급여25%문턱금
@@ -92,7 +92,7 @@ def summary(userid, total_salary, stt_date='20190101', end_date=datetime.datetim
     return json.dumps(output_dict)
 
 
-def detail(input_json, unit_amt=10000):
+def detail_func(input_json, unit_amt=10000):
     """
     ㅇㅇㅇㅇㅇㅇ
     :param input_json:

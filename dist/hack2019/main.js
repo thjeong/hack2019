@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\n  <mat-expansion-panel-header class='login'>\n    <mat-panel-title>\n      <h3 style='color:darkred'>naytax!</h3>\n      <!-- <div *ngIf=\"currentUser\">\n        <div>{{currentUser.username}}</div>\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\n      </div>\n      <div *ngIf=\"currentUser == null\">\n        Not logged in yet\n      </div> -->\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          {{currentUser.username}}님 안녕하세요\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          로그인이 필요합니다\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\n</mat-expansion-panel>\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\n    <mat-expansion-panel-header >\n      <mat-panel-title>\n        소득공제 요약\n      </mat-panel-title>\n      <mat-panel-description>\n          <div *ngIf=\"currentUser\">\n            <div>{{currentUser.username}}님은.. </div>\n          </div>\n          <div *ngIf=\"currentUser == null\">\n            로그인이 필요합니다\n          </div>\n      </mat-panel-description>\n    </mat-expansion-panel-header>\n    <!-- <summary-cmp></summary-cmp> -->\n  </mat-expansion-panel>\n<router-outlet></router-outlet>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\n  <mat-expansion-panel-header class='login'>\n    <mat-panel-title>\n      <h3 style='color:darkred'>naytax!</h3>\n      <!-- <div *ngIf=\"currentUser\">\n        <div>{{currentUser.username}}</div>\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\n      </div>\n      <div *ngIf=\"currentUser == null\">\n        Not logged in yet\n      </div> -->\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          {{currentUser.username}}님 안녕하세요\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          로그인이 필요합니다\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\n</mat-expansion-panel>\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\n    <mat-expansion-panel-header >\n      <mat-panel-title>\n        소득공제 항목\n      </mat-panel-title>\n      <mat-panel-description>\n          <div *ngIf=\"currentUser\">\n            <div>{{currentUser.username}}님의 소득공제 항목을 입력/조회합니다 </div>\n          </div>\n          <div *ngIf=\"currentUser == null\">\n            로그인이 필요합니다\n          </div>\n      </mat-panel-description>\n    </mat-expansion-panel-header>\n    <summary-cmp></summary-cmp>\n  </mat-expansion-panel>\n<router-outlet></router-outlet>\n");
 
 /***/ }),
 
@@ -22,7 +22,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2>Login</h2>\n<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label for=\"username\">Username</label>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        <input placeholder=\"사용자이름\"  type=\"text\" formControlName=\"userid\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.userid.errors }\" />\n        <div *ngIf=\"submitted && f.userid.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.userid.errors.required\">Username is required</div>\n        </div>\n    </div>\n    <!-- <div class=\"form-group\">\n        <label for=\"password\">Password</label>\n        <input type=\"password\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\n        <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.password.errors.required\">Password is required</div>\n        </div>\n    </div> -->\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">Login</button>\n        \n        \n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>\n<button [disabled]=\"loading\" class=\"btn btn-outline-secondary\" (click)=\"logout()\">Logout</button>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h2>Login</h2>\n<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label for=\"userid\">Username</label>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        <input placeholder=\"사용자이름\"  type=\"text\" formControlName=\"userid\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.userid.errors }\" />\n        <div *ngIf=\"submitted && f.userid.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.userid.errors.required\">Username is required</div>\n        </div>\n    </div>\n    <!-- <div class=\"form-group\">\n        <label for=\"password\">Password</label>\n        <input type=\"password\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\n        <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.password.errors.required\">Password is required</div>\n        </div>\n    </div> -->\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">Login</button>\n        \n        \n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>\n<button [disabled]=\"loading\" class=\"btn btn-outline-secondary\" (click)=\"logout()\">Logout</button>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/summary/summary.component.html":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/summary/summary.component.html ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"summaryForm\" (ngSubmit)=\"onSubmit()\">\n        <div class=\"form-group\">\n            <label for=\"earned_income_deduce\">근로소득공제</label>\n            <input placeholder=\"\"  type=\"text\" formControlName=\"earned_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.earned_income_deduce.errors }\" />\n            <div *ngIf=\"submitted && f.earned_income_deduce.errors\" class=\"invalid-feedback\">\n                <div *ngIf=\"f.earned_income_deduce.errors.required\">Input is required</div>\n            </div>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"personal_allowance\">인적공제</label>\n            <input placeholder=\"\"  type=\"text\" formControlName=\"personal_allowance\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.personal_allowance.errors }\" />\n            <div *ngIf=\"submitted && f.personal_allowance.errors\" class=\"invalid-feedback\">\n                <div *ngIf=\"f.personal_allowance.errors.required\">Input is required</div>\n            </div>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"pension_insurance_deduce\">연금보험료공제</label>\n            <input placeholder=\"\"  type=\"text\" formControlName=\"pension_insurance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }\" />\n            <div *ngIf=\"submitted && f.pension_insurance_deduce.errors\" class=\"invalid-feedback\">\n                <div *ngIf=\"f.pension_insurance_deduce.errors.required\">Input is required</div>\n            </div>\n        </div>\n        <div class=\"form-group\">\n            <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">수정 완료하기</button>\n            <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n            \n            <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n            \n        </div>\n    </form>");
 
 /***/ }),
 
@@ -3815,6 +3828,8 @@ var AuthenticationService = /** @class */ (function () {
         this.http = http;
         this.currentUserSubject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
+        this.currentSummarySubject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](JSON.parse(localStorage.getItem('currentSummary')));
+        this.currentSummary = this.currentSummarySubject.asObservable();
         this.host_ip = window.location.origin;
     }
     Object.defineProperty(AuthenticationService.prototype, "currentUserValue", {
@@ -3824,18 +3839,35 @@ var AuthenticationService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AuthenticationService.prototype, "currentSummaryValue", {
+        get: function () {
+            return this.currentSummarySubject.value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     AuthenticationService.prototype.login = function (userid) {
         var _this = this;
         console.log('login to ' + this.host_ip);
         return this.http.post(this.host_ip + '/login', { userid: userid }) //, password })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (user) {
-            // login successful if there's a jwt token in the response
-            if (user) { // && user.token) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
+            if (user) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 _this.currentUserSubject.next(user);
             }
             return user;
+        }));
+    };
+    AuthenticationService.prototype.getSummary = function (userinfo) {
+        var _this = this;
+        console.log('getSummary for ' + userinfo);
+        return this.http.post(this.host_ip + '/summary', userinfo)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (summary) {
+            if (summary) {
+                localStorage.setItem('currentSummary', JSON.stringify(summary));
+                _this.currentSummarySubject.next(summary);
+            }
+            return summary;
         }));
     };
     AuthenticationService.prototype.logout = function () {
@@ -4006,6 +4038,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _summary_summary_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./summary/summary.component */ "./src/app/summary/summary.component.ts");
+
 
 
 
@@ -4026,7 +4060,8 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_12__["LoginComponent"]
+                _login_login_component__WEBPACK_IMPORTED_MODULE_12__["LoginComponent"],
+                _summary_summary_component__WEBPACK_IMPORTED_MODULE_13__["SummaryComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"],
@@ -4148,6 +4183,111 @@ var LoginComponent = /** @class */ (function () {
             _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/summary/summary.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/summary/summary.component.ts ***!
+  \**********************************************/
+/*! exports provided: SummaryComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SummaryComponent", function() { return SummaryComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+
+
+
+
+
+
+var SummaryComponent = /** @class */ (function () {
+    function SummaryComponent(formBuilder, route, router, authenticationService, alertService) {
+        this.formBuilder = formBuilder;
+        this.route = route;
+        this.router = router;
+        this.authenticationService = authenticationService;
+        this.alertService = alertService;
+        this.loading = false;
+        this.submitted = false;
+        this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        // redirect to home if already logged in
+        if (this.authenticationService.currentUserValue) {
+            this.router.navigate(['/']);
+        }
+    }
+    SummaryComponent.prototype.ngOnInit = function () {
+        this.summaryForm = this.formBuilder.group({
+            earned_income_deduce: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            personal_allowance: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            pension_insurance_deduce: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
+            //password: ['', Validators.required]
+        });
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    };
+    Object.defineProperty(SummaryComponent.prototype, "f", {
+        // convenience getter for easy access to form fields
+        get: function () { return this.summaryForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    SummaryComponent.prototype.onSubmit = function () {
+        var _this = this;
+        this.submitted = true;
+        // stop here if form is invalid
+        if (this.summaryForm.invalid) {
+            return;
+        }
+        this.loading = true;
+        this.authenticationService.getSummary(this.authenticationService.currentUserValue) //, this.f.password.value)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(function (data) {
+            _this.loading = false;
+            _this.setStepInApp.emit(2);
+            //this.router.navigate([this.returnUrl]);
+        }, function (error) {
+            _this.alertService.error(error);
+            _this.loading = false;
+        });
+    };
+    SummaryComponent.prototype.logout = function () {
+        this.authenticationService.logout();
+        //        this.router.navigate(['/login']);
+    };
+    SummaryComponent.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _services__WEBPACK_IMPORTED_MODULE_5__["AuthenticationService"] },
+        { type: _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], SummaryComponent.prototype, "setStepInApp", void 0);
+    SummaryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'summary-cmp',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./summary.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/summary/summary.component.html")).default
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _services__WEBPACK_IMPORTED_MODULE_5__["AuthenticationService"],
+            _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"]])
+    ], SummaryComponent);
+    return SummaryComponent;
 }());
 
 

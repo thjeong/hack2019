@@ -53,13 +53,12 @@ export class SummaryComponent implements OnInit {
         }
 
         this.loading = true;
-        // TODO: 인증만 넣지말고, 요약 가져오는 것도 여기에 넣을까?
-        this.authenticationService.login(this.f.userid.value) //, this.f.password.value)
+        this.authenticationService.getSummary(this.authenticationService.currentUserValue) //, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
                     this.loading = false;
-                    this.setStepInApp.emit(1);
+                    this.setStepInApp.emit(2);
                     //this.router.navigate([this.returnUrl]);
                 },
                 error => {

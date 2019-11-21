@@ -14,11 +14,13 @@ import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 
 import {LoginComponent} from './login/login.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,

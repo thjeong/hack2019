@@ -1,5 +1,5 @@
 from flask import Flask, send_file, request, make_response
-from server.responseFunctions import login_func, summary, detail
+from server.responseFunctions import login_func, summary_func, detail_func
 
 app = Flask(__name__, static_url_path='', static_folder='dist/hack2019')
 
@@ -17,13 +17,15 @@ def login():
 @app.route('/summary', methods=['POST'])
 def summary():
     a = request.json
-    response = summary(a['userid'], a['total_salary'])
+    print(a)
+    response = summary_func(a['userid'], a['total_salary'])
     return response
 
 @app.route('/detail', methods=['POST'])
 def detail():
     a = request.json
-    response = detail(a)
+    print(a)
+    response = detail_func(a)
     return response
 
 if __name__ == '__main__':
