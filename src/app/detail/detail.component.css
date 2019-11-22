@@ -1,3 +1,21 @@
-.mat-column-type {
-    flex: 0 0 30px;
+.mat-table {
+    overflow: auto;
+    max-height: 700px;
+    font-size: 14px;
   }
+
+.mat-header-row {
+    background-color: #3897f0;
+  }
+
+.mat-footer-row {
+  background-color:#EDF1F5;  
+}
+
+.mat-row:nth-child(even){
+  background-color:#EDF1F5;
+}
+
+.mat-row:nth-child(odd){
+  background-color:#FDFDFB;
+}

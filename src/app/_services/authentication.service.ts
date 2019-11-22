@@ -32,6 +32,10 @@ export class AuthenticationService {
         return this.currentSummarySubject.value;
     }
 
+    public updateSummaryValue(summary){
+        this.currentSummarySubject.next(summary);
+      }
+
     login(userid: string) { //, password: string) {
         console.log('login to '+ this.host_ip);
         return this.http.post<any>(this.host_ip + '/login', { userid }) //, password })

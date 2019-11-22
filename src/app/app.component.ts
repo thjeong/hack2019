@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
 import { User } from './_models';
 import { Summary } from './_models';
+
+// import { DetailComponent } from './detail';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +28,11 @@ export class AppComponent {
         this.setStep(1);
       }
   }
+  // @ViewChild(DetailComponent, {static: false}) private detailComp: DetailComponent;
 
   setStep(index: number) {
     this.step = index;
+    // this.detailComp.refreshValues();
   }
 
   logout() {

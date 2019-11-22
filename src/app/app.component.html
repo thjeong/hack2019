@@ -68,6 +68,6 @@
         </div>
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <detail-cmp *ngIf="currentSummary && currentSummary.std_assessment"></detail-cmp>
+  <detail-cmp #detailChild *ngIf="currentSummary && currentSummary.std_assessment"></detail-cmp>
 </mat-expansion-panel>
 <router-outlet></router-outlet>

@@ -41,4 +41,6 @@ export class Summary {
     public_trans_benefit : number; //대중교통 절세금액(1만원당)
     trad_markeet_deduce_limit : number; //전통시장 공제한도
     trad_market_benefit : number; //전통시장 절세금액(1만원당)
+
+    recent_crd_deb_use_list: [];
 }
