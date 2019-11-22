@@ -111,7 +111,7 @@ def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3
     random.seed(seed)
     random_number = random.random()
     df = genSHCTrans(seed, input_aprvamt,stt_date,end_date,max_n_of_trans_digit)
-    df['적립예정인트율'] = 0.001 * int(random_number * 10 + 1)
+    df['적립예정포인트율'] = 0.001 * int(random_number * 10 + 1)
     df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*2)).astype(int)
     df['매출일자'] = df['승인일시'].str[:8]
     del df['승인일시'], df['가맹점번호']
