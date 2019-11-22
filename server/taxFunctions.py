@@ -277,7 +277,7 @@ def getInsertComma(num):
     a = list(str(num))
     comma_position = []
     for i in range(len(a)):
-        if divmod(i+1,3)[1]==1 and i+1!=1:
+        if divmod(i+1, 3)[1] == 1 and i+1 != 1:
             comma_position.append(-i)
     comma_position.reverse()
     for i in comma_position:

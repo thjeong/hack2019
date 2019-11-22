@@ -74,7 +74,7 @@ def genSHDTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
     :param max_n_of_trans_digit:
     :return:
     """
-    random.seed(seed+stt_date+end_date)
+    random.seed(seed+end_date+stt_date)
     random_number = random.random()
     n_of_trans = int(random_number*(10**max_n_of_trans_digit))
     list_of_mct_nm = ['서울버스','서울지하철','XX전통시장','XX도서','신한생명','보건옥','가야성','장칼국수','이마트왕십리','현대그린푸드','지방세']
@@ -109,7 +109,7 @@ def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3
     random.seed(seed)
     random_number = random.random()
     df = genSHCTrans(seed, input_aprvamt,stt_date,end_date,max_n_of_trans_digit)
-    df['적립예정포인트율'] = 0.001 * int(random_number * 10 + 1)
+    df['적립예정인트율'] = 0.001 * int(random_number * 10 + 1)
     df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*2)).astype(int)
     df['매출일자'] = df['승인일시'].str[:8]
     del df['승인일시'], df['가맹점번호']
@@ -124,7 +124,7 @@ def genSHBhousesaving(seed):
     """
     random.seed(seed)
     random_number = random.random()
-    return int(round(random_number * 1000000,-4))
+    return int(round(random_number * 1000000, -4))
 
 
 def genUserNm(userid):
