@@ -64,7 +64,7 @@ def genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_
     return pd.DataFrame(output_list,columns=['승인일시','승인번호','승인금액','카드뒷세자리','가맹점번호','가맹점명'])
 
 
-def genSHDTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3):
+def genSHDTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_digit = 3):
     """
     체크카드 국내사용내역조회 dummy data 생성
     :param seed:
@@ -90,14 +90,13 @@ def genSHDTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
         aprvtime = aprvdate + '{:012d}'.format(i)
         aprvno = '{:08d}'.format(i)[:8]
         aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),3))+1)
-        cardno = '{:03d}'.format(int(random_number * 1000))
         retlno = '{:010d}'.format(i)[:10]
         retlname = list_of_mct_nm[int(np.mod(int(random_number * i * 100), len(list_of_mct_nm)))]
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
     return pd.DataFrame(output_list, columns=['승인일시', '승인번호', '승인금액', '카드뒷세자리', '가맹점번호', '가맹점명'])
 
 
-def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3):
+def genSHCBill(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_digit = 3):
     """
     (신용)월별청구내역조회(상세총괄) dummy data 생성
     :param seed:
@@ -109,7 +108,7 @@ def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3
     """
     random.seed(seed)
     random_number = random.random()
-    df = genSHCTrans(seed, input_aprvamt,stt_date,end_date,max_n_of_trans_digit)
+    df = genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_digit)
     df['적립예정포인트율'] = 0.001 * int(random_number * 10 + 1)
     df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*2)).astype(int)
     df['매출일자'] = df['승인일시'].str[:8]

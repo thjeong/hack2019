@@ -49,7 +49,7 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     input_aprvamt= 5000
     cardno = '203'
     crd_card_df = genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)
-    deb_card_df = genSHDTrans(userid, input_aprvamt, stt_date, end_date)
+    deb_card_df = genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)
     # 공제대상 제외거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     crd_card_use = crd_card_df[~crd_card_df['가맹점명'].str.contains('지방세|세금|상품권')]['승인금액'].sum()
     deb_card_use = deb_card_df[~deb_card_df['가맹점명'].str.contains('지방세|세금|상품권')]['승인금액'].sum()
@@ -203,8 +203,9 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     # 최근 신용, 체크 카드이용내역 만들기
     # TODO: 신용,체크카드 이용내역 api 호출 & dataframe으로 parsing하는
     input_aprvamt = 5000
-    crd_card_df = genSHCTrans(userid, input_aprvamt, stt_date, end_date)
-    deb_card_df = genSHDTrans(userid, input_aprvamt, stt_date, end_date)
+    crdno = '123'
+    crd_card_df = genSHCTrans(userid, input_aprvamt, crdno, stt_date, end_date)
+    deb_card_df = genSHDTrans(userid, input_aprvamt, crdno, stt_date, end_date)
     crd_card_df['구분'] = '신용'
     deb_card_df['구분'] = '체크'
     card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시').reset_index(drop=True)
