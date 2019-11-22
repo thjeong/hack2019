@@ -70,7 +70,8 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     output_dict = {'userid': userid,
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
-                   'personal_allowance': personal_allowance,
+                   'n_of_members': 1, # 인적공제대상 인원 default 1
+                   'personal_allowance_deduce': personal_allowance,
                    'pension_insurance_deduce': pension_insurance_deduce,
                    'spec_income_deduce': spec_income_deduce,
                    'crd_card_use': int(crd_card_use), 'deb_card_use': int(deb_card_use), 'cash_use': 0,
@@ -82,7 +83,7 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
                    'trad_market_use': int(trad_market_use),
                    'trad_market_deduce': trad_market_deduce,
                    'book_use': int(book_use), 'book_deduce': book_show_deduce,
-                   'house_saving': house_saving, 'house_saving_deduce': house_saving_deduce,
+                   'house_saving': house_saving, 'householder_tf': 0, 'house_saving_deduce': house_saving_deduce,
                    'my_stock': 0, 'my_stock_deduce': 0, 'etc_deduce': 0}
     total_deduce = 0
     for i,j in output_dict.items():
@@ -136,7 +137,7 @@ def detail_func(input_json, unit_amt=10000):
     output_dict = {'userid': userid,
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
-                   'personal_allowance': personal_allowance,
+                   'personal_allowance_deduce': personal_allowance,
                    'pension_insurance_deduce': pension_insurance_deduce,
                    'spec_income_deduce': spec_income_deduce,
                    'crd_card_use': int(crd_card_use), 'deb_card_use': int(deb_card_use), 'cash_use': cash_use,
