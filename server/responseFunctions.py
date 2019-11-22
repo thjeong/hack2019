@@ -102,7 +102,8 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     :param end_date:
     :return:
     """
-    input_dict = json.loads(input_json)
+    # input_dict = json.loads(input_json)
+    input_dict = input_json
     userid, total_salary, n_of_members = input_dict['userid'], input_dict['total_salary'], input_dict['n_of_members']
     crd_card_use, deb_card_use, cash_use = input_dict['crd_card_use'], input_dict['deb_card_use'], input_dict['cash_use']
     public_trans_use = input_dict['public_trans_use']
