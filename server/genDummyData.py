@@ -45,7 +45,8 @@ def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
     random.seed(seed+stt_date+end_date)
     random_number = random.random()
     n_of_trans = int(random_number*(10**max_n_of_trans_digit))
-    list_of_mct_nm = ['이마트왕십리','현대그린푸드','신한생명','가야성','장칼국수','보건옥','지방세','서울버스','서울지하철','XX전통시장','XX도서']
+    list_of_mct_nm = ['이마트왕십리','현대그린푸드','신한생명','가야성','장칼국수','보건옥','지방세','서울버스','서울지하철','XX전통시장',
+                      '만족오향족발','카페드비반트','호반집','주식회사스타필드하남','남해바다','알촌한양대점','라화쿵부명동2호점','XX도서']
     output_list = []
     date_idx = 0
     for i in range(n_of_trans):
@@ -57,9 +58,9 @@ def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
         aprvtime = aprvdate + '{:012d}'.format(i)
         aprvno = '{:08d}'.format(i)[:8]
         aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),10))+1)
-        cardno = str(int(random_number * 1000))
+        cardno = '{:03d}'.format(int(random_number * 1000))
         retlno = '{:010d}'.format(i)[:10]
-        retlname = list_of_mct_nm[int(np.mod(int(random_number * i),len(list_of_mct_nm)))]
+        retlname = list_of_mct_nm[int(np.mod(int(random_number * i * 100), len(list_of_mct_nm)))]
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
     return pd.DataFrame(output_list,columns=['승인일시','승인번호','승인금액','카드뒷세자리','가맹점번호','가맹점명'])
 
@@ -74,10 +75,11 @@ def genSHDTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
     :param max_n_of_trans_digit:
     :return:
     """
-    random.seed(seed+stt_date+end_date)
+    random.seed(end_date+seed+stt_date)
     random_number = random.random()
     n_of_trans = int(random_number*(10**max_n_of_trans_digit))
-    list_of_mct_nm = ['서울버스','서울지하철','XX전통시장','XX도서','신한생명','보건옥','가야성','장칼국수','이마트왕십리','현대그린푸드','지방세']
+    list_of_mct_nm = ['서울버스','서울지하철','XX전통시장','XX도서','신한생명','보건옥','가야성','장칼국수','이마트왕십리','현대그린푸드',
+                      '맥도날드명동점','GS25 나라키움점','아재커피지로2가점','을지 쭈꾸미','교대이층집','토상막회','리틀사이공','지방세']
     output_list = []
     date_idx = 0
     for i in range(n_of_trans):
@@ -89,9 +91,9 @@ def genSHDTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
         aprvtime = aprvdate + '{:012d}'.format(i)
         aprvno = '{:08d}'.format(i)[:8]
         aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),3))+1)
-        cardno = str(int(random_number * 1000))
+        cardno = '{:03d}'.format(int(random_number * 1000))
         retlno = '{:010d}'.format(i)[:10]
-        retlname = list_of_mct_nm[int(np.mod(int(random_number * i), len(list_of_mct_nm)))]
+        retlname = list_of_mct_nm[int(np.mod(int(random_number * i * 100), len(list_of_mct_nm)))]
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
     return pd.DataFrame(output_list, columns=['승인일시', '승인번호', '승인금액', '카드뒷세자리', '가맹점번호', '가맹점명'])
 
@@ -109,7 +111,7 @@ def genSHCBill(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3
     random.seed(seed)
     random_number = random.random()
     df = genSHCTrans(seed, input_aprvamt,stt_date,end_date,max_n_of_trans_digit)
-    df['적립예정포인트율'] = 0.001 * int(random_number * 10 + 1)
+    df['적립예정인트율'] = 0.001 * int(random_number * 10 + 1)
     df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*2)).astype(int)
     df['매출일자'] = df['승인일시'].str[:8]
     del df['승인일시'], df['가맹점번호']
@@ -124,7 +126,7 @@ def genSHBhousesaving(seed):
     """
     random.seed(seed)
     random_number = random.random()
-    return int(round(random_number * 1000000,-4))
+    return int(round(random_number * 1000000, -4))
 
 
 def genUserNm(userid):

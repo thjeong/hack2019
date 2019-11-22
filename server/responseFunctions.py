@@ -1,4 +1,5 @@
 import json
+import pandas as pd
 import datetime
 from server.genDummyData import *
 from server.taxFunctions import *
@@ -47,8 +48,8 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     crd_card_df = genSHCTrans(userid, input_aprvamt, stt_date, end_date)
     deb_card_df = genSHDTrans(userid, input_aprvamt, stt_date, end_date)
     # 공제대상 제외거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
-    crd_card_use = crd_card_df[~crd_card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장')]['승인금액'].sum()
-    deb_card_use = deb_card_df[~deb_card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시')]['승인금액'].sum()
+    crd_card_use = crd_card_df[~crd_card_df['가맹점명'].str.contains('지방세|세금|상품권')]['승인금액'].sum()
+    deb_card_use = deb_card_df[~deb_card_df['가맹점명'].str.contains('지방세|세금|상품권')]['승인금액'].sum()
 
     #대중교통, 전통시장, 도서/공연 이용금액(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     public_trans_use = crd_card_df[crd_card_df['가맹점명'].str.contains('버스|지하철')]['승인금액'].sum()\
@@ -70,7 +71,8 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     output_dict = {'userid': userid,
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
-                   'personal_allowance': personal_allowance,
+                   'n_of_members': 1, # 인적공제대상 인원 default 1
+                   'personal_allowance_deduce': personal_allowance,
                    'pension_insurance_deduce': pension_insurance_deduce,
                    'spec_income_deduce': spec_income_deduce,
                    'crd_card_use': int(crd_card_use), 'deb_card_use': int(deb_card_use), 'cash_use': 0,
@@ -82,7 +84,7 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
                    'trad_market_use': int(trad_market_use),
                    'trad_market_deduce': trad_market_deduce,
                    'book_use': int(book_use), 'book_deduce': book_show_deduce,
-                   'house_saving': house_saving, 'house_saving_deduce': house_saving_deduce,
+                   'house_saving': house_saving, 'householder_tf': 0, 'house_saving_deduce': house_saving_deduce,
                    'my_stock': 0, 'my_stock_deduce': 0, 'etc_deduce': 0}
     total_deduce = 0
     for i,j in output_dict.items():
@@ -92,7 +94,7 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     return json.dumps(output_dict)
 
 
-def detail_func(input_json, unit_amt=10000):
+def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now().strftime('%Y%m%d'), unit_amt=10000):
     """
     ㅇㅇㅇㅇㅇㅇ
     :param input_json:
@@ -136,7 +138,8 @@ def detail_func(input_json, unit_amt=10000):
     output_dict = {'userid': userid,
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
-                   'personal_allowance': personal_allowance,
+                   'n_of_members': n_of_members,
+                   'personal_allowance_deduce': personal_allowance,
                    'pension_insurance_deduce': pension_insurance_deduce,
                    'spec_income_deduce': spec_income_deduce,
                    'crd_card_use': int(crd_card_use), 'deb_card_use': int(deb_card_use), 'cash_use': cash_use,
@@ -150,7 +153,8 @@ def detail_func(input_json, unit_amt=10000):
                    'trad_market_use': int(trad_market_use),
                    'trad_market_deduce': trad_market_deduce,
                    'book_use': int(book_use), 'book_deduce': book_show_deduce,
-                   'house_saving': house_saving, 'house_saving_deduce': house_saving_deduce,
+                   'house_saving': house_saving, 'householder_tf': householder_tf,
+                   'house_saving_deduce': house_saving_deduce,
                    'my_stock': my_stock, 'my_stock_deduce' : my_stock_deduce,
                    'etc_deduce': etc_deduce}
     total_deduce = 0
@@ -178,6 +182,43 @@ def detail_func(input_json, unit_amt=10000):
     output_dict['crd_benefit'] = result[2]
     output_dict['crd_benefit_ratio'] = result[3]
     output_dict['crd_benefit_sum'] = result[4]
+    # 카드이용전략메세지 만들기
+    if hurdle_ramains > 0:
+        crd_etc_strategy = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱({}원)을 넘기까지 {}원 남았습니다. 각종 혜택이 많은 신용카드로 남은 ' \
+                           '문턱을 넘어보세요!'.format(getInsertComma(int(hurdle)), getInsertComma(int(hurdle_ramains)))
+    elif crd_etc_deduce >= crd_etc_deduction_limit: # 소득공제금액이 소득공제 한도를 넘었을 때
+        crd_etc_strategy = '신용체크현금 항목의 소득공제 금액이 이미 한도({}원)를 다 채웠습니다! ' \
+                           '각종 혜택이 많은 신용카드를 사용하시는 게 좋습니다.'.format(getInsertComma(int(crd_etc_deduction_limit)))
+    elif output_dict['crd_benefit_sum'] >= output_dict['deb_cash_tax_benefit']: #신용카드혜택 > 체크현금혜택
+        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 신용카드를 이용하시면 좋습니다!'
+    else:
+        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 체크카드나 현금을 이용하시면 좋습니다!'
+    output_dict['crd_etc_strategy'] = crd_etc_strategy
+    # 최근 신용, 체크 카드이용내역 만들기
+    # TODO: 신용,체크카드 이용내역 api 호출 & dataframe으로 parsing하는
+    input_aprvamt = 5000
+    crd_card_df = genSHCTrans(userid, input_aprvamt, stt_date, end_date)
+    deb_card_df = genSHDTrans(userid, input_aprvamt, stt_date, end_date)
+    crd_card_df['구분'] = '신용'
+    deb_card_df['구분'] = '체크'
+    card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시').reset_index(drop=True)
+    # 공제대상 제외 혹은 별도한도 운영되는 거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
+    card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')]
+    crd_benefit_ratio = result[4] / 10000
+    deb_cash_benefit_ratio = result[1] / 10000
+    recent_crd_deb_use_list = []
+    for row in card_df.iterrows():
+        tmp_dict = {}
+        tmp_dict['apv_d'] = '{}년{}월{}일'.format(row[1]['승인일시'][0:4],row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
+        tmp_dict['crd_tcd'] = row[1]['구분']
+        tmp_dict['apv_amt'] = '{}원'.format(getInsertComma(row[1]['승인금액']))
+        tmp_dict['mct_nm'] = row[1]['가맹점명']
+        if row[1]['구분']=='신용':
+            tmp_dict['benefit'] = int(round(row[1]['승인금액']*crd_benefit_ratio))
+        else:
+            tmp_dict['benefit'] = int(round(row[1]['승인금액'] * deb_cash_benefit_ratio))
+        recent_crd_deb_use_list.append(tmp_dict)
+    output_dict['recent_crd_deb_use_list'] = recent_crd_deb_use_list
 
     # 대중교통, 전통시장 소득공제 상세현황 만들기
     output_dict['public_trans_deduce_limit'] = 1000000
