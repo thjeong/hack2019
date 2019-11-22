@@ -32,7 +32,7 @@ def genSHBAccountTrans(seed, amt=5000, max_n_of_trans_digit = 2):
     return pd.DataFrame(output_list,columns=['입지구분','입금','입금_MASK','출금','출금_MASK','적요','거래점'])
 
 
-def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 3):
+def genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_digit = 3):
     """
     신용카드 국내사용내역조회 dummy data 생성
     :param seed:
@@ -58,7 +58,6 @@ def genSHCTrans(seed, input_aprvamt, stt_date, end_date, max_n_of_trans_digit = 
         aprvtime = aprvdate + '{:012d}'.format(i)
         aprvno = '{:08d}'.format(i)[:8]
         aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),10))+1)
-        cardno = '{:03d}'.format(int(random_number * 1000))
         retlno = '{:010d}'.format(i)[:10]
         retlname = list_of_mct_nm[int(np.mod(int(random_number * i * 100), len(list_of_mct_nm)))]
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])

@@ -3,6 +3,7 @@ import pandas as pd
 import datetime
 from server.genDummyData import *
 from server.taxFunctions import *
+from server.api_request import *
 
 def login_func(userid, year='2018'):
     """
@@ -44,6 +45,7 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
 
     #신용,체크카드이용내역
     # TODO: 신용,체크카드 이용내역 api 호출 & dataframe으로 parsing하는
+    # crd_card_df = shcSearchUseforDomestic()
     input_aprvamt= 5000
     crd_card_df = genSHCTrans(userid, input_aprvamt, stt_date, end_date)
     deb_card_df = genSHDTrans(userid, input_aprvamt, stt_date, end_date)
@@ -69,6 +71,7 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     house_saving_deduce = getHouseSaving(house_saving, total_salary)
 
     output_dict = {'userid': userid,
+                   'username': genUserNm(userid),
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
                    'n_of_members': 1, # 인적공제대상 인원 default 1
@@ -137,6 +140,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     my_stock_deduce = getMyStock(my_stock)
 
     output_dict = {'userid': userid,
+                   'username': genUserNm(userid),
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
                    'n_of_members': n_of_members,
@@ -219,7 +223,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
         else:
             tmp_dict['benefit'] = int(round(row[1]['승인금액'] * deb_cash_benefit_ratio))
         recent_crd_deb_use_list.append(tmp_dict)
-    # output_dict['recent_crd_deb_use_list'] = recent_crd_deb_use_list
+    output_dict['recent_crd_deb_use_list'] = recent_crd_deb_use_list
 
     # 대중교통, 전통시장 소득공제 상세현황 만들기
     output_dict['public_trans_deduce_limit'] = 1000000
