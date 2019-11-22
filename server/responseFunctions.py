@@ -187,12 +187,12 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
         crd_etc_strategy = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱({}원)을 넘기까지 {}원 남았습니다. 각종 혜택이 많은 신용카드로 남은 ' \
                            '문턱을 넘어보세요!'.format(getInsertComma(int(hurdle)), getInsertComma(int(hurdle_ramains)))
     elif crd_etc_deduce >= crd_etc_deduction_limit: # 소득공제금액이 소득공제 한도를 넘었을 때
-        crd_etc_strategy = '신용체크현금 항목의 소득공제 금액이 이미 한도({})를 다 채웠습니다! 원' \
+        crd_etc_strategy = '신용체크현금 항목의 소득공제 금액이 이미 한도({}원)를 다 채웠습니다! ' \
                            '각종 혜택이 많은 신용카드를 사용하시는 게 좋습니다.'.format(getInsertComma(int(crd_etc_deduction_limit)))
     elif output_dict['crd_benefit_sum'] >= output_dict['deb_cash_tax_benefit']: #신용카드혜택 > 체크현금혜택
-        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 신용카드를 이용하세요!'
+        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 신용카드를 이용하시면 좋습니다!'
     else:
-        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 체크카드나 현금을 이용하세요!'
+        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 체크카드나 현금을 이용하시면 좋습니다!'
     output_dict['crd_etc_strategy'] = crd_etc_strategy
     # 최근 신용, 체크 카드이용내역 만들기
     # TODO: 신용,체크카드 이용내역 api 호출 & dataframe으로 parsing하는
@@ -202,9 +202,23 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     crd_card_df['구분'] = '신용'
     deb_card_df['구분'] = '체크'
     card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시').reset_index(drop=True)
-    # 공제대상 제외거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
-    card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권')]
-
+    # 공제대상 제외 혹은 별도한도 운영되는 거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
+    card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')]
+    crd_benefit_ratio = result[4] / 10000
+    deb_cash_benefit_ratio = result[1] / 10000
+    recent_crd_deb_use_list = []
+    for row in card_df.iterrows():
+        tmp_dict = {}
+        tmp_dict['apv_d'] = '{}년{}월{}일'.format(row[1]['승인일시'][0:4],row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
+        tmp_dict['crd_tcd'] = row[1]['구분']
+        tmp_dict['apv_amt'] = '{}원'.format(getInsertComma(row[1]['승인금액']))
+        tmp_dict['mct_nm'] = row[1]['가맹점명']
+        if row[1]['구분']=='신용':
+            tmp_dict['benefit'] = int(round(row[1]['승인금액']*crd_benefit_ratio))
+        else:
+            tmp_dict['benefit'] = int(round(row[1]['승인금액'] * deb_cash_benefit_ratio))
+        recent_crd_deb_use_list.append(tmp_dict)
+    output_dict['recent_crd_deb_use_list'] = recent_crd_deb_use_list
 
     # 대중교통, 전통시장 소득공제 상세현황 만들기
     output_dict['public_trans_deduce_limit'] = 1000000
