@@ -71,6 +71,7 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     house_saving_deduce = getHouseSaving(house_saving, total_salary)
 
     output_dict = {'userid': userid,
+                   'username': genUserNm(userid),
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
                    'n_of_members': 1, # 인적공제대상 인원 default 1
@@ -139,6 +140,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     my_stock_deduce = getMyStock(my_stock)
 
     output_dict = {'userid': userid,
+                   'username': genUserNm(userid),
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
                    'n_of_members': n_of_members,
