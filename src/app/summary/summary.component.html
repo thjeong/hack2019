@@ -7,10 +7,10 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="personal_allowance">인적공제</label>
-        <input placeholder=""  type="text" formControlName="personal_allowance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.personal_allowance.errors }" />
-        <div *ngIf="submitted && f.personal_allowance.errors" class="invalid-feedback">
-            <div *ngIf="f.personal_allowance.errors.required">Input is required</div>
+        <label for="personal_allowance_deduce">인적공제</label>
+        <input placeholder=""  type="text" formControlName="personal_allowance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.personal_allowance_deduce.errors }" />
+        <div *ngIf="submitted && f.personal_allowance_deduce.errors" class="invalid-feedback">
+            <div *ngIf="f.personal_allowance_deduce.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">

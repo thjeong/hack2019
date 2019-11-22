@@ -19,7 +19,7 @@ export interface BenefitElement {
 export class DetailComponent implements OnInit {
     loading = false;
     returnUrl: string;
-    benefitPer10kColumns: string[] = ['', 'name', 'weight', 'symbol'];
+    benefitPer10kColumns: string[] = ['type', 'tax', 'card', 'total'];
     cardTransactionColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     benefitSource: BenefitElement[]
     currentSummary:Summary;
@@ -40,8 +40,5 @@ export class DetailComponent implements OnInit {
             {type: '신용', tax: this.currentSummary.crd_tax_benefit, card: this.currentSummary.crd_benefit + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString(), total:this.currentSummary.crd_benefit_sum},
             {type: '체크', tax: this.currentSummary.deb_cash_tax_benefit, card: '', total:this.currentSummary.deb_cash_tax_benefit}
         ];
-        
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 }
