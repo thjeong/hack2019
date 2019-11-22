@@ -221,7 +221,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     recent_crd_deb_use_list = []
     for row in card_df.iterrows():
         tmp_dict = {}
-        tmp_dict['apv_d'] = '{}.{}.{}.'.format(row[1]['승인일시'][0:4],row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
+        tmp_dict['apv_d'] = '\'{}.{}.{}.'.format(row[1]['승인일시'][2:4],row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
         tmp_dict['crd_tcd'] = row[1]['구분']
         tmp_dict['apv_amt'] = row[1]['승인금액']
         tmp_dict['mct_nm'] = row[1]['가맹점명']
