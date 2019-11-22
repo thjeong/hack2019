@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      <h3 style='color:darkred'>naytax!</h3>\r\n      <!-- <div *ngIf=\"currentUser\">\r\n        <div>{{currentUser.username}}</div>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\r\n      </div>\r\n      <div *ngIf=\"currentUser == null\">\r\n        Not logged in yet\r\n      </div> -->\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentUser\">\r\n          {{currentUser.username}}님 안녕하세요\r\n        </div>\r\n        <div *ngIf=\"currentUser == null\">\r\n          로그인이 필요합니다\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      예상 총 급여\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_salary / 10000) | number:'1.0-0' }} 만원</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <salary-cmp *ngIf=\"currentUser\" (setStepInApp)=\"setStep($event)\"></salary-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n<mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 항목 합계\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_deduce / 10000) | number:'1.0-0' }} 만원 </div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <summary-cmp *ngIf=\"currentSummary\" (setStepInApp)=\"setStep($event)\"></summary-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 전략\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>결과를 확인해보세요</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미산출\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <detail-cmp #detailChild *ngIf=\"currentSummary && currentSummary.std_assessment\"></detail-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      <h3 style='color:darkred'>naytax!</h3>\r\n      <!-- <div *ngIf=\"currentUser\">\r\n        <div>{{currentUser.username}}</div>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\r\n      </div>\r\n      <div *ngIf=\"currentUser == null\">\r\n        Not logged in yet\r\n      </div> -->\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentUser\">\r\n          {{currentUser.username}}님 안녕하세요\r\n        </div>\r\n        <div *ngIf=\"currentUser == null\">\r\n          로그인이 필요합니다\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      예상 총 급여\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_salary / 10000) | number:'1.0-0' }} 만원</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <salary-cmp *ngIf=\"currentUser\" (setStepInApp)=\"setStep($event)\"></salary-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n<mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 항목 합계\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_deduce / 10000) | number:'1.0-0' }} 만원 </div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <summary-cmp *ngIf=\"currentSummary\" (setStepInApp)=\"setStep($event)\"></summary-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3);\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 전략\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>결과를 확인해보세요</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미산출\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <detail-cmp *ngIf=\"currentSummary && currentSummary.std_assessment\" [benefitSource]=\"getBenefitSource()\" [transactionSource]='currentSummary.recent_crd_deb_use_list'></detail-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n");
 
 /***/ }),
 
@@ -3877,6 +3877,7 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.login = function (userid) {
         var _this = this;
+        this.host_ip = window.location.origin;
         console.log('login to ' + this.host_ip);
         return this.http.post(this.host_ip + '/login', { userid: userid }) //, password })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (user) {
@@ -3890,7 +3891,8 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.getSummary = function (userid, total_salary) {
         var _this = this;
-        console.log('getSummary for ' + userid + '(' + total_salary + ')');
+        this.host_ip = window.location.origin;
+        console.log('getSummary for ' + userid + '(' + total_salary + ')' + ' to ' + this.host_ip);
         return this.http.post(this.host_ip + '/summary', { 'userid': userid, 'total_salary': total_salary })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (summary) {
             if (summary) {
@@ -3902,7 +3904,8 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.getDetail = function (summaryinfo) {
         var _this = this;
-        console.log('getDetail for ' + summaryinfo);
+        this.host_ip = window.location.origin;
+        console.log('getDetail for ' + summaryinfo + ' to ' + this.host_ip);
         return this.http.post(this.host_ip + '/detail', summaryinfo)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (summary) {
             if (summary) {
@@ -4038,6 +4041,14 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.setStep = function (index) {
         this.step = index;
         // this.detailComp.refreshValues();
+    };
+    AppComponent.prototype.getBenefitSource = function () {
+        if (this.currentSummary) {
+            return [
+                { type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit: this.currentSummary.deb_cash_tax_benefit },
+                { type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0 }
+            ];
+        }
     };
     AppComponent.prototype.logout = function () {
         this.authenticationService.logout();
@@ -4184,24 +4195,24 @@ var DetailComponent = /** @class */ (function () {
         this.loading = false;
         this.benefitPer10kColumns = ['type', 'credit', 'debit'];
         this.cardTransactionColumns = ['apv_d', 'crd_tcd', 'apv_amt', 'mct_nm', 'benefit'];
+        this.benefitSource = [
+        // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
+        // {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
+        ];
+        this.transactionSource = [];
         this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.authenticationService.currentSummary.subscribe(function (x) { return _this.currentSummary = x; });
     }
     DetailComponent.prototype.ngOnInit = function () {
-        this.benefitSource = this.getBenefitSource();
-        this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
-        console.log('benefitSource', this.benefitSource.toString());
-        console.log('transactionSource', this.transactionSource.toString());
+        //this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        // console.log('benefitSource', this.benefitSource.toString());
+        // console.log('transactionSource', this.transactionSource.toString());
     };
-    // refreshValues() {
-    //     this.benefitSource = this.getBenefitSource();
-    //     this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
-    // }
-    DetailComponent.prototype.getBenefitSource = function () {
-        return [
-            { type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit: this.currentSummary.deb_cash_tax_benefit },
-            { type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0 }
-        ];
+    DetailComponent.prototype.refreshValues = function () {
+        // this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        console.log('right here!');
     };
     DetailComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
@@ -4209,6 +4220,14 @@ var DetailComponent = /** @class */ (function () {
         { type: _services__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"] },
         { type: _services__WEBPACK_IMPORTED_MODULE_3__["AlertService"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], DetailComponent.prototype, "benefitSource", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], DetailComponent.prototype, "transactionSource", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)

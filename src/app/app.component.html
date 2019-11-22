@@ -54,7 +54,7 @@
   </mat-expansion-panel-header>
   <summary-cmp *ngIf="currentSummary" (setStepInApp)="setStep($event)"></summary-cmp>
 </mat-expansion-panel>
-<mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+<mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3);" hideToggle>
   <mat-expansion-panel-header class="right-aligned-header">
     <mat-panel-title>
       소득공제 전략
@@ -68,6 +68,6 @@
         </div>
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <detail-cmp #detailChild *ngIf="currentSummary && currentSummary.std_assessment"></detail-cmp>
+  <detail-cmp *ngIf="currentSummary && currentSummary.std_assessment" [benefitSource]="getBenefitSource()" [transactionSource]='currentSummary.recent_crd_deb_use_list'></detail-cmp>
 </mat-expansion-panel>
 <router-outlet></router-outlet>

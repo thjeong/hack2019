@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -29,9 +29,15 @@ export class DetailComponent implements OnInit {
     returnUrl: string;
     benefitPer10kColumns: string[] = ['type', 'credit', 'debit'];
     cardTransactionColumns: string[] = ['apv_d', 'crd_tcd', 'apv_amt', 'mct_nm', 'benefit'];
-    benefitSource: BenefitElement[]
-    transactionSource: TransactionElement[]
+    //benefitSource: BenefitElement[]
+    // transactionSource: TransactionElement[]
     currentSummary:Summary;
+
+    @Input() benefitSource = [
+        // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
+        // {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
+    ];
+    @Input() transactionSource = [];
 
     @Output() setStepInApp = new EventEmitter<number>();
 
@@ -45,21 +51,17 @@ export class DetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.benefitSource = this.getBenefitSource();
-        this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
-        console.log('benefitSource', this.benefitSource.toString());
-        console.log('transactionSource', this.transactionSource.toString());
+        //this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        // console.log('benefitSource', this.benefitSource.toString());
+        // console.log('transactionSource', this.transactionSource.toString());
     }
 
-    // refreshValues() {
-    //     this.benefitSource = this.getBenefitSource();
-    //     this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
-    // }
-
-    getBenefitSource() {
-        return [
-            {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
-            {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
-        ];
+    refreshValues() {
+        // this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        console.log('right here!');
     }
+
+    
 }
