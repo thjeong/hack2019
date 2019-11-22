@@ -218,7 +218,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
         else:
             tmp_dict['benefit'] = int(round(row[1]['승인금액'] * deb_cash_benefit_ratio))
         recent_crd_deb_use_list.append(tmp_dict)
-    output_dict['recent_crd_deb_use_list'] = recent_crd_deb_use_list
+    # output_dict['recent_crd_deb_use_list'] = recent_crd_deb_use_list
 
     # 대중교통, 전통시장 소득공제 상세현황 만들기
     output_dict['public_trans_deduce_limit'] = 1000000
