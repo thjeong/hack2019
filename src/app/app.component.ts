@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
 import { User } from './_models';
 import { Summary } from './_models';
+
+// import { DetailComponent } from './detail';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +28,20 @@ export class AppComponent {
         this.setStep(1);
       }
   }
+  // @ViewChild(DetailComponent, {static: false}) private detailComp: DetailComponent;
 
   setStep(index: number) {
     this.step = index;
+    // this.detailComp.refreshValues();
+  }
+
+  getBenefitSource() {
+    if (this.currentSummary) {
+        return [
+          {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
+          {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
+      ];
+    }
   }
 
   logout() {

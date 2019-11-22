@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -12,16 +12,32 @@ export interface BenefitElement {
     debit: number;
   }
 
+export interface TransactionElement {
+    apv_d: string;
+    crd_tcd: string;
+    apv_amt: number;
+    mct_nm: string;
+    benefit: number;
+}
+  
 @Component({
     selector: 'detail-cmp',
-    templateUrl: 'detail.component.html'})
+    templateUrl: 'detail.component.html',
+    styleUrls: ['./detail.component.css']})
 export class DetailComponent implements OnInit {
     loading = false;
     returnUrl: string;
     benefitPer10kColumns: string[] = ['type', 'credit', 'debit'];
-    cardTransactionColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-    benefitSource: BenefitElement[]
+    cardTransactionColumns: string[] = ['apv_d', 'crd_tcd', 'apv_amt', 'mct_nm', 'benefit'];
+    //benefitSource: BenefitElement[]
+    // transactionSource: TransactionElement[]
     currentSummary:Summary;
+
+    @Input() benefitSource = [
+        // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
+        // {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
+    ];
+    @Input() transactionSource = [];
 
     @Output() setStepInApp = new EventEmitter<number>();
 
@@ -35,13 +51,17 @@ export class DetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        
-        this.benefitSource = [
-            // {type: '신용', tax: this.currentSummary.crd_tax_benefit, card: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', total:this.currentSummary.crd_benefit_sum},
-            // {type: '체크', tax: this.currentSummary.deb_cash_tax_benefit, card: '', total:this.currentSummary.deb_cash_tax_benefit}
-            {type: '세금', credit: this.currentSummary.crd_tax_benefit.toString(), debit:  this.currentSummary.deb_cash_tax_benefit},
-            {type: '카드', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
-        ];
-        console.log('summary to table', this.benefitSource.toString());
+        //this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        // console.log('benefitSource', this.benefitSource.toString());
+        // console.log('transactionSource', this.transactionSource.toString());
     }
+
+    refreshValues() {
+        // this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        console.log('right here!');
+    }
+
+    
 }

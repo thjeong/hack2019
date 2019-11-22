@@ -1,31 +1,60 @@
-<h5>{{currentSummary.username}}님 (현재) 결제금액 1만원 당 기대할 수 있는 혜택</h5>
+<h5><img src="https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif" width="40" height="30"><b>기대혜택 (원/만원)</b></h5>
 <mat-table [dataSource]="benefitSource" class="mat-elevation-z8">
-    <!-- Position Column -->
-    <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="credit">
-      <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.credit}} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="debit">
-      <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.debit}} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>
-    </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="benefitPer10kColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: benefitPer10kColumns;"></mat-row>
-    <mat-footer-row *matFooterRowDef="benefitPer10kColumns"></mat-footer-row>
-  </mat-table>
+  <!-- Type Column -->
+  <ng-container matColumnDef="type">
+    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+    <mat-footer-cell *matFooterCellDef> <span style='color:brown'><b>최종혜택</b></span> </mat-footer-cell>
+  </ng-container>
+
+  <!-- Credit card Column -->
+  <ng-container matColumnDef="credit">
+    <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.credit}} </mat-cell>
+    <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>
+  </ng-container>
+
+  <!-- Debit card Column -->
+  <ng-container matColumnDef="debit">
+    <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.debit}} </mat-cell>
+    <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="benefitPer10kColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: benefitPer10kColumns;"></mat-row>
+  <mat-footer-row *matFooterRowDef="benefitPer10kColumns"></mat-footer-row>
+</mat-table>
 <div>
   <div>{{currentSummary.crd_etc_strategy}}</div>
 </div>
-<h5>받은 혜택 (최근 3건)</h5>
+<h5><img src="https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png" width="40" height="40">받은 혜택 (최근 5건)</h5>
+<mat-table [dataSource]="transactionSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="apv_d">
+    <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.apv_d}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="crd_tcd">
+    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.crd_tcd}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="apv_amt">
+    <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.apv_amt}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="mct_nm">
+    <mat-header-cell *matHeaderCellDef> 가맹점 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.mct_nm}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="benefit">
+    <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.benefit}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="cardTransactionColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: cardTransactionColumns;"></mat-row>
+</mat-table>

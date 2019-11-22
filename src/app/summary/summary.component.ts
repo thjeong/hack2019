@@ -84,6 +84,7 @@ export class SummaryComponent implements OnInit {
             .subscribe(
                 data => {
                     console.log(data);
+                    //this.authenticationService.updateSummaryValue(data);
                     this.loading = false;
                     this.setStepInApp.emit(3);
                     //this.router.navigate([this.returnUrl]);

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      <h3 style='color:darkred'>naytax!</h3>\r\n      <!-- <div *ngIf=\"currentUser\">\r\n        <div>{{currentUser.username}}</div>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\r\n      </div>\r\n      <div *ngIf=\"currentUser == null\">\r\n        Not logged in yet\r\n      </div> -->\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentUser\">\r\n          {{currentUser.username}}님 안녕하세요\r\n        </div>\r\n        <div *ngIf=\"currentUser == null\">\r\n          로그인이 필요합니다\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      예상 총 급여\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_salary / 10000) | number:'1.0-0' }} 만원</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <salary-cmp *ngIf=\"currentUser\" (setStepInApp)=\"setStep($event)\"></salary-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n<mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 항목 합계\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_deduce / 10000) | number:'1.0-0' }} 만원 </div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <summary-cmp *ngIf=\"currentSummary\" (setStepInApp)=\"setStep($event)\"></summary-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 전략\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>결과를 확인해보세요</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미산출\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <detail-cmp *ngIf=\"currentSummary && currentSummary.std_assessment\"></detail-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      <h3 style='color:darkred'>naytax!</h3>\r\n      <!-- <div *ngIf=\"currentUser\">\r\n        <div>{{currentUser.username}}</div>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\r\n      </div>\r\n      <div *ngIf=\"currentUser == null\">\r\n        Not logged in yet\r\n      </div> -->\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentUser\">\r\n          {{currentUser.username}}님 안녕하세요\r\n        </div>\r\n        <div *ngIf=\"currentUser == null\">\r\n          로그인이 필요합니다\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      예상 총 급여\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_salary / 10000) | number:'1.0-0' }} 만원</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <salary-cmp *ngIf=\"currentUser\" (setStepInApp)=\"setStep($event)\"></salary-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n<mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 항목 합계\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_deduce / 10000) | number:'1.0-0' }} 만원 </div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <summary-cmp *ngIf=\"currentSummary\" (setStepInApp)=\"setStep($event)\"></summary-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3);\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 전략\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>결과를 확인해보세요</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미산출\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <detail-cmp *ngIf=\"currentSummary && currentSummary.std_assessment\" [benefitSource]=\"getBenefitSource()\" [transactionSource]='currentSummary.recent_crd_deb_use_list'></detail-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n");
 
 /***/ }),
 
@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h4>{{currentSummary.username}}님 (현재) 결제금액 1만원 당 기대할 수 있는 혜택</h4>\r\n<mat-table [dataSource]=\"benefitSource\" class=\"mat-elevation-z8\">\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"type\">\r\n      <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.type}} </mat-cell>\r\n      <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>\r\n    </ng-container>\r\n  \r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"credit\">\r\n      <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.credit}} </mat-cell>\r\n      <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>\r\n    </ng-container>\r\n  \r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"debit\">\r\n      <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.debit}} </mat-cell>\r\n      <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>\r\n    </ng-container>\r\n  \r\n    <mat-header-row *matHeaderRowDef=\"benefitPer10kColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: benefitPer10kColumns;\"></mat-row>\r\n    <mat-footer-row *matFooterRowDef=\"benefitPer10kColumns\"></mat-footer-row>\r\n  </mat-table>\r\n\r\n  <div>{{currentSummary.crd_etc_strategy}}</div>\r\n\r\n<h5>받은 혜택 (최근 3건)</h5>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h5><img src=\"https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif\" width=\"40\" height=\"30\"><b>기대혜택 (원/만원)</b></h5>\r\n<mat-table [dataSource]=\"benefitSource\" class=\"mat-elevation-z8\">\r\n  <!-- Type Column -->\r\n  <ng-container matColumnDef=\"type\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.type}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> <span style='color:brown'><b>최종혜택</b></span> </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Credit card Column -->\r\n  <ng-container matColumnDef=\"credit\">\r\n    <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.credit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Debit card Column -->\r\n  <ng-container matColumnDef=\"debit\">\r\n    <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.debit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"benefitPer10kColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: benefitPer10kColumns;\"></mat-row>\r\n  <mat-footer-row *matFooterRowDef=\"benefitPer10kColumns\"></mat-footer-row>\r\n</mat-table>\r\n<div>\r\n  <div>{{currentSummary.crd_etc_strategy}}</div>\r\n</div>\r\n<h5><img src=\"https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png\" width=\"40\" height=\"40\">받은 혜택 (최근 5건)</h5>\r\n<mat-table [dataSource]=\"transactionSource\" class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"apv_d\">\r\n    <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_d}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"crd_tcd\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.crd_tcd}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"apv_amt\">\r\n    <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_amt}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"mct_nm\">\r\n    <mat-header-cell *matHeaderCellDef> 가맹점 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.mct_nm}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"benefit\">\r\n    <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.benefit}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"cardTransactionColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: cardTransactionColumns;\"></mat-row>\r\n</mat-table>");
 
 /***/ }),
 
@@ -3872,8 +3872,12 @@ var AuthenticationService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    AuthenticationService.prototype.updateSummaryValue = function (summary) {
+        this.currentSummarySubject.next(summary);
+    };
     AuthenticationService.prototype.login = function (userid) {
         var _this = this;
+        this.host_ip = window.location.origin;
         console.log('login to ' + this.host_ip);
         return this.http.post(this.host_ip + '/login', { userid: userid }) //, password })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (user) {
@@ -3887,7 +3891,8 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.getSummary = function (userid, total_salary) {
         var _this = this;
-        console.log('getSummary for ' + userid + '(' + total_salary + ')');
+        this.host_ip = window.location.origin;
+        console.log('getSummary for ' + userid + '(' + total_salary + ')' + ' to ' + this.host_ip);
         return this.http.post(this.host_ip + '/summary', { 'userid': userid, 'total_salary': total_salary })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (summary) {
             if (summary) {
@@ -3899,7 +3904,8 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.getDetail = function (summaryinfo) {
         var _this = this;
-        console.log('getDetail for ' + summaryinfo);
+        this.host_ip = window.location.origin;
+        console.log('getDetail for ' + summaryinfo + ' to ' + this.host_ip);
         return this.http.post(this.host_ip + '/detail', summaryinfo)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (summary) {
             if (summary) {
@@ -4017,6 +4023,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { DetailComponent } from './detail';
 var AppComponent = /** @class */ (function () {
     function AppComponent(router, authenticationService) {
         var _this = this;
@@ -4030,8 +4037,18 @@ var AppComponent = /** @class */ (function () {
             this.setStep(1);
         }
     }
+    // @ViewChild(DetailComponent, {static: false}) private detailComp: DetailComponent;
     AppComponent.prototype.setStep = function (index) {
         this.step = index;
+        // this.detailComp.refreshValues();
+    };
+    AppComponent.prototype.getBenefitSource = function () {
+        if (this.currentSummary) {
+            return [
+                { type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit: this.currentSummary.deb_cash_tax_benefit },
+                { type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0 }
+            ];
+        }
     };
     AppComponent.prototype.logout = function () {
         this.authenticationService.logout();
@@ -4137,6 +4154,19 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/detail/detail.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/detail/detail.component.css ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".mat-table {\r\n    overflow: auto;\r\n    max-height: 700px;\r\n    font-size: 14px;\r\n  }\r\n\r\n.mat-header-row {\r\n    background-color: #3897f0;\r\n  }\r\n\r\n.mat-footer-row {\r\n  background-color:#EDF1F5;  \r\n}\r\n\r\n.mat-row:nth-child(even){\r\n  background-color:#EDF1F5;\r\n}\r\n\r\n.mat-row:nth-child(odd){\r\n  background-color:#FDFDFB;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLGlCQUFpQjtJQUNqQixlQUFlO0VBQ2pCOztBQUVGO0lBQ0kseUJBQXlCO0VBQzNCOztBQUVGO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hdC10YWJsZSB7XHJcbiAgICBvdmVyZmxvdzogYXV0bztcclxuICAgIG1heC1oZWlnaHQ6IDcwMHB4O1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gIH1cclxuXHJcbi5tYXQtaGVhZGVyLXJvdyB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzg5N2YwO1xyXG4gIH1cclxuXHJcbi5tYXQtZm9vdGVyLXJvdyB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjojRURGMUY1OyAgXHJcbn1cclxuXHJcbi5tYXQtcm93Om50aC1jaGlsZChldmVuKXtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiNFREYxRjU7XHJcbn1cclxuXHJcbi5tYXQtcm93Om50aC1jaGlsZChvZGQpe1xyXG4gIGJhY2tncm91bmQtY29sb3I6I0ZERkRGQjtcclxufSJdfQ== */");
+
+/***/ }),
+
 /***/ "./src/app/detail/detail.component.ts":
 /*!********************************************!*\
   !*** ./src/app/detail/detail.component.ts ***!
@@ -4164,18 +4194,25 @@ var DetailComponent = /** @class */ (function () {
         this.alertService = alertService;
         this.loading = false;
         this.benefitPer10kColumns = ['type', 'credit', 'debit'];
-        this.cardTransactionColumns = ['position', 'name', 'weight', 'symbol'];
+        this.cardTransactionColumns = ['apv_d', 'crd_tcd', 'apv_amt', 'mct_nm', 'benefit'];
+        this.benefitSource = [
+        // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
+        // {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
+        ];
+        this.transactionSource = [];
         this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.authenticationService.currentSummary.subscribe(function (x) { return _this.currentSummary = x; });
     }
     DetailComponent.prototype.ngOnInit = function () {
-        this.benefitSource = [
-            // {type: '신용', tax: this.currentSummary.crd_tax_benefit, card: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', total:this.currentSummary.crd_benefit_sum},
-            // {type: '체크', tax: this.currentSummary.deb_cash_tax_benefit, card: '', total:this.currentSummary.deb_cash_tax_benefit}
-            { type: '세금', credit: this.currentSummary.crd_tax_benefit.toString(), debit: this.currentSummary.deb_cash_tax_benefit },
-            { type: '카드', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0 }
-        ];
-        console.log('summary to table', this.benefitSource.toString());
+        //this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        // console.log('benefitSource', this.benefitSource.toString());
+        // console.log('transactionSource', this.transactionSource.toString());
+    };
+    DetailComponent.prototype.refreshValues = function () {
+        // this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        console.log('right here!');
     };
     DetailComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
@@ -4184,13 +4221,22 @@ var DetailComponent = /** @class */ (function () {
         { type: _services__WEBPACK_IMPORTED_MODULE_3__["AlertService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], DetailComponent.prototype, "benefitSource", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], DetailComponent.prototype, "transactionSource", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], DetailComponent.prototype, "setStepInApp", void 0);
     DetailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'detail-cmp',
-            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./detail.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/detail/detail.component.html")).default
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./detail.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/detail/detail.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./detail.component.css */ "./src/app/detail/detail.component.css")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
@@ -4502,6 +4548,7 @@ var SummaryComponent = /** @class */ (function () {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(function (data) {
             console.log(data);
+            //this.authenticationService.updateSummaryValue(data);
             _this.loading = false;
             _this.setStepInApp.emit(3);
             //this.router.navigate([this.returnUrl]);
