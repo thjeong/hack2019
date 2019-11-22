@@ -59,7 +59,7 @@ export class SalaryComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.getSummary(this.currentUser.userid, this.f.total_salary.value) //, this.f.password.value)
+        this.authenticationService.getSummary(this.currentUser.userid, +(this.f.total_salary.value)) //, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
