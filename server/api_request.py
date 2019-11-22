@@ -31,6 +31,7 @@ def shbAccountTrans(account_no_list, stt_date, end_date):
     :return:
     """
     uri = '/v1/search/transaction/history'
+    output_list = []
     for acc_no in account_no_list:
         data = {"dataHeader": {},
                 "dataBody": {"serviceCode":"D1110",
@@ -40,11 +41,41 @@ def shbAccountTrans(account_no_list, stt_date, end_date):
                              "계좌번호": acc_no}}
         res = requests.post(shbIP + uri, data=json.dumps(data))
         databody = res.json()['dataBody']['거래내역']
-        output_list = []
         for i in databody:
-            output_list.append([i.get('입지구분'),i.get('입금'),i.get('출금'),i.get('적요'),i.get('거래점')])
+            try:
+                input_amt = int(i.get('입금'))
+            except:
+                input_amt = 0
+            try:
+                output_amt = int(i.get('출금'))
+            except:
+                output_amt = 0
+            output_list.append([i.get('입지구분'), input_amt, output_amt, i.get('적요'), i.get('거래점')])
+    return pd.DataFrame(output_list,columns=['입지구분','입금','출금','적요','거래점'])
 
-
+def shbDepositInstallmentDetail(acc_no_list, stt_date, end_date):
+    """
+    예적금계좌내역 / 계좌정보 상세조회
+    :param acc_no_list: 계좌번호 리스트
+    :return:
+    """
+    uri = '/v1/account/deposit/detail'
+    housesaving_sum = 0
+    for acc_no in acc_no_list:
+        data = {"dataHeader": {}, "dataBody": {"serviceCode":"D1130",
+                                               "정렬구분":"1",
+                                               "조회시작일": stt_date,
+                                               "조회종료일": end_date,
+                                               "조회기간구분":"1",
+                                               "은행구분": "1",
+                                               "계좌번호": acc_no
+                                              }}
+        res = requests.post(shbIP + uri, data=json.dumps(data))
+        tmp_dict = res.json()['dataBody']
+        if '주택청약' in tmp_dict['계좌명']:
+            for i in tmp_dict['거래내역']:
+                housesaving_sum += int(i.get['입금'])
+    return housesaving_sum
 
 
 def shcSearchUseforDomestic(stt_date, end_date, debitTF):

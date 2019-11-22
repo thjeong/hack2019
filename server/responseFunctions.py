@@ -11,9 +11,10 @@ def login_func(userid, year='2018'):
     :param userid:
     :return:
     """
-    # TODO: 은행 계좌거내역 api 호출 & dataframe으로 parsing하는 모듈 추가
-    amt = 5000
-    shb_trans_df = genSHBAccountTrans(userid, amt)
+    # 고객 계좌리스트 API 호출 & 계좌리스트로 거래내역 API호출 & 가라데이터 만들어 붙이기
+    account_no_list = shbAccountList(userid)
+    shb_trans_df = shbAccountTrans(account_no_list, year+'0101', year+'1231')
+    shb_trans_df = pd.concat([shb_trans_df, genSHBAccountTrans(userid)])
     net_income = shb_trans_df[shb_trans_df['적요'].str.contains('급여')]['입금'].sum()
     total_salary = simple_tax_calc(net_income, 'server/data/')
     output_json = json.dumps({'userid' : userid, 'username': genUserNm(userid), 'total_salary': total_salary})
@@ -69,8 +70,10 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     dummy1, dummy2, dummy3 = getCreditCrdEtcDeduction(crd_card_use, deb_card_use, 0, trad_market_use, public_trans_use,
                                                       book_use, total_salary)
     # 주택청약저축
-    # TODO: 주택청약저축 내역 api 호출 & 집계하는 module...
-    house_saving = genSHBhousesaving(userid)
+    # 고객 계좌리스트 API 호출 & 계좌리스트로 예적금 API호출(주택청약저축 금액) & 가라데이터 만들어 붙이기
+    account_no_list = shbAccountList(userid)
+    house_saving = shbDepositInstallmentDetail(account_no_list, stt_date, end_date)
+    house_saving += genSHBhousesaving(userid)
     house_saving_deduce = getHouseSaving(house_saving, total_salary)
 
     output_dict = {'userid': userid,
