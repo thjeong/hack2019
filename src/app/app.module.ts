@@ -14,13 +14,17 @@ import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 
 import {LoginComponent} from './login/login.component';
+import { SalaryComponent } from './salary/salary.component';
 import { SummaryComponent } from './summary/summary.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SummaryComponent
+    SalaryComponent,
+    SummaryComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
