@@ -5,6 +5,8 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '@/_services';
 
+import { Summary } from '@/_models';
+
 @Component({
     selector: 'summary-cmp',
     templateUrl: 'summary.component.html'})
@@ -13,6 +15,11 @@ export class SummaryComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
+    currentSummary: Summary;
+
+    summary_values = [
+        {'key': 'spec_income_deduce', 'title': '특별공제금액'}
+    ]
     
     @Output() setStepInApp = new EventEmitter<number>();
 
@@ -23,10 +30,7 @@ export class SummaryComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService
     ) {
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
+        this.authenticationService.currentSummary.subscribe(x => this.currentSummary = x);
     }
 
     ngOnInit() {
@@ -36,7 +40,26 @@ export class SummaryComponent implements OnInit {
         //     pension_insurance_deduce: ['', Validators.required]
         // });
 
-        this.summaryForm = this.formBuilder.group(this.authenticationService.currentSummaryValue);
+        // if(this.currentSummary) {
+            this.summaryForm = this.formBuilder.group(this.currentSummary);
+        // } else {
+        //     this.summaryForm = this.formBuilder.group({
+        //             earned_income_deduce: ['', Validators.required],
+        //             personal_allowance: ['', Validators.required],
+        //             pension_insurance_deduce: ['', Validators.required],
+        //             spec_income_deduce: ['', Validators.required],
+        //             crd_card_use: ['', Validators.required],
+        //             deb_card_use: ['', Validators.required],
+        //             cash_use: ['', Validators.required],
+        //             public_trans_use: ['', Validators.required],
+        //             trad_market_use: ['', Validators.required],
+        //             book_use: ['', Validators.required],
+        //             house_saving: ['', Validators.required],
+        //             my_stock: ['', Validators.required],
+        //             etc_deduce: ['', Validators.required]
+        //         });
+        // }
+        
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -54,7 +77,7 @@ export class SummaryComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.getSummary(this.authenticationService.currentUserValue) //, this.f.password.value)
+        this.authenticationService.getDetail(this.currentSummary) //, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {

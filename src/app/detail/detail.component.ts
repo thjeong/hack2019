@@ -3,17 +3,27 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
+import { Summary } from '@/_models/summary';
 import { AlertService, AuthenticationService } from '@/_services';
+
+export interface BenefitElement {
+    type: string;
+    tax: number;
+    card: string;
+    total: number;
+  }
 
 @Component({
     selector: 'detail-cmp',
     templateUrl: 'detail.component.html'})
 export class DetailComponent implements OnInit {
-    detailForm: FormGroup;
     loading = false;
-    submitted = false;
     returnUrl: string;
-    
+    benefitPer10kColumns: string[] = ['', 'name', 'weight', 'symbol'];
+    cardTransactionColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+    benefitSource: BenefitElement[]
+    currentSummary:Summary;
+
     @Output() setStepInApp = new EventEmitter<number>();
 
     constructor(
@@ -22,13 +32,14 @@ export class DetailComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService
     ) {
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
+        this.authenticationService.currentSummary.subscribe(x => this.currentSummary = x);
     }
 
     ngOnInit() {
+        this.benefitSource = [
+            {type: '신용', tax: this.currentSummary.crd_tax_benefit, card: this.currentSummary.crd_benefit + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString(), total:this.currentSummary.crd_benefit_sum},
+            {type: '체크', tax: this.currentSummary.deb_cash_tax_benefit, card: '', total:this.currentSummary.deb_cash_tax_benefit}
+        ];
         
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.mat-expansion-panel-header-description {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.form-group label {
+    font-size: 15px;
+}

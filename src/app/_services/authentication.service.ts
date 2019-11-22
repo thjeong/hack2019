@@ -39,6 +39,7 @@ export class AuthenticationService {
                 if (user) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
+                    localStorage.removeItem('currentSummary');
                 }
 
                 return user;
@@ -58,9 +59,24 @@ export class AuthenticationService {
             }));
     }
 
+    getDetail(summaryinfo: Summary) {
+        console.log('getDetail for ' + summaryinfo);
+        return this.http.post<any>(this.host_ip + '/detail', summaryinfo)
+            .pipe(map(summary => {
+                if (summary) {
+                    localStorage.setItem('currentSummary', JSON.stringify(summary));
+                    this.currentSummarySubject.next(summary);
+                }
+
+                return summary;
+            }));
+    }
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentSummary');
         this.currentUserSubject.next(null);
+        this.currentSummarySubject.next(null);
     }
 }

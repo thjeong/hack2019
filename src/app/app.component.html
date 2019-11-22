@@ -1,5 +1,5 @@
 <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-  <mat-expansion-panel-header class='login'>
+  <mat-expansion-panel-header class="right-aligned-header">
     <mat-panel-title>
       <h3 style='color:darkred'>naytax!</h3>
       <!-- <div *ngIf="currentUser">
@@ -22,7 +22,7 @@
   <login-cmp (setStepInApp)="setStep($event)"></login-cmp>
 </mat-expansion-panel>
 <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-  <mat-expansion-panel-header >
+  <mat-expansion-panel-header class="right-aligned-header">
     <mat-panel-title>
       예상 총 급여
     </mat-panel-title>
@@ -35,39 +35,39 @@
         </div>
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <salary-cmp (setStepInApp)="setStep($event)"></salary-cmp>
+  <salary-cmp *ngIf="currentUser" (setStepInApp)="setStep($event)"></salary-cmp>
 </mat-expansion-panel>
 <router-outlet></router-outlet>
 <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
-  <mat-expansion-panel-header >
+  <mat-expansion-panel-header class="right-aligned-header">
     <mat-panel-title>
       소득공제 항목 합계
     </mat-panel-title>
     <mat-panel-description>
-        <div *ngIf="currentUser">
+        <div *ngIf="currentSummary">
           <div>xxx 만원 </div>
         </div>
-        <div *ngIf="currentUser == null">
+        <div *ngIf="currentSummary == null">
           미입력
         </div>
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <summary-cmp (setStepInApp)="setStep($event)"></summary-cmp>
+  <summary-cmp *ngIf="currentSummary" (setStepInApp)="setStep($event)"></summary-cmp>
 </mat-expansion-panel>
 <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
-  <mat-expansion-panel-header >
+  <mat-expansion-panel-header class="right-aligned-header">
     <mat-panel-title>
       소득공제 전략
     </mat-panel-title>
     <mat-panel-description>
-        <div *ngIf="currentUser">
+        <div *ngIf="currentSummary">
           <div>결과를 확인해보세요</div>
         </div>
-        <div *ngIf="currentUser == null">
+        <div *ngIf="currentSummary == null">
           미산출
         </div>
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <detail-cmp></detail-cmp>
+  <detail-cmp *ngIf="currentSummary && currentSummary.std_assessment"></detail-cmp>
 </mat-expansion-panel>
 <router-outlet></router-outlet>

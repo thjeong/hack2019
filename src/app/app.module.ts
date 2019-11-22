@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 
 import {LoginComponent} from './login/login.component';
 import { SalaryComponent } from './salary/salary.component';
@@ -36,6 +37,7 @@ import { DetailComponent } from './detail/detail.component';
     MatExpansionModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
     AppRoutingModule
   ],
   providers: [],

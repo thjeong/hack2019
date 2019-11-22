@@ -11,6 +11,7 @@ def index():
 @app.route('/login', methods=["POST"])
 def login():
     a = request.json
+    print(a)
     response = login_func(a['userid'])
     return response
 

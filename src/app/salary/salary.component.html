@@ -1,6 +1,6 @@
 <form [formGroup]="salaryForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="total_salary">총급여</label>
+        <label style="color:darkviolet" for="total_salary">총급여</label>
         <input placeholder=""  type="text" formControlName="total_salary" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.total_salary.errors }" />
         <div *ngIf="submitted && f.total_salary.errors" class="invalid-feedback">
             <div *ngIf="f.total_salary.errors.required">Input is required</div>

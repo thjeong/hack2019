@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '@/_services';
+import { User } from '@/_models';
 
 @Component({
     selector: 'salary-cmp',
@@ -13,6 +14,7 @@ export class SalaryComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
+    currentUser: User;
     
     @Output() setStepInApp = new EventEmitter<number>();
 
@@ -23,6 +25,8 @@ export class SalaryComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService
     ) {
+
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) { 
             this.router.navigate(['/']);
@@ -30,10 +34,14 @@ export class SalaryComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.salaryForm = this.formBuilder.group({
-            total_salary: ['', Validators.required]
-            //password: ['', Validators.required]
-        });
+        if (this.currentUser) { 
+            this.salaryForm = this.formBuilder.group(this.currentUser);
+        } else {
+            this.salaryForm = this.formBuilder.group({
+                total_salary: ['', Validators.required]
+                //password: ['', Validators.required]
+           });
+        }
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -51,7 +59,7 @@ export class SalaryComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.getSummary(this.authenticationService.currentUserValue) //, this.f.password.value)
+        this.authenticationService.getSummary(this.currentUser) //, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {

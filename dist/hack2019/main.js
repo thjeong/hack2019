@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\n  <mat-expansion-panel-header class='login'>\n    <mat-panel-title>\n      <h3 style='color:darkred'>naytax!</h3>\n      <!-- <div *ngIf=\"currentUser\">\n        <div>{{currentUser.username}}</div>\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\n      </div>\n      <div *ngIf=\"currentUser == null\">\n        Not logged in yet\n      </div> -->\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          {{currentUser.username}}님 안녕하세요\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          로그인이 필요합니다\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\n</mat-expansion-panel>\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\n  <mat-expansion-panel-header >\n    <mat-panel-title>\n      예상 총 급여\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          <div>xxx 만원</div>\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          미입력\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <salary-cmp (setStepInApp)=\"setStep($event)\"></salary-cmp>\n</mat-expansion-panel>\n<router-outlet></router-outlet>\n<mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\n  <mat-expansion-panel-header >\n    <mat-panel-title>\n      소득공제 항목 합계\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          <div>xxx 만원 </div>\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          미입력\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <summary-cmp (setStepInApp)=\"setStep($event)\"></summary-cmp>\n</mat-expansion-panel>\n<mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3)\" hideToggle>\n  <mat-expansion-panel-header >\n    <mat-panel-title>\n      소득공제 전략\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          <div>결과를 확인해보세요</div>\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          미산출\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <detail-cmp></detail-cmp>\n</mat-expansion-panel>\n<router-outlet></router-outlet>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\n  <mat-expansion-panel-header class=\"right-aligned-header\">\n    <mat-panel-title>\n      <h3 style='color:darkred'>naytax!</h3>\n      <!-- <div *ngIf=\"currentUser\">\n        <div>{{currentUser.username}}</div>\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\n      </div>\n      <div *ngIf=\"currentUser == null\">\n        Not logged in yet\n      </div> -->\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          {{currentUser.username}}님 안녕하세요\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          로그인이 필요합니다\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\n</mat-expansion-panel>\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\n  <mat-expansion-panel-header class=\"right-aligned-header\">\n    <mat-panel-title>\n      예상 총 급여\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          <div>xxx 만원</div>\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          미입력\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <salary-cmp *ngIf=\"currentUser\" (setStepInApp)=\"setStep($event)\"></salary-cmp>\n</mat-expansion-panel>\n<router-outlet></router-outlet>\n<mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\n  <mat-expansion-panel-header class=\"right-aligned-header\">\n    <mat-panel-title>\n      소득공제 항목 합계\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentSummary\">\n          <div>xxx 만원 </div>\n        </div>\n        <div *ngIf=\"currentSummary == null\">\n          미입력\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <summary-cmp *ngIf=\"currentSummary\" (setStepInApp)=\"setStep($event)\"></summary-cmp>\n</mat-expansion-panel>\n<mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3)\" hideToggle>\n  <mat-expansion-panel-header class=\"right-aligned-header\">\n    <mat-panel-title>\n      소득공제 전략\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentSummary\">\n          <div>결과를 확인해보세요</div>\n        </div>\n        <div *ngIf=\"currentSummary == null\">\n          미산출\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <detail-cmp *ngIf=\"currentSummary && currentSummary.std_assessment\"></detail-cmp>\n</mat-expansion-panel>\n<router-outlet></router-outlet>\n");
 
 /***/ }),
 
@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div>\n    소득공제 전략입니다\n</div>>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-table [dataSource]=\"benefitSource\" class=\"mat-elevation-z8\">\n    <!-- Position Column -->\n    <ng-container matColumnDef=\"type\">\n      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.type}} </mat-cell>\n    </ng-container>\n  \n    <!-- Name Column -->\n    <ng-container matColumnDef=\"tax\">\n      <mat-header-cell *matHeaderCellDef> Tax </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.tax}} </mat-cell>\n    </ng-container>\n  \n    <!-- Weight Column -->\n    <ng-container matColumnDef=\"card\">\n      <mat-header-cell *matHeaderCellDef> Card </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.card}} </mat-cell>\n    </ng-container>\n  \n    <!-- Symbol Column -->\n    <ng-container matColumnDef=\"total\">\n      <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.total}} </mat-cell>\n    </ng-container>\n  \n    <mat-header-row *matHeaderRowDef=\"benefitPer10kColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>");
 
 /***/ }),
 
@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"salaryForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label for=\"total_salary\">총급여</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"total_salary\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.total_salary.errors }\" />\n        <div *ngIf=\"submitted && f.total_salary.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.total_salary.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">총급여 저장하기</button>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"salaryForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label style=\"color:darkviolet\" for=\"total_salary\">총급여</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"total_salary\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.total_salary.errors }\" />\n        <div *ngIf=\"submitted && f.total_salary.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.total_salary.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">총급여 저장하기</button>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>");
 
 /***/ }),
 
@@ -61,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"summaryForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label for=\"earned_income_deduce\">근로소득공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"earned_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.earned_income_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.earned_income_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.earned_income_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"personal_allowance\">인적공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"personal_allowance\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.personal_allowance.errors }\" />\n        <div *ngIf=\"submitted && f.personal_allowance.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.personal_allowance.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"pension_insurance_deduce\">연금보험료공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"pension_insurance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.pension_insurance_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.pension_insurance_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">수정 완료하기</button>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        \n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"summaryForm\" (ngSubmit)=\"onSubmit()\" *ngIf=\"currentSummary\">\n    <div class=\"form-group\">\n        <label for=\"earned_income_deduce\">근로소득공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"earned_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.earned_income_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.earned_income_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.earned_income_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"personal_allowance\">인적공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"personal_allowance\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.personal_allowance.errors }\" />\n        <div *ngIf=\"submitted && f.personal_allowance.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.personal_allowance.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"pension_insurance_deduce\">연금보험료공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"pension_insurance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.pension_insurance_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.pension_insurance_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"spec_income_deduce\">특별소득공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"spec_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.spec_income_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.spec_income_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.spec_income_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"crd_card_use\">신용카드</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"crd_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.crd_card_use.errors }\" />\n        <div *ngIf=\"submitted && f.crd_card_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.crd_card_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"deb_card_use\">체크카드</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"deb_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.deb_card_use.errors }\" />\n        <div *ngIf=\"submitted && f.deb_card_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.deb_card_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"cash_use\">현금영수증</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"cash_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.cash_use.errors }\" />\n        <div *ngIf=\"submitted && f.cash_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.cash_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"public_trans_use\">대중교통</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"public_trans_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.public_trans_use.errors }\" />\n        <div *ngIf=\"submitted && f.public_trans_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.public_trans_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"trad_market_use\">전통시장</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"trad_market_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.trad_market_use.errors }\" />\n        <div *ngIf=\"submitted && f.trad_market_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.trad_market_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"book_use\">도서/공연</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"book_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.book_use.errors }\" />\n        <div *ngIf=\"submitted && f.book_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.book_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"house_saving\">주택청약저축</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"house_saving\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.house_saving.errors }\" />\n        <div *ngIf=\"submitted && f.house_saving.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.house_saving.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"my_stock\">우리사주조합 출연금</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"my_stock\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.my_stock.errors }\" />\n        <div *ngIf=\"submitted && f.my_stock.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.my_stock.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"etc_deduce\">기타</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"etc_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.etc_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.etc_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.etc_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">수정 완료하기</button>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        \n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>");
 
 /***/ }),
 
@@ -3880,6 +3880,7 @@ var AuthenticationService = /** @class */ (function () {
             if (user) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 _this.currentUserSubject.next(user);
+                localStorage.removeItem('currentSummary');
             }
             return user;
         }));
@@ -3896,10 +3897,24 @@ var AuthenticationService = /** @class */ (function () {
             return summary;
         }));
     };
+    AuthenticationService.prototype.getDetail = function (summaryinfo) {
+        var _this = this;
+        console.log('getDetail for ' + summaryinfo);
+        return this.http.post(this.host_ip + '/detail', summaryinfo)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (summary) {
+            if (summary) {
+                localStorage.setItem('currentSummary', JSON.stringify(summary));
+                _this.currentSummarySubject.next(summary);
+            }
+            return summary;
+        }));
+    };
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentSummary');
         this.currentUserSubject.next(null);
+        this.currentSummarySubject.next(null);
     };
     AuthenticationService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -4009,6 +4024,7 @@ var AppComponent = /** @class */ (function () {
         this.authenticationService = authenticationService;
         this.step = 0;
         this.authenticationService.currentUser.subscribe(function (x) { return _this.currentUser = x; });
+        this.authenticationService.currentSummary.subscribe(function (x) { return _this.currentSummary = x; });
         if (this.authenticationService.currentUserValue) {
             // 로그인 된 유저가 있는 경우는 일단 1번째 페이지로? (2번째 페이지로 가야할 듯?)
             this.setStep(1);
@@ -4063,10 +4079,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _salary_salary_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./salary/salary.component */ "./src/app/salary/salary.component.ts");
-/* harmony import */ var _summary_summary_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./summary/summary.component */ "./src/app/summary/summary.component.ts");
-/* harmony import */ var _detail_detail_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./detail/detail.component */ "./src/app/detail/detail.component.ts");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _salary_salary_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./salary/salary.component */ "./src/app/salary/salary.component.ts");
+/* harmony import */ var _summary_summary_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./summary/summary.component */ "./src/app/summary/summary.component.ts");
+/* harmony import */ var _detail_detail_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./detail/detail.component */ "./src/app/detail/detail.component.ts");
+
 
 
 
@@ -4090,10 +4108,10 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_12__["LoginComponent"],
-                _salary_salary_component__WEBPACK_IMPORTED_MODULE_13__["SalaryComponent"],
-                _summary_summary_component__WEBPACK_IMPORTED_MODULE_14__["SummaryComponent"],
-                _detail_detail_component__WEBPACK_IMPORTED_MODULE_15__["DetailComponent"]
+                _login_login_component__WEBPACK_IMPORTED_MODULE_13__["LoginComponent"],
+                _salary_salary_component__WEBPACK_IMPORTED_MODULE_14__["SalaryComponent"],
+                _summary_summary_component__WEBPACK_IMPORTED_MODULE_15__["SummaryComponent"],
+                _detail_detail_component__WEBPACK_IMPORTED_MODULE_16__["DetailComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"],
@@ -4105,6 +4123,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatInputModule"],
                 _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_12__["MatTableModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]
             ],
             providers: [],
@@ -4138,19 +4157,22 @@ __webpack_require__.r(__webpack_exports__);
 
 var DetailComponent = /** @class */ (function () {
     function DetailComponent(route, router, authenticationService, alertService) {
+        var _this = this;
         this.route = route;
         this.router = router;
         this.authenticationService = authenticationService;
         this.alertService = alertService;
         this.loading = false;
-        this.submitted = false;
+        this.benefitPer10kColumns = ['', 'name', 'weight', 'symbol'];
+        this.cardTransactionColumns = ['position', 'name', 'weight', 'symbol'];
         this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
-            this.router.navigate(['/']);
-        }
+        this.authenticationService.currentSummary.subscribe(function (x) { return _this.currentSummary = x; });
     }
     DetailComponent.prototype.ngOnInit = function () {
+        this.benefitSource = [
+            { type: '신용', tax: this.currentSummary.crd_tax_benefit, card: this.currentSummary.crd_benefit + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString(), total: this.currentSummary.crd_benefit_sum },
+            { type: '체크', tax: this.currentSummary.deb_cash_tax_benefit, card: '', total: this.currentSummary.deb_cash_tax_benefit }
+        ];
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     };
@@ -4205,6 +4227,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var LoginComponent = /** @class */ (function () {
     function LoginComponent(formBuilder, route, router, authenticationService, alertService) {
+        var _this = this;
         this.formBuilder = formBuilder;
         this.route = route;
         this.router = router;
@@ -4213,10 +4236,7 @@ var LoginComponent = /** @class */ (function () {
         this.loading = false;
         this.submitted = false;
         this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
-            this.router.navigate(['/']);
-        }
+        this.authenticationService.currentUser.subscribe(function (x) { return _this.currentUser = x; });
     }
     LoginComponent.prototype.ngOnInit = function () {
         this.loginForm = this.formBuilder.group({
@@ -4244,6 +4264,7 @@ var LoginComponent = /** @class */ (function () {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(function (data) {
             _this.loading = false;
+            console.log(data);
             _this.setStepInApp.emit(1);
             //this.router.navigate([this.returnUrl]);
         }, function (error) {
@@ -4308,6 +4329,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var SalaryComponent = /** @class */ (function () {
     function SalaryComponent(formBuilder, route, router, authenticationService, alertService) {
+        var _this = this;
         this.formBuilder = formBuilder;
         this.route = route;
         this.router = router;
@@ -4316,16 +4338,22 @@ var SalaryComponent = /** @class */ (function () {
         this.loading = false;
         this.submitted = false;
         this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.authenticationService.currentUser.subscribe(function (x) { return _this.currentUser = x; });
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/']);
         }
     }
     SalaryComponent.prototype.ngOnInit = function () {
-        this.salaryForm = this.formBuilder.group({
-            total_salary: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
-            //password: ['', Validators.required]
-        });
+        if (this.currentUser) {
+            this.salaryForm = this.formBuilder.group(this.currentUser);
+        }
+        else {
+            this.salaryForm = this.formBuilder.group({
+                total_salary: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
+                //password: ['', Validators.required]
+            });
+        }
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     };
@@ -4343,7 +4371,7 @@ var SalaryComponent = /** @class */ (function () {
             return;
         }
         this.loading = true;
-        this.authenticationService.getSummary(this.authenticationService.currentUserValue) //, this.f.password.value)
+        this.authenticationService.getSummary(this.currentUser) //, this.f.password.value)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(function (data) {
             console.log(data);
@@ -4412,6 +4440,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var SummaryComponent = /** @class */ (function () {
     function SummaryComponent(formBuilder, route, router, authenticationService, alertService) {
+        var _this = this;
         this.formBuilder = formBuilder;
         this.route = route;
         this.router = router;
@@ -4419,11 +4448,11 @@ var SummaryComponent = /** @class */ (function () {
         this.alertService = alertService;
         this.loading = false;
         this.submitted = false;
+        this.summary_values = [
+            { 'key': 'spec_income_deduce', 'title': '특별공제금액' }
+        ];
         this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
-            this.router.navigate(['/']);
-        }
+        this.authenticationService.currentSummary.subscribe(function (x) { return _this.currentSummary = x; });
     }
     SummaryComponent.prototype.ngOnInit = function () {
         // this.summaryForm = this.formBuilder.group({
@@ -4431,7 +4460,25 @@ var SummaryComponent = /** @class */ (function () {
         //     personal_allowance: ['', Validators.required],
         //     pension_insurance_deduce: ['', Validators.required]
         // });
-        this.summaryForm = this.formBuilder.group(this.authenticationService.currentSummaryValue);
+        // if(this.currentSummary) {
+        this.summaryForm = this.formBuilder.group(this.currentSummary);
+        // } else {
+        //     this.summaryForm = this.formBuilder.group({
+        //             earned_income_deduce: ['', Validators.required],
+        //             personal_allowance: ['', Validators.required],
+        //             pension_insurance_deduce: ['', Validators.required],
+        //             spec_income_deduce: ['', Validators.required],
+        //             crd_card_use: ['', Validators.required],
+        //             deb_card_use: ['', Validators.required],
+        //             cash_use: ['', Validators.required],
+        //             public_trans_use: ['', Validators.required],
+        //             trad_market_use: ['', Validators.required],
+        //             book_use: ['', Validators.required],
+        //             house_saving: ['', Validators.required],
+        //             my_stock: ['', Validators.required],
+        //             etc_deduce: ['', Validators.required]
+        //         });
+        // }
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     };
@@ -4449,7 +4496,7 @@ var SummaryComponent = /** @class */ (function () {
             return;
         }
         this.loading = true;
-        this.authenticationService.getSummary(this.authenticationService.currentUserValue) //, this.f.password.value)
+        this.authenticationService.getDetail(this.currentSummary) //, this.f.password.value)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(function (data) {
             console.log(data);

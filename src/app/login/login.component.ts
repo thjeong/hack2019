@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '@/_services';
+import { User } from '@/_models';
 
 @Component({
     selector: 'login-cmp',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
+    currentUser: User;
     
     @Output() setStepInApp = new EventEmitter<number>();
 
@@ -23,10 +25,7 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService
     ) {
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
 
     ngOnInit() {
@@ -56,6 +55,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.loading = false;
+                    console.log(data);
                     this.setStepInApp.emit(1);
                     //this.router.navigate([this.returnUrl]);
                 },
