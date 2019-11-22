@@ -273,3 +273,13 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
     return int(crd_tax_benefit), int(cash_deb_tax_benefit), int(crd_benefit), crd_benefit_ratio, \
            int(crd_tax_benefit+crd_benefit)
 
+def getInsertComma(num):
+    a = list(str(num))
+    comma_position = []
+    for i in range(len(a)):
+        if divmod(i+1,3)[1]==1 and i+1!=1:
+            comma_position.append(-i)
+    comma_position.reverse()
+    for i in comma_position:
+        a.insert(i, ',')
+    return ''.join(a)

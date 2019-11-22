@@ -137,6 +137,7 @@ def detail_func(input_json, unit_amt=10000):
     output_dict = {'userid': userid,
                    'total_salary': total_salary,
                    'earned_income_deduce': earned_income_deduce,
+                   'n_of_members': n_of_members,
                    'personal_allowance_deduce': personal_allowance,
                    'pension_insurance_deduce': pension_insurance_deduce,
                    'spec_income_deduce': spec_income_deduce,
@@ -151,7 +152,8 @@ def detail_func(input_json, unit_amt=10000):
                    'trad_market_use': int(trad_market_use),
                    'trad_market_deduce': trad_market_deduce,
                    'book_use': int(book_use), 'book_deduce': book_show_deduce,
-                   'house_saving': house_saving, 'house_saving_deduce': house_saving_deduce,
+                   'house_saving': house_saving, 'householder_tf': householder_tf,
+                   'house_saving_deduce': house_saving_deduce,
                    'my_stock': my_stock, 'my_stock_deduce' : my_stock_deduce,
                    'etc_deduce': etc_deduce}
     total_deduce = 0
@@ -179,6 +181,18 @@ def detail_func(input_json, unit_amt=10000):
     output_dict['crd_benefit'] = result[2]
     output_dict['crd_benefit_ratio'] = result[3]
     output_dict['crd_benefit_sum'] = result[4]
+    # 카드이용전략메세지 만들기
+    if hurdle_ramains > 0:
+        crd_etc_strategy = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱({}원)을 넘기까지 {}원 남았습니다. 각종 혜택이 많은 신용카드로 남은 ' \
+                           '문턱을 넘어보세요!'.format(getInsertComma(int(hurdle)), getInsertComma(int(hurdle_ramains)))
+    elif crd_etc_deduce >= crd_etc_deduction_limit: # 소득공제금액이 소득공제 한도를 넘었을 때
+        crd_etc_strategy = '신용체크현금 항목의 소득공제 금액이 이미 한도({})를 다 채웠습니다! 원' \
+                           '각종 혜택이 많은 신용카드를 사용하시는 게 좋습니다.'.format(getInsertComma(int(crd_etc_deduction_limit)))
+    elif output_dict['crd_benefit_sum'] >= output_dict['deb_cash_tax_benefit']: #신용카드혜택 > 체크현금혜택
+        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 신용카드를 이용하세요!'
+    else:
+        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 체크카드나 현금을 이용하세요!'
+    output_dict['crd_etc_strategy'] = crd_etc_strategy
 
     # 대중교통, 전통시장 소득공제 상세현황 만들기
     output_dict['public_trans_deduce_limit'] = 1000000
