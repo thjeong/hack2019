@@ -218,7 +218,11 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     deb_card_df['구분'] = '체크'
     card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시',ascending=False).reset_index(drop=True)
     # 공제대상 제외 혹은 별도한도 운영되는 거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
-    card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')].reset_index(drop=True).head()
+    # card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')].reset_index(drop=True).head()
+    if divmod(crd_card_use,2)[1] ==0:
+        card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')].reset_index(drop=True).head()
+    else:
+        card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')].reset_index(drop=True).tail()
     crd_benefit_ratio = result[4] / 10000
     deb_cash_benefit_ratio = result[1] / 10000
     recent_crd_deb_use_list = []
