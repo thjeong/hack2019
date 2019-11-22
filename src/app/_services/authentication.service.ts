@@ -46,9 +46,9 @@ export class AuthenticationService {
             }));
     }
 
-    getSummary(userinfo: User) {
-        console.log('getSummary for ' + userinfo);
-        return this.http.post<any>(this.host_ip + '/summary', userinfo)
+    getSummary(userid, total_salary) {
+        console.log('getSummary for ' + userid + '(' + total_salary + ')');
+        return this.http.post<any>(this.host_ip + '/summary', {'userid': userid, 'total_salary':total_salary})
             .pipe(map(summary => {
                 if (summary) {
                     localStorage.setItem('currentSummary', JSON.stringify(summary));

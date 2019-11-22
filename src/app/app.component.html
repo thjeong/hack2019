@@ -27,10 +27,10 @@
       예상 총 급여
     </mat-panel-title>
     <mat-panel-description>
-        <div *ngIf="currentUser">
-          <div>{{ (currentUser.total_salary / 10000) | number:'1.0-0' }} 만원</div>
+        <div *ngIf="currentSummary">
+          <div>{{ (currentSummary.total_salary / 10000) | number:'1.0-0' }} 만원</div>
         </div>
-        <div *ngIf="currentUser == null">
+        <div *ngIf="currentSummary == null">
           미입력
         </div>
     </mat-panel-description>
