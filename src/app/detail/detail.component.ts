@@ -36,9 +36,11 @@ export class DetailComponent implements OnInit {
     }
 
     ngOnInit() {
+        
         this.benefitSource = [
-            {type: '신용', tax: this.currentSummary.crd_tax_benefit, card: this.currentSummary.crd_benefit + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString(), total:this.currentSummary.crd_benefit_sum},
+            {type: '신용', tax: this.currentSummary.crd_tax_benefit, card: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', total:this.currentSummary.crd_benefit_sum},
             {type: '체크', tax: this.currentSummary.deb_cash_tax_benefit, card: '', total:this.currentSummary.deb_cash_tax_benefit}
         ];
+        console.log('summary to table', this.benefitSource.toString());
     }
 }

@@ -1,28 +1,32 @@
+<h3>{{currentSummary.username}}님 (현재) 결제금액 1만원 당 기대할 수 있는 혜택</h3>
 <mat-table [dataSource]="benefitSource" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> 카드종류 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="tax">
-      <mat-header-cell *matHeaderCellDef> Tax </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> 세금혜택 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.tax}} </mat-cell>
     </ng-container>
   
     <!-- Weight Column -->
     <ng-container matColumnDef="card">
-      <mat-header-cell *matHeaderCellDef> Card </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> 카드혜택 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.card}} </mat-cell>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="total">
-      <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> 총 혜택 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="benefitPer10kColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: benefitPer10kColumns;"></mat-row>
   </mat-table>
+
+  <div>{{currentSummary.crd_etc_strategy}}</div>
+
