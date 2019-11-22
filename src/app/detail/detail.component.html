@@ -1,28 +1,31 @@
+<h5>{{currentSummary.username}}님 (현재) 결제금액 1만원 당 기대할 수 있는 혜택</h5>
 <mat-table [dataSource]="benefitSource" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
     </ng-container>
   
     <!-- Name Column -->
-    <ng-container matColumnDef="tax">
-      <mat-header-cell *matHeaderCellDef> Tax </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.tax}} </mat-cell>
+    <ng-container matColumnDef="credit">
+      <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.credit}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>
     </ng-container>
   
     <!-- Weight Column -->
-    <ng-container matColumnDef="card">
-      <mat-header-cell *matHeaderCellDef> Card </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.card}} </mat-cell>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="total">
-      <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+    <ng-container matColumnDef="debit">
+      <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.debit}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="benefitPer10kColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: benefitPer10kColumns;"></mat-row>
+    <mat-footer-row *matFooterRowDef="benefitPer10kColumns"></mat-footer-row>
   </mat-table>
+<div>
+  <div>{{currentSummary.crd_etc_strategy}}</div>
+</div>
+<h5>받은 혜택 (최근 3건)</h5>

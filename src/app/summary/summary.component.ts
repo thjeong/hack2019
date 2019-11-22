@@ -76,8 +76,10 @@ export class SummaryComponent implements OnInit {
             return;
         }
 
+        
         this.loading = true;
-        this.authenticationService.getDetail(this.currentSummary) //, this.f.password.value)
+        //console.log('formGroup', this.summaryForm.value);
+        this.authenticationService.getDetail(this.summaryForm.value) // this.currentSummary)
             .pipe(first())
             .subscribe(
                 data => {
