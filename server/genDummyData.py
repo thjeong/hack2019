@@ -28,8 +28,8 @@ def genSHBAccountTrans(seed, amt=5000, max_n_of_trans_digit = 2):
             else:
                 in_amt, out_amt = 0,amt
 
-        output_list.append([str(inout_idx), in_amt, in_amt, out_amt, out_amt, text_data,''])
-    return pd.DataFrame(output_list,columns=['입지구분','입금','입금_MASK','출금','출금_MASK','적요','거래점'])
+        output_list.append([str(inout_idx), in_amt, out_amt, text_data,''])
+    return pd.DataFrame(output_list,columns=['입지구분','입금','출금','적요','거래점'])
 
 
 def genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_digit = 3):
@@ -55,7 +55,7 @@ def genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_
             date_idx = 0
         else:
             date_idx += 1
-        aprvtime = aprvdate + '{:012d}'.format(i)
+        aprvtime = aprvdate + '{:06d}'.format(i)
         aprvno = '{:08d}'.format(i)[:8]
         aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),10))+1)
         retlno = '{:010d}'.format(i)[:10]
@@ -87,7 +87,7 @@ def genSHDTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_
             date_idx = 0
         else:
             date_idx += 1
-        aprvtime = aprvdate + '{:012d}'.format(i)
+        aprvtime = aprvdate + '{:06d}'.format(i)
         aprvno = '{:08d}'.format(i)[:8]
         aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),3))+1)
         retlno = '{:010d}'.format(i)[:10]

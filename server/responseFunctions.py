@@ -43,12 +43,14 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     #특별소득공제
     spec_income_deduce = getTmpSpecIncomeDeduction(total_salary, 1)
 
-    #신용,체크카드이용내역
-    # TODO: 신용,체크카드 이용내역 api 호출 & dataframe으로 parsing하는
-    # crd_card_df = shcSearchUseforDomestic()
-    input_aprvamt= 5000
-    cardno = '203'
-    crd_card_df = genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)
+    #신용,체크카드이용내역 API호출 & 가라데이터 만들어붙이기
+    crd_card_df = shcSearchUseforDomestic(stt_date, end_date, 0)
+    input_aprvamt = int(crd_card_df['승인금액'][0])
+    cardno = crd_card_df['카드뒷세자리'][0]
+    crd_card_df = pd.concat([crd_card_df, genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
+    deb_card_df = shcSearchUseforDomestic(stt_date, end_date, 1)
+    input_aprvamt = int(deb_card_df['승인금액'][0])
+    cardno = deb_card_df['카드뒷세자리'][0]
     deb_card_df = genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)
     # 공제대상 제외거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     crd_card_use = crd_card_df[~crd_card_df['가맹점명'].str.contains('지방세|세금|상품권')]['승인금액'].sum()
@@ -201,26 +203,29 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
         crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 체크카드나 현금을 이용하시면 좋습니다!'
     output_dict['crd_etc_strategy'] = crd_etc_strategy
     # 최근 신용, 체크 카드이용내역 만들기
-    # TODO: 신용,체크카드 이용내역 api 호출 & dataframe으로 parsing하는
-    input_aprvamt = 5000
-    crdno = '123'
-    crd_card_df = genSHCTrans(userid, input_aprvamt, crdno, stt_date, end_date)
-    deb_card_df = genSHDTrans(userid, input_aprvamt, crdno, stt_date, end_date)
+    crd_card_df = shcSearchUseforDomestic(stt_date, end_date, 0)
+    input_aprvamt = int(crd_card_df['승인금액'][0])
+    cardno = crd_card_df['카드뒷세자리'][0]
+    crd_card_df = pd.concat([crd_card_df, genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
+    deb_card_df = shcSearchUseforDomestic(stt_date, end_date, 1)
+    input_aprvamt = int(deb_card_df['승인금액'][0])
+    cardno = deb_card_df['카드뒷세자리'][0]
+    deb_card_df = genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)
     crd_card_df['구분'] = '신용'
     deb_card_df['구분'] = '체크'
     card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시').reset_index(drop=True)
     # 공제대상 제외 혹은 별도한도 운영되는 거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
-    card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')]
+    card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')].reset_inded(drop=True).head()
     crd_benefit_ratio = result[4] / 10000
     deb_cash_benefit_ratio = result[1] / 10000
     recent_crd_deb_use_list = []
     for row in card_df.iterrows():
         tmp_dict = {}
-        tmp_dict['apv_d'] = '{}년{}월{}일'.format(row[1]['승인일시'][0:4],row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
+        tmp_dict['apv_d'] = '{}.{}.{}.'.format(row[1]['승인일시'][0:4],row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
         tmp_dict['crd_tcd'] = row[1]['구분']
-        tmp_dict['apv_amt'] = '{}원'.format(getInsertComma(row[1]['승인금액']))
+        tmp_dict['apv_amt'] = row[1]['승인금액']
         tmp_dict['mct_nm'] = row[1]['가맹점명']
-        if row[1]['구분']=='신용':
+        if row[1]['구분'] == '신용':
             tmp_dict['benefit'] = int(round(row[1]['승인금액']*crd_benefit_ratio))
         else:
             tmp_dict['benefit'] = int(round(row[1]['승인금액'] * deb_cash_benefit_ratio))
