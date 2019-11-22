@@ -201,7 +201,7 @@ def getCreditCrdEtcDeduction(credit_crd_use, debit_crd_use, cash_use, trad_marke
         else: # 세 개를 다 합쳤을 때 공제문턱(총급여의 25%)를 넘길 때
             crd_etc_deduction = min((total_use - hurdle) * 0.3, deduction_limit)
         # 신용카드의 공제 대상금액
-        crd_card_deduce_valid_amt = credit_crd_use - hurdle
+        crd_card_deduce_valid_amt = max(credit_crd_use - hurdle, 0)
         # 체크/현금의 공제 대상금액
         deb_cash_deduce_valid_amt = debit_crd_use + cash_use
 

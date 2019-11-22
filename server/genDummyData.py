@@ -57,7 +57,7 @@ def genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_
             date_idx += 1
         aprvtime = aprvdate + '{:06d}'.format(i)
         aprvno = '{:08d}'.format(i)[:8]
-        aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),10))+1)
+        aprvamt = int(input_aprvamt / (int(np.mod(int(random_number * i),2))+1))
         retlno = '{:010d}'.format(i)[:10]
         retlname = list_of_mct_nm[int(np.mod(int(random_number * i * 100), len(list_of_mct_nm)))]
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
@@ -89,7 +89,7 @@ def genSHDTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_
             date_idx += 1
         aprvtime = aprvdate + '{:06d}'.format(i)
         aprvno = '{:08d}'.format(i)[:8]
-        aprvamt = input_aprvamt * (int(np.mod(int(random_number * i),3))+1)
+        aprvamt = int(input_aprvamt / (int(np.mod(int(random_number * i),2))+1))
         retlno = '{:010d}'.format(i)[:10]
         retlname = list_of_mct_nm[int(np.mod(int(random_number * i * 100), len(list_of_mct_nm)))]
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
@@ -110,7 +110,7 @@ def genSHCBill(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_d
     random_number = random.random()
     df = genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_digit)
     df['적립예정포인트율'] = 0.001 * int(random_number * 10 + 1)
-    df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*2)).astype(int)
+    df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*1.2)).astype(int)
     df['매출일자'] = df['승인일시'].str[:8]
     del df['승인일시'], df['가맹점번호']
     df.rename(columns={'승인금액': '매출전표금액', '가맹점명': '이용가맹점명', '카드뒷세자리': '이용카드뒷세자리'}, inplace=True)
