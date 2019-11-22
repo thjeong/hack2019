@@ -213,7 +213,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     deb_card_df = genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)
     crd_card_df['구분'] = '신용'
     deb_card_df['구분'] = '체크'
-    card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시').reset_index(drop=True)
+    card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시',ascending=False).reset_index(drop=True)
     # 공제대상 제외 혹은 별도한도 운영되는 거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')].reset_index(drop=True).head()
     crd_benefit_ratio = result[4] / 10000
@@ -221,7 +221,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     recent_crd_deb_use_list = []
     for row in card_df.iterrows():
         tmp_dict = {}
-        tmp_dict['apv_d'] = '\'{}.{}.{}.'.format(row[1]['승인일시'][2:4],row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
+        tmp_dict['apv_d'] = '{}.{}.'.format(row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
         tmp_dict['crd_tcd'] = row[1]['구분']
         tmp_dict['apv_amt'] = row[1]['승인금액']
         tmp_dict['mct_nm'] = row[1]['가맹점명']
