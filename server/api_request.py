@@ -46,6 +46,7 @@ def shbAccountTrans(account_no_list, stt_date, end_date):
 
 
 
+
 def shcSearchUseforDomestic(stt_date, end_date, debitTF):
     """
     (신용,체크)국내이용내역조회
