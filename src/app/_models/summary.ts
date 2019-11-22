@@ -1,6 +1,6 @@
 export class Summary {
     earned_income_deduce : number; //소득공제금액
-    personal_allowance : number; //인적공제금액
+    personal_allowance_deduce : number; //인적공제금액
     pension_insurance_deduce : number; //연금보험료공제금액
     spec_income_deduce : number; //특별소득공제금액
     crd_card_use : number; //신용카드이용금액
@@ -27,7 +27,7 @@ export class Summary {
     std_assessment : number; //과세표준금액
     tax_amt : number; //산출세액
     acc_tax_ratio : number; //누적세율
-    txt_msg: number; //적용구간(텍스트)
+    txt_msg: string; //적용구간(텍스트)
     max_ratio : number; //현재적용세율(최대세율)
     huddle_remains : number; //신용/체크/현금 소득공제 문턱 잔여금액
 

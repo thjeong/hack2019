@@ -6,10 +6,10 @@ import { first } from 'rxjs/operators';
 import { AlertService, AuthenticationService } from '@/_services';
 
 @Component({
-    selector: 'summary-cmp',
-    templateUrl: 'summary.component.html'})
-export class SummaryComponent implements OnInit {
-    summaryForm: FormGroup;
+    selector: 'salary-cmp',
+    templateUrl: 'salary.component.html'})
+export class SalaryComponent implements OnInit {
+    salaryForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
@@ -30,26 +30,23 @@ export class SummaryComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.summaryForm = this.formBuilder.group({
-        //     earned_income_deduce: ['', Validators.required],
-        //     personal_allowance: ['', Validators.required],
-        //     pension_insurance_deduce: ['', Validators.required]
-        // });
-
-        this.summaryForm = this.formBuilder.group(this.authenticationService.currentSummaryValue);
+        this.salaryForm = this.formBuilder.group({
+            total_salary: ['', Validators.required]
+            //password: ['', Validators.required]
+        });
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.summaryForm.controls; }
+    get f() { return this.salaryForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
         // stop here if form is invalid
-        if (this.summaryForm.invalid) {
+        if (this.salaryForm.invalid) {
             return;
         }
 
@@ -60,7 +57,7 @@ export class SummaryComponent implements OnInit {
                 data => {
                     console.log(data);
                     this.loading = false;
-                    this.setStepInApp.emit(3);
+                    this.setStepInApp.emit(2);
                     //this.router.navigate([this.returnUrl]);
                 },
                 error => {

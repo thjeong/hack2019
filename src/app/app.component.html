@@ -22,19 +22,52 @@
   <login-cmp (setStepInApp)="setStep($event)"></login-cmp>
 </mat-expansion-panel>
 <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-    <mat-expansion-panel-header >
-      <mat-panel-title>
-        소득공제 항목
-      </mat-panel-title>
-      <mat-panel-description>
-          <div *ngIf="currentUser">
-            <div>{{currentUser.username}}님의 소득공제 항목을 입력/조회합니다 </div>
-          </div>
-          <div *ngIf="currentUser == null">
-            로그인이 필요합니다
-          </div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <summary-cmp></summary-cmp>
-  </mat-expansion-panel>
+  <mat-expansion-panel-header >
+    <mat-panel-title>
+      예상 총 급여
+    </mat-panel-title>
+    <mat-panel-description>
+        <div *ngIf="currentUser">
+          <div>xxx 만원</div>
+        </div>
+        <div *ngIf="currentUser == null">
+          미입력
+        </div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <salary-cmp (setStepInApp)="setStep($event)"></salary-cmp>
+</mat-expansion-panel>
+<router-outlet></router-outlet>
+<mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+  <mat-expansion-panel-header >
+    <mat-panel-title>
+      소득공제 항목 합계
+    </mat-panel-title>
+    <mat-panel-description>
+        <div *ngIf="currentUser">
+          <div>xxx 만원 </div>
+        </div>
+        <div *ngIf="currentUser == null">
+          미입력
+        </div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <summary-cmp (setStepInApp)="setStep($event)"></summary-cmp>
+</mat-expansion-panel>
+<mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+  <mat-expansion-panel-header >
+    <mat-panel-title>
+      소득공제 전략
+    </mat-panel-title>
+    <mat-panel-description>
+        <div *ngIf="currentUser">
+          <div>결과를 확인해보세요</div>
+        </div>
+        <div *ngIf="currentUser == null">
+          미산출
+        </div>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <detail-cmp></detail-cmp>
+</mat-expansion-panel>
 <router-outlet></router-outlet>
