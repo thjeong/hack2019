@@ -245,7 +245,8 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
     # 전년도 신용카드 이용/청구내역 집계해서 신용카드 이용혜택율 계산
     # TODO: 전년도 신용카드 청구내역 api 호출 & parsing module
     input_aprvamt = 5000
-    prev_y_df = genSHCBill(userid, input_aprvamt, '20180101', '20181231')
+    cardno='123'
+    prev_y_df = genSHCBill(userid, input_aprvamt, cardno, '20180101', '20181231')
     prev_y_df['적립예정포인트'] = prev_y_df['매출전표금액'] * prev_y_df['적립예정포인트율']
     prev_y_df['할인금액'] = prev_y_df['매출전표금액'] - prev_y_df['청구원금금액']
     crd_benefit_ratio = int(prev_y_df['적립예정포인트'].sum() + prev_y_df['할인금액'].sum()) / int(prev_y_df['매출전표금액'].sum())
