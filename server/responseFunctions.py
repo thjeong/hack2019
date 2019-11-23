@@ -207,6 +207,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
         crd_etc_strategy = '신용카드와 체크/현금 중, 기대 혜택이 더 큰 체크카드/현금을 이용하시면 좋습니다!'
         hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)은 넘었습니다! '
     output_dict['crd_etc_strategy'] = crd_etc_strategy
+    output_dict['hurdle_info_msg'] = hurdle_info_msg
     # 최근 신용, 체크 카드이용내역 만들기
     crd_card_df = shcSearchUseforDomestic(stt_date, end_date, 0)
     input_aprvamt = int(crd_card_df['승인금액'][0])
