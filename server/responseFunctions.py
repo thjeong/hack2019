@@ -277,4 +277,7 @@ def detail_func(input_json, stt_date='20190101',
     else:
         output_dict['trad_market_benefit'] = 0
 
+    if input_dict.get('tried_refresh') != None:
+        output_dict['tried_refresh'] = input_dict.get('tried_refresh')
+
     return json.dumps(output_dict)
