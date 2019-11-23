@@ -202,14 +202,12 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
                            '각종 혜택이 많은 신용카드를 사용하시는 게 좋습니다.'.format(getInsertComma(int(crd_etc_deduction_limit)))
     elif output_dict['crd_benefit_sum'] >= output_dict['deb_cash_tax_benefit']: #신용카드혜택 > 체크현금혜택
         crd_etc_strategy = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱({}원)은 넘었습니다! 지금 사용하시는 금액은 ' \
-                           '일정비율(이용금액 x 공제비율 15~30% x 현재 적용세율 {}%)만큼 절세 혜택으로 돌아갑니다. 신용카드와 ' \
-                           '체크/현금을 이용했을 때 기대 혜택이 더 큰 신용카드를 ' \
-                           '이용하시면 좋습니다!'.format(getInsertComma(int(hurdle)), int(max_ratio*100))
+                           '일정비율만큼 절세 혜택으로 돌아갑니다. 신용카드와 체크/현금 중, 기대 혜택(절세혜택 + 카드사 혜택)이 더 큰 신용카드를 ' \
+                           '이용하시면 좋습니다!'.format(getInsertComma(int(hurdle)))
     else:
         crd_etc_strategy = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱({}원)은 넘었습니다! 지금 사용하시는 금액은 ' \
-                           '일정비율(이용금액 x 공제비율 15~30% x 현재 적용세율 {}%)만큼 절세 혜택으로 돌아갑니다. 신용카드와 ' \
-                           '체크/현금을 이용했을 때 기대 혜택이 더 큰 체크카드/현금을 ' \
-                           '이용하시면 좋습니다!'.format(getInsertComma(int(hurdle)), int(max_ratio*100))
+                           '일정비율만큼 절세 혜택으로 돌아갑니다. 신용카드와 체크/현금 중, 기대 혜택이 더 큰 체크카드/현금을 ' \
+                           '이용하시면 좋습니다!'.format(getInsertComma(int(hurdle)))
     output_dict['crd_etc_strategy'] = crd_etc_strategy
     # 최근 신용, 체크 카드이용내역 만들기
     crd_card_df = shcSearchUseforDomestic(stt_date, end_date, 0)
