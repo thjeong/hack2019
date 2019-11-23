@@ -1,4 +1,4 @@
-<h5><img src="https://cdn0.iconfinder.com/data/icons/finance-glyph-2/33/tax_cut-512.png" width="30" height="30">소득공제에 필요한 최소이용 금액</h5>
+<h5><img src="https://cdn0.iconfinder.com/data/icons/finance-glyph-2/33/tax_cut-512.png" width="30" height="30">필요한 최소이용 금액</h5>
 
 <div fxLayout="row" fxLayoutGap="0px" style="width: 100%">
   <div [fxFlex]="progressBar[0]" class="div1"></div>
@@ -43,7 +43,8 @@
   <div>{{currentSummary.crd_etc_strategy}}</div>
 </div>
 
-<h5><img src="https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png" width="40" height="40">받은 혜택 (최근 5건)</h5>
+<h5><img src="https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png" width="40" height="40">받은 혜택 (최근 5건)
+<div (click)="refresh()" style='float:right'><img src="https://www.materialui.co/materialIcons/navigation/refresh_black_192x192.png" height="20" width="20"></div></h5>
 <mat-table [dataSource]="transactionSource" class="mat-elevation-z8">
   <ng-container matColumnDef="apv_d">
     <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>
@@ -57,7 +58,7 @@
 
   <ng-container matColumnDef="apv_amt">
     <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.apv_amt}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.apv_amt | number:0}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="mct_nm">
@@ -67,9 +68,9 @@
 
   <ng-container matColumnDef="benefit">
     <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.benefit}} </mat-cell>
+    <mat-cell *matCellDef="let element"> <div><div>{{element.benefit}}</div><div style="font-size:12px;font-weight: bold;">({{(element.benefit / element.apv_amt * 100) | number:'0.0-1'}} %)</div></div></mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="cardTransactionColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: cardTransactionColumns;"></mat-row>
+  <mat-row *matRowDef="let row; columns: cardTransactionColumns;" [ngClass]="{'highlight': row.new_trans_TF == 1}"></mat-row>
 </mat-table>

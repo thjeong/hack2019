@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h5><img src=\"https://cdn0.iconfinder.com/data/icons/finance-glyph-2/33/tax_cut-512.png\" width=\"30\" height=\"30\">소득공제에 필요한 최소이용 금액</h5>\r\n\r\n<div fxLayout=\"row\" fxLayoutGap=\"0px\" style=\"width: 100%\">\r\n  <div [fxFlex]=\"progressBar[0]\" class=\"div1\"></div>\r\n  <div [fxFlex]=\"progressBar[1]\" class=\"div2\"></div>\r\n  <div [fxFlex]=\"progressBar[2]\" class=\"div3\"></div>\r\n  <div [fxFlex]=\"progressBar[3]\" class=\"div4\"></div>\r\n</div>\r\n<div fxLayout=\"row\" fxLayoutAlign=\"center\">\r\n  <div fxFlex=\"50\" fxLayout=\"column\" fxLayoutAlign=\"start center\">▲\r\n    </div>\r\n  </div>\r\n<p>{{currentSummary.hurdle_info_msg}}</p>\r\n\r\n<h5><img src=\"https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif\" width=\"40\" height=\"30\"><b>기대혜택 (원/만원)</b></h5>\r\n<mat-table [dataSource]=\"benefitSource\" class=\"mat-elevation-z8\">\r\n  <!-- Type Column -->\r\n  <ng-container matColumnDef=\"type\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.type}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> <span style='color:brown'><b>최종혜택</b></span> </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Credit card Column -->\r\n  <ng-container matColumnDef=\"credit\">\r\n    <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.credit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Debit card Column -->\r\n  <ng-container matColumnDef=\"debit\">\r\n    <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.debit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"benefitPer10kColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: benefitPer10kColumns;\"></mat-row>\r\n  <mat-footer-row *matFooterRowDef=\"benefitPer10kColumns\"></mat-footer-row>\r\n</mat-table>\r\n<div>\r\n  <div>{{currentSummary.crd_etc_strategy}}</div>\r\n</div>\r\n\r\n<h5><img src=\"https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png\" width=\"40\" height=\"40\">받은 혜택 (최근 5건)</h5>\r\n<mat-table [dataSource]=\"transactionSource\" class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"apv_d\">\r\n    <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_d}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"crd_tcd\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.crd_tcd}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"apv_amt\">\r\n    <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_amt}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"mct_nm\">\r\n    <mat-header-cell *matHeaderCellDef> 가맹점 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.mct_nm}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"benefit\">\r\n    <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.benefit}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"cardTransactionColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: cardTransactionColumns;\"></mat-row>\r\n</mat-table>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h5><img src=\"https://cdn0.iconfinder.com/data/icons/finance-glyph-2/33/tax_cut-512.png\" width=\"30\" height=\"30\">필요한 최소이용 금액</h5>\r\n\r\n<div fxLayout=\"row\" fxLayoutGap=\"0px\" style=\"width: 100%\">\r\n  <div [fxFlex]=\"progressBar[0]\" class=\"div1\"></div>\r\n  <div [fxFlex]=\"progressBar[1]\" class=\"div2\"></div>\r\n  <div [fxFlex]=\"progressBar[2]\" class=\"div3\"></div>\r\n  <div [fxFlex]=\"progressBar[3]\" class=\"div4\"></div>\r\n</div>\r\n<div fxLayout=\"row\" fxLayoutAlign=\"center\">\r\n  <div fxFlex=\"50\" fxLayout=\"column\" fxLayoutAlign=\"start center\">▲\r\n    </div>\r\n  </div>\r\n<p>{{currentSummary.hurdle_info_msg}}</p>\r\n\r\n<h5><img src=\"https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif\" width=\"40\" height=\"30\"><b>기대혜택 (원/만원)</b></h5>\r\n<mat-table [dataSource]=\"benefitSource\" class=\"mat-elevation-z8\">\r\n  <!-- Type Column -->\r\n  <ng-container matColumnDef=\"type\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.type}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> <span style='color:brown'><b>최종혜택</b></span> </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Credit card Column -->\r\n  <ng-container matColumnDef=\"credit\">\r\n    <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.credit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Debit card Column -->\r\n  <ng-container matColumnDef=\"debit\">\r\n    <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.debit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"benefitPer10kColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: benefitPer10kColumns;\"></mat-row>\r\n  <mat-footer-row *matFooterRowDef=\"benefitPer10kColumns\"></mat-footer-row>\r\n</mat-table>\r\n<div>\r\n  <div>{{currentSummary.crd_etc_strategy}}</div>\r\n</div>\r\n\r\n<h5><img src=\"https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png\" width=\"40\" height=\"40\">받은 혜택 (최근 5건)\r\n<div (click)=\"refresh()\" style='float:right'><img src=\"https://www.materialui.co/materialIcons/navigation/refresh_black_192x192.png\" height=\"20\" width=\"20\"></div></h5>\r\n<mat-table [dataSource]=\"transactionSource\" class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"apv_d\">\r\n    <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_d}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"crd_tcd\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.crd_tcd}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"apv_amt\">\r\n    <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_amt | number:0}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"mct_nm\">\r\n    <mat-header-cell *matHeaderCellDef> 가맹점 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.mct_nm}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"benefit\">\r\n    <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> <div><div>{{element.benefit}}</div><div style=\"font-size:12px;font-weight: bold;\">({{(element.benefit / element.apv_amt * 100) | number:'0.0-1'}} %)</div></div></mat-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"cardTransactionColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: cardTransactionColumns;\" [ngClass]=\"{'highlight': row.new_trans_TF == 1}\"></mat-row>\r\n</mat-table>");
 
 /***/ }),
 
@@ -3953,6 +3953,9 @@ var AuthenticationService = /** @class */ (function () {
     AuthenticationService.prototype.updateSummaryValue = function (summary) {
         this.currentSummarySubject.next(summary);
     };
+    AuthenticationService.prototype.setSummaryReqAddParms = function (n) {
+        this.currentSummaryValue.req_add_trans = n;
+    };
     AuthenticationService.prototype.login = function (userid) {
         var _this = this;
         this.host_ip = window.location.origin;
@@ -4124,7 +4127,7 @@ var AppComponent = /** @class */ (function () {
         if (this.currentSummary) {
             return [
                 { type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit: this.currentSummary.deb_cash_tax_benefit },
-                { type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0 }
+                { type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 10).toString() + ' %)', debit: 0 }
             ];
         }
     };
@@ -4247,7 +4250,7 @@ var AppModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".mat-table {\r\n    overflow: auto;\r\n    max-height: 700px;\r\n    font-size: 14px;\r\n  }\r\n\r\n.mat-header-row {\r\n    background-color: #3897f0;\r\n  }\r\n\r\n.mat-footer-row {\r\n  background-color:#EDF1F5;  \r\n}\r\n\r\n.mat-row:nth-child(even){\r\n  background-color:#EDF1F5;\r\n}\r\n\r\n.mat-row:nth-child(odd){\r\n  background-color:#FDFDFB;\r\n}\r\n\r\n.div1 {\r\n    height: 15px;\r\n    background-color: blue;\r\n  }\r\n\r\n.div2 {\r\n    height: 15px;\r\n    background-color: cyan;\r\n  }\r\n\r\n.div3 {\r\n    height: 15px;\r\n    background-color: red;\r\n  }\r\n\r\n.div4 {\r\n    height: 15px;\r\n    background-color: burlywood; \r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLGlCQUFpQjtJQUNqQixlQUFlO0VBQ2pCOztBQUVGO0lBQ0kseUJBQXlCO0VBQzNCOztBQUVGO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUdBO0lBQ0ksWUFBWTtJQUNaLHNCQUFzQjtFQUN4Qjs7QUFDQTtJQUNFLFlBQVk7SUFDWixzQkFBc0I7RUFDeEI7O0FBQ0E7SUFDRSxZQUFZO0lBQ1oscUJBQXFCO0VBQ3ZCOztBQUNBO0lBQ0UsWUFBWTtJQUNaLDJCQUEyQjtFQUM3QiIsImZpbGUiOiJzcmMvYXBwL2RldGFpbC9kZXRhaWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtdGFibGUge1xyXG4gICAgb3ZlcmZsb3c6IGF1dG87XHJcbiAgICBtYXgtaGVpZ2h0OiA3MDBweDtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICB9XHJcblxyXG4ubWF0LWhlYWRlci1yb3cge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzM4OTdmMDtcclxuICB9XHJcblxyXG4ubWF0LWZvb3Rlci1yb3cge1xyXG4gIGJhY2tncm91bmQtY29sb3I6I0VERjFGNTsgIFxyXG59XHJcblxyXG4ubWF0LXJvdzpudGgtY2hpbGQoZXZlbil7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjojRURGMUY1O1xyXG59XHJcblxyXG4ubWF0LXJvdzpudGgtY2hpbGQob2RkKXtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiNGREZERkI7XHJcbn1cclxuXHJcblxyXG4uZGl2MSB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBibHVlO1xyXG4gIH1cclxuICAuZGl2MiB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBjeWFuO1xyXG4gIH1cclxuICAuZGl2MyB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7XHJcbiAgfVxyXG4gIC5kaXY0IHtcclxuICAgIGhlaWdodDogMTVweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGJ1cmx5d29vZDsgXHJcbiAgfSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".mat-table {\r\n    overflow: auto;\r\n    max-height: 700px;\r\n    font-size: 14px;\r\n  }\r\n\r\n.mat-header-row {\r\n    background-color: #3897f0;\r\n  }\r\n\r\n.mat-footer-row {\r\n  background-color:#EDF1F5;  \r\n}\r\n\r\n.mat-row:nth-child(even){\r\n  background-color:#EDF1F5;\r\n}\r\n\r\n.mat-row:nth-child(odd){\r\n  background-color:#FDFDFB;\r\n}\r\n\r\n.mat-column-benefit {\r\ntext-align: right;\r\njustify-content: flex-end;\r\n}\r\n\r\n.highlight{\r\n  color:deepskyblue;\r\n  font-weight: bold;\r\n}\r\n\r\n.div1 {\r\n    height: 15px;\r\n    background-color: blue;\r\n  }\r\n\r\n.div2 {\r\n    height: 15px;\r\n    background-color: cyan;\r\n  }\r\n\r\n.div3 {\r\n    height: 15px;\r\n    background-color: red;\r\n  }\r\n\r\n.div4 {\r\n    height: 15px;\r\n    background-color: burlywood; \r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLGlCQUFpQjtJQUNqQixlQUFlO0VBQ2pCOztBQUVGO0lBQ0kseUJBQXlCO0VBQzNCOztBQUVGO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUdBO0FBQ0EsaUJBQWlCO0FBQ2pCLHlCQUF5QjtBQUN6Qjs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixpQkFBaUI7QUFDbkI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osc0JBQXNCO0VBQ3hCOztBQUNBO0lBQ0UsWUFBWTtJQUNaLHNCQUFzQjtFQUN4Qjs7QUFDQTtJQUNFLFlBQVk7SUFDWixxQkFBcUI7RUFDdkI7O0FBQ0E7SUFDRSxZQUFZO0lBQ1osMkJBQTJCO0VBQzdCIiwiZmlsZSI6InNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hdC10YWJsZSB7XHJcbiAgICBvdmVyZmxvdzogYXV0bztcclxuICAgIG1heC1oZWlnaHQ6IDcwMHB4O1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gIH1cclxuXHJcbi5tYXQtaGVhZGVyLXJvdyB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzg5N2YwO1xyXG4gIH1cclxuXHJcbi5tYXQtZm9vdGVyLXJvdyB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjojRURGMUY1OyAgXHJcbn1cclxuXHJcbi5tYXQtcm93Om50aC1jaGlsZChldmVuKXtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiNFREYxRjU7XHJcbn1cclxuXHJcbi5tYXQtcm93Om50aC1jaGlsZChvZGQpe1xyXG4gIGJhY2tncm91bmQtY29sb3I6I0ZERkRGQjtcclxufVxyXG5cclxuXHJcbi5tYXQtY29sdW1uLWJlbmVmaXQge1xyXG50ZXh0LWFsaWduOiByaWdodDtcclxuanVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcclxufVxyXG5cclxuLmhpZ2hsaWdodHtcclxuICBjb2xvcjpkZWVwc2t5Ymx1ZTtcclxuICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuLmRpdjEge1xyXG4gICAgaGVpZ2h0OiAxNXB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYmx1ZTtcclxuICB9XHJcbiAgLmRpdjIge1xyXG4gICAgaGVpZ2h0OiAxNXB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogY3lhbjtcclxuICB9XHJcbiAgLmRpdjMge1xyXG4gICAgaGVpZ2h0OiAxNXB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xyXG4gIH1cclxuICAuZGl2NCB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBidXJseXdvb2Q7IFxyXG4gIH0iXX0= */");
 
 /***/ }),
 
@@ -4264,8 +4267,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+
 
 
 
@@ -4282,6 +4287,12 @@ var DetailComponent = /** @class */ (function () {
         this.benefitPer10kColumns = ['type', 'credit', 'debit'];
         this.cardTransactionColumns = ['apv_d', 'crd_tcd', 'apv_amt', 'mct_nm', 'benefit'];
         this.progressBar = [0, 500, 0, 500];
+        this.tried_refresh = 0;
+        // selectedTransactionRowIndex: number;
+        // highlight(row){
+        //     console.log('highlight', row);
+        //     this.selectedRowIndex = row;
+        // }
         this.benefitSource = [
         // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
         // {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
@@ -4291,8 +4302,10 @@ var DetailComponent = /** @class */ (function () {
         this.authenticationService.currentSummary.subscribe(function (x) { return _this.currentSummary = x; });
     }
     DetailComponent.prototype.ngOnInit = function () {
-        var animationCounter = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(50);
+        var animationCounter = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(50);
         animationCounter.subscribe(this.animateBar());
+        this.tried_refresh = 0;
+        // this.selectedTransactionRowIndex = 0;
         //this.benefitSource = this.getBenefitSource();
         // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
         // console.log('benefitSource', this.benefitSource.toString());
@@ -4330,16 +4343,36 @@ var DetailComponent = /** @class */ (function () {
             };
         })(this);
     };
-    DetailComponent.prototype.refreshValues = function () {
+    DetailComponent.prototype.refresh = function () {
+        var _this = this;
+        this.tried_refresh += 1;
         // this.benefitSource = this.getBenefitSource();
         // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
-        console.log('right here!');
+        if (this.tried_refresh % 5 == 0) {
+            this.authenticationService.setSummaryReqAddParms(Math.floor(this.tried_refresh / 5));
+            this.loading = true;
+            console.log('retrying with ', this.currentSummary);
+            this.authenticationService.getDetail(this.currentSummary) // this.currentSummary)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
+                .subscribe(function (data) {
+                console.log(data);
+                //this.authenticationService.updateSummaryValue(data);
+                _this.loading = false;
+                //this.selectedTransactionRowIndex = this.currentSummary.req_add_trans;
+                //this.setStepInApp.emit(3);
+                //this.router.navigate([this.returnUrl]);
+            }, function (error) {
+                //this.alertService.error(error);
+                _this.loading = false;
+            });
+            // console.log('right here!');
+        }
     };
     DetailComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-        { type: _services__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"] },
-        { type: _services__WEBPACK_IMPORTED_MODULE_4__["AlertService"] }
+        { type: _services__WEBPACK_IMPORTED_MODULE_5__["AuthenticationService"] },
+        { type: _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -4361,8 +4394,8 @@ var DetailComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-            _services__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"],
-            _services__WEBPACK_IMPORTED_MODULE_4__["AlertService"]])
+            _services__WEBPACK_IMPORTED_MODULE_5__["AuthenticationService"],
+            _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"]])
     ], DetailComponent);
     return DetailComponent;
 }());

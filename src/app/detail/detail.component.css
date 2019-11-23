@@ -21,6 +21,16 @@
 }
 
 
+.mat-column-benefit {
+text-align: right;
+justify-content: flex-end;
+}
+
+.highlight{
+  color:deepskyblue;
+  font-weight: bold;
+}
+
 .div1 {
     height: 15px;
     background-color: blue;

@@ -36,7 +36,13 @@ export class DetailComponent implements OnInit {
     progressBar: number[] = [0,500,0,500];
     div1: number;
     div2: number;
+    tried_refresh = 0;
+    // selectedTransactionRowIndex: number;
 
+    // highlight(row){
+    //     console.log('highlight', row);
+    //     this.selectedRowIndex = row;
+    // }
 
     @Input() benefitSource = [
         // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
@@ -58,6 +64,8 @@ export class DetailComponent implements OnInit {
     ngOnInit() {
         const animationCounter = interval(50);
         animationCounter.subscribe(this.animateBar());
+        this.tried_refresh = 0;
+        // this.selectedTransactionRowIndex = 0;
         //this.benefitSource = this.getBenefitSource();
         // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
         // console.log('benefitSource', this.benefitSource.toString());
@@ -97,10 +105,32 @@ export class DetailComponent implements OnInit {
         })(this);
     }
 
-    refreshValues() {
+    refresh() {
+        this.tried_refresh += 1;
         // this.benefitSource = this.getBenefitSource();
         // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
-        console.log('right here!');
+        if (this.tried_refresh % 5 == 0) {
+            this.authenticationService.setSummaryReqAddParms(Math.floor(this.tried_refresh / 5));
+            this.loading = true;
+            console.log('retrying with ', this.currentSummary);
+            this.authenticationService.getDetail(this.currentSummary) // this.currentSummary)
+                .pipe(first())
+                .subscribe(
+                    data => {
+                        console.log(data);
+                        //this.authenticationService.updateSummaryValue(data);
+                        this.loading = false;
+                        //this.selectedTransactionRowIndex = this.currentSummary.req_add_trans;
+                        //this.setStepInApp.emit(3);
+                        //this.router.navigate([this.returnUrl]);
+                    },
+                    error => {
+                        //this.alertService.error(error);
+                        this.loading = false;
+                    });
+            // console.log('right here!');
+        }
+        
     }
 
     

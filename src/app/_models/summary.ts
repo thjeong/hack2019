@@ -47,4 +47,6 @@ export class Summary {
 
     crd_etc_strategy: string;
     hurdle_info_msg: string;
+
+    req_add_trans: number; // 시연용. 오늘 몇개의 거래건이 보일거냐?
 }

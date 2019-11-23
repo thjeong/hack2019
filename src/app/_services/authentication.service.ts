@@ -35,6 +35,10 @@ export class AuthenticationService {
     public updateSummaryValue(summary){
         this.currentSummarySubject.next(summary);
       }
+    
+    public setSummaryReqAddParms(n) {
+        this.currentSummaryValue.req_add_trans = n;
+    }
 
     login(userid: string) { //, password: string) {
         this.host_ip = window.location.origin;
