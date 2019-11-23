@@ -249,7 +249,7 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
     prev_y_df = shcSearchMonthlyBillingDetail('2018')
     input_aprvamt = int(prev_y_df['매출전표금액'][0])
     cardno = prev_y_df['이용카드뒷세자리'][0]
-    prev_y_df = pd.concat([prev_y_df,genSHCBill(userid, input_aprvamt, cardno, '20180101', '20181231')])
+    prev_y_df = pd.concat([prev_y_df, genSHCBill(userid, input_aprvamt, cardno, '20180101', '20181231')])
     prev_y_df['적립예정포인트'] = prev_y_df['매출전표금액'] * prev_y_df['적립예정포인트율']
     prev_y_df['할인금액'] = prev_y_df['매출전표금액'] - prev_y_df['청구원금금액']
     crd_benefit_ratio = int(prev_y_df['적립예정포인트'].sum() + prev_y_df['할인금액'].sum()) / int(prev_y_df['매출전표금액'].sum())

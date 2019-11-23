@@ -99,7 +99,7 @@ def summary_func(userid, total_salary, stt_date='20190101',
                    'house_saving': house_saving, 'householder_tf': 0, 'house_saving_deduce': house_saving_deduce,
                    'my_stock': 0, 'my_stock_deduce': 0, 'etc_deduce': 0}
     total_deduce = 0
-    for i,j in output_dict.items():
+    for i, j in output_dict.items():
         if i.endswith('deduce'):
             total_deduce += j
     output_dict['total_deduce'] = total_deduce
