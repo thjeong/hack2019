@@ -247,6 +247,7 @@ def detail_func(input_json, stt_date='20190101',
             tmp_dict['benefit'] = int(round(row[1]['승인금액']*crd_benefit_ratio))
         else:
             tmp_dict['benefit'] = int(round(row[1]['승인금액'] * deb_cash_benefit_ratio))
+        tmp_dict['id'] = row[1]['승인일시']
         recent_crd_deb_use_list.append(tmp_dict)
     output_dict['recent_crd_deb_use_list'] = recent_crd_deb_use_list
 

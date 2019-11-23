@@ -46,13 +46,13 @@ def genAdditionalSHCTrans(input_aprvamt, cardno, n_of_trans, userid):
     for i in range(n_of_trans):
         random.seed('{}{}'.format(i, userid))
         random_number = random.random()
-        current_time = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+        current_time = datetime.datetime.now().strftime('%Y%m%d') + '{:06d}'.format(i)
         aprvno = '{:08d}'.format(int(random_number*1000000))
         aprvamt = input_aprvamt * int(random_number*10)
         retlno = '{:010d}'.format(int(random_number * 1000000))
         retlname = list_of_mct_nm[int(np.mod(int(random_number * 100), len(list_of_mct_nm)))]
         debit_TF = divmod(int(random_number*10), 2)[1]
-        if debit_TF == 0 : cr_db = '신용'
+        if debit_TF == 0: cr_db = '신용'
         else: cr_db = '체크'
         output_list.append([current_time, aprvno, aprvamt, cardno, retlno, retlname, cr_db])
     output_list.reverse()
