@@ -55,6 +55,7 @@ def genAdditionalSHCTrans(input_aprvamt, cardno, n_of_trans):
         if debit_TF == 0 : cr_db = '신용'
         else: cr_db = '체크'
         output_list.append([current_time, aprvno, aprvamt, cardno, retlno, retlname, cr_db])
+    output_list.reverse()
     output_df = pd.DataFrame(output_list,
                              columns=['승인일시', '승인번호', '승인금액', '카드뒷세자리', '가맹점번호', '가맹점명', '구분'])
     return output_df
