@@ -12,6 +12,7 @@ import { User } from '@/_models';
 export class SalaryComponent implements OnInit {
     salaryForm: FormGroup;
     loading = false;
+    editing = false;
     submitted = false;
     returnUrl: string;
     currentUser: User;
@@ -50,6 +51,11 @@ export class SalaryComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.salaryForm.controls; }
 
+    setEditing(on_edit) {
+        //console.log('setediting', on_edit);
+        this.editing = on_edit; //!this.editing;
+    }
+    
     onSubmit() {
         this.submitted = true;
 
