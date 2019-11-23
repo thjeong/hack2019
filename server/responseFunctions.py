@@ -229,7 +229,7 @@ def detail_func(input_json, stt_date='20190101',
     card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시', ascending=False).reset_index(drop=True)
 
     if input_dict.get('req_add_trans') != None:
-        add_trans_df = genAdditionalSHCTrans(input_aprvamt, cardno, input_dict.get('req_add_trans'))
+        add_trans_df = genAdditionalSHCTrans(input_aprvamt, cardno, input_dict.get('req_add_trans'), userid)
         card_df = pd.concat([add_trans_df, card_df])
 
     # 공제대상 제외 혹은 별도한도 운영되는 거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)

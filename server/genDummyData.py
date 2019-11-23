@@ -31,7 +31,7 @@ def genSHBAccountTrans(seed, amt=5000, max_n_of_trans_digit = 2):
         output_list.append([str(inout_idx), in_amt, out_amt, text_data,''])
     return pd.DataFrame(output_list,columns=['입지구분','입금','출금','적요','거래점'])
 
-def genAdditionalSHCTrans(input_aprvamt, cardno, n_of_trans):
+def genAdditionalSHCTrans(input_aprvamt, cardno, n_of_trans, userid):
     """
 
     :param seed:
@@ -44,7 +44,7 @@ def genAdditionalSHCTrans(input_aprvamt, cardno, n_of_trans):
                       '호반집', '주식회사스타필드하남', '남해바다', '알촌한양대점', '라화쿵부명동2호점']
     output_list = []
     for i in range(n_of_trans):
-        random.seed(i)
+        random.seed('{}{}'.format(i, userid))
         random_number = random.random()
         current_time = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
         aprvno = '{:08d}'.format(int(random_number*1000000))
