@@ -44,4 +44,7 @@ export class Summary {
     trad_market_benefit : number; //전통시장 절세금액(1만원당)
 
     recent_crd_deb_use_list: [];
+
+    crd_etc_strategy: string;
+    hurdle_info_msg: string;
 }
