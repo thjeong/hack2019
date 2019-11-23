@@ -40,6 +40,11 @@ export class AuthenticationService {
         this.currentSummaryValue.req_add_trans = n;
     }
 
+    public setSummaryTriedRefresh(n) {
+        this.currentSummaryValue.tried_refresh = n;
+        //console.log('setSummaryTriedRefresh', this.currentSummaryValue);
+    }
+
     login(userid: string) { //, password: string) {
         this.host_ip = window.location.origin;
         console.log('login to '+ this.host_ip);

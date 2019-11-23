@@ -89,6 +89,8 @@ export class SummaryComponent implements OnInit {
                     console.log(data);
                     //this.authenticationService.updateSummaryValue(data);
                     this.loading = false;
+                    this.authenticationService.setSummaryReqAddParms(0);
+                    this.authenticationService.setSummaryTriedRefresh(0);
                     this.setStepInApp.emit(3);
                     //this.router.navigate([this.returnUrl]);
                 },

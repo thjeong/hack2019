@@ -50,7 +50,7 @@
 <div *ngFor="let use_item of currentSummary.recent_crd_deb_use_list">
   <div style="flex: 2;height: 30px;background-color: lightgray;">
     <div style='float: left;'>{{use_item.apv_d}}</div>
-    <div *ngIf="use_item.new_trans_TF == 1" style='color:brown'>방금 전</div>
+    <div *ngIf="use_item.new_trans_TF == 1" style='font-size:13px; text-align:right; color:brown'>방금 전</div>
   </div>
   <div class="box-container" style="display: flex;flex-wrap: wrap;flex-direction: row;">
       <div style="flex: 1;">{{use_item.mct_nm}}</div>
@@ -60,7 +60,7 @@
     <div style="flex: 1;font-size: 13px;">{{use_item.crd_tcd}}</div>
     <div style="flex: 1;text-align: right;">
       <div style="float: left; font-size: 13px;">혜택금액</div>
-      <div style='font-size: 13px;'>{{use_item.benefit | number:0}} 원</div>
+      <div>{{use_item.benefit | number:0}} 원</div>
     </div>
   </div>
 </div>

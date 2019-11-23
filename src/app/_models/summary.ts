@@ -49,4 +49,5 @@ export class Summary {
     hurdle_info_msg: string;
 
     req_add_trans: number; // 시연용. 오늘 몇개의 거래건이 보일거냐?
+    tried_refresh: number; // 몇번 시도했냐 시연시.
 }

@@ -36,7 +36,7 @@ export class DetailComponent implements OnInit {
     progressBar: number[] = [0,500,0,500];
     div1: number;
     div2: number;
-    tried_refresh = 0;
+    //tried_refresh = 0;
     // selectedTransactionRowIndex: number;
 
     // highlight(row){
@@ -64,7 +64,8 @@ export class DetailComponent implements OnInit {
     ngOnInit() {
         const animationCounter = interval(50);
         animationCounter.subscribe(this.animateBar());
-        this.tried_refresh = 0;
+        this.authenticationService.setSummaryTriedRefresh(0);
+        //this.tried_refresh = 0;
         // this.selectedTransactionRowIndex = 0;
         //this.benefitSource = this.getBenefitSource();
         // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
@@ -111,18 +112,18 @@ export class DetailComponent implements OnInit {
     }
 
     refresh() {
-        this.tried_refresh += 1;
+        this.authenticationService.setSummaryTriedRefresh(this.currentSummary.tried_refresh + 1);
         // this.benefitSource = this.getBenefitSource();
         // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
-        if (this.tried_refresh % 5 == 0) {
-            this.authenticationService.setSummaryReqAddParms(Math.floor(this.tried_refresh / 5));
+        if (this.currentSummary.tried_refresh % 5 == 0) {
+            this.authenticationService.setSummaryReqAddParms(Math.floor(this.currentSummary.tried_refresh / 5));
             this.loading = true;
-            console.log('retrying with ', this.currentSummary);
+            console.log('retrying in refresh ', this.currentSummary);
             this.authenticationService.getDetail(this.currentSummary) // this.currentSummary)
                 .pipe(first())
                 .subscribe(
                     data => {
-                        console.log(data);
+                        console.log('return in refresh', data);
                         //this.authenticationService.updateSummaryValue(data);
                         this.loading = false;
                         //this.selectedTransactionRowIndex = this.currentSummary.req_add_trans;
