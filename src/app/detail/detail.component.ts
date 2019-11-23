@@ -72,7 +72,7 @@ export class DetailComponent implements OnInit {
                     self.div1 = Math.round(Math.min(self.currentSummary.crd_etc_use_amt / self.currentSummary.crd_etc_deduce_hurdle, 1) * 50);
                     self.div2 = Math.round(Math.min(self.currentSummary.crd_etc_deduce / self.currentSummary.crd_etc_deduction_limit, 1) * 50);
 
-                    console.log('divs, progressbars', [self.div1, self.div2], self.progressBar);
+                    //console.log('divs, progressbars', [self.div1, self.div2], self.progressBar);
                     
                     if (self.progressBar[2] > 0) {
                         if (self.div2 > self.progressBar[2]) {
