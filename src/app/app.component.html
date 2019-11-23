@@ -54,7 +54,7 @@
   </mat-expansion-panel-header>
   <summary-cmp *ngIf="currentSummary" (setStepInApp)="setStep($event)"></summary-cmp>
 </mat-expansion-panel>
-<mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3);" hideToggle>
+<mat-expansion-panel id='detailPanel' [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
   <mat-expansion-panel-header class="right-aligned-header">
     <mat-panel-title>
       소득공제 전략

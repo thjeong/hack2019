@@ -41,7 +41,7 @@ export class DetailComponent implements OnInit {
 
     // highlight(row){
     //     console.log('highlight', row);
-    //     this.selectedRowIndex = row;
+    //     this.selectedRowIndex = row;`1
     // }
 
     @Input() benefitSource = [
@@ -72,6 +72,11 @@ export class DetailComponent implements OnInit {
         // console.log('transactionSource', this.transactionSource.toString());
 
     }
+
+    // ngAfterViewInit() {
+    //     let el = document.getElementById('detailPanel');
+    //     el.scrollIntoView();
+    //   }
 
     animateBar() {
         return (function(self) {

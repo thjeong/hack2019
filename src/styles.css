@@ -3,6 +3,10 @@
   background-color: beige;
 } */
 
+.h5 {
+  margin-top: 20px;
+}
+
 .mat-expansion-panel-header-description {
     display: flex;
     justify-content: flex-end;

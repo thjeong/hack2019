@@ -68,7 +68,7 @@
 
   <ng-container matColumnDef="benefit">
     <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>
-    <mat-cell *matCellDef="let element"> <div><div>{{element.benefit}}</div><div style="font-size:12px;font-weight: bold;">({{(element.benefit / element.apv_amt * 100) | number:'0.0-1'}} %)</div></div></mat-cell>
+    <mat-cell *matCellDef="let element"> <div><div>{{element.benefit | number:0}}</div><div style="font-size:12px;font-weight: bold;">({{(element.benefit / element.apv_amt * 100) | number:'0.0-1'}} %)</div></div></mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="cardTransactionColumns"></mat-header-row>
