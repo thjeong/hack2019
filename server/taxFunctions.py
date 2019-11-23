@@ -246,14 +246,26 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
     """
     # 전년도 신용카드 이용/청구내역 집계해서 신용카드 이용혜택율 계산
     # 전년도 청구상세내역 API 호출 & 가라데이터 만들어 붙이기 & 이용금액과 청구금액의 차이, 적립예정포인트율로 카드혜택크기 계산
-    prev_y_df = shcSearchMonthlyBillingDetail('2018')
+    firs_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '0101'
+    last_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '12311'
+    prev_y_df = shcSearchMonthlyBillingDetail(firs_day_last_year[0:4])
     input_aprvamt = int(prev_y_df['매출전표금액'][0])
     cardno = prev_y_df['이용카드뒷세자리'][0]
-    prev_y_df = pd.concat([prev_y_df, genSHCBill(userid, input_aprvamt, cardno, '20180101', '20181231')])
+    prev_y_df = genSHCBill(userid, input_aprvamt, cardno, firs_day_last_year, last_day_last_year)
     prev_y_df['적립예정포인트'] = prev_y_df['매출전표금액'] * prev_y_df['적립예정포인트율']
     prev_y_df['할인금액'] = prev_y_df['매출전표금액'] - prev_y_df['청구원금금액']
     crd_benefit_ratio = int(prev_y_df['적립예정포인트'].sum() + prev_y_df['할인금액'].sum()) / int(prev_y_df['매출전표금액'].sum())
     crd_benefit = unit_amt * crd_benefit_ratio
+
+    # 전년도 체크카드 이용/청구내역 집계해서 신용카드 이용혜택율 계산
+    # 가라데이터 만들어 붙이기 & 이용금액과 청구금액의 차이, 적립예정포인트율로 카드혜택크기 계산
+    firs_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '0101'
+    last_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '12311'
+    prev_y_debit_df = genSHCBill(userid, input_aprvamt, cardno, firs_day_last_year, last_day_last_year, debit_TF=1)
+    prev_y_debit_df['적립예정포인트'] = prev_y_debit_df['매출전표금액'] * prev_y_debit_df['적립예정포인트율']
+    prev_y_debit_df['할인금액'] = prev_y_debit_df['매출전표금액'] - prev_y_debit_df['청구원금금액']
+    deb_benefit_ratio = int(prev_y_debit_df['적립예정포인트'].sum() + prev_y_debit_df['할인금액'].sum()) / int(prev_y_debit_df['매출전표금액'].sum())
+    deb_benefit = unit_amt * deb_benefit_ratio
 
     # max_ratio와 현재기준 신용/체크/현금 이용금액으로 절세혜택 계산
     # 합계가 25%를 못넘은 경우
@@ -275,7 +287,7 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
         cash_deb_tax_benefit = unit_amt * 0.3 * max_ratio
 
     return int(crd_tax_benefit), int(cash_deb_tax_benefit), int(crd_benefit), crd_benefit_ratio, \
-           int(crd_tax_benefit+crd_benefit)
+           int(crd_tax_benefit+crd_benefit), int(deb_benefit), deb_benefit_ratio, int(cash_deb_tax_benefit+deb_benefit)
 
 def getInsertComma(num):
     a = list(str(num))

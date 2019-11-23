@@ -203,6 +203,10 @@ def detail_func(input_json, stt_date='20190101',
     output_dict['crd_benefit'] = result[2]
     output_dict['crd_benefit_ratio'] = result[3]
     output_dict['crd_benefit_sum'] = result[4]
+    output_dict['deb_benefit'] = result[5]
+    output_dict['deb_benefit_ratio'] = result[6]
+    output_dict['deb_cash_benefit_sum'] = result[7]
+
     # 카드이용전략메세지 만들기
     if hurdle_ramains > 0:
         crd_etc_strategy = '각종 혜택이 많은 신용카드로 소득공제 문턱을 넘어보세요!'
@@ -210,11 +214,11 @@ def detail_func(input_json, stt_date='20190101',
     elif crd_etc_deduce >= crd_etc_deduction_limit: # 소득공제금액이 소득공제 한도를 넘었을 때
         crd_etc_strategy = '각종 혜택이 많은 신용카드를 사용하시는 게 좋습니다.'
         hurdle_info_msg = '신용체크현금 항목의 소득공제 금액이 이미 한도({}원)를 채웠습니다.'.format(getInsertComma(int(crd_etc_deduction_limit)))
-    elif output_dict['crd_benefit_sum'] >= output_dict['deb_cash_tax_benefit']: # 신용카드혜택 > 체크현금혜택
+    elif output_dict['crd_benefit_sum'] >= output_dict['deb_cash_benefit_sum']: # 신용카드혜택 > 체크현금혜택
         crd_etc_strategy = '신용카드와 체크/현금 중, 기대 혜택이 더 큰 신용카드를 이용 하시면 좋습니다!'
         hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)을 넘었습니다!'
     else:
-        crd_etc_strategy = '신용카드와 체크/현금 중, 기대 혜택이 더 큰 체크카드/현금을 이용하시면 좋습니다!'
+        crd_etc_strategy = '신용카드와 체크/현금 중, 기대 혜택이 더 큰 체크카드를 이용하시면 좋습니다!'
         hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)을 넘었습니다!'
     output_dict['crd_etc_strategy'] = crd_etc_strategy
     output_dict['hurdle_info_msg'] = hurdle_info_msg
