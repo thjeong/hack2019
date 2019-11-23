@@ -70,7 +70,7 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     dummy1, dummy2, dummy3 = getCreditCrdEtcDeduction(crd_card_use, deb_card_use, 0, trad_market_use, public_trans_use,
                                                       book_use, total_salary)
     # 주택청약저축
-    # 고객 계좌리스트 API 호출 & 계좌리스트로 예적금 API호출(주택청약저축 금액) & 가라데이터 만들어 붙이기
+    # 고객 계좌리스트 API호출 & 계좌리스트로 예적금 API호출(주택청약저축 금액) & 가라데이터 만들어 붙이기
     account_no_list = shbAccountList(userid)
     house_saving = shbDepositInstallmentDetail(account_no_list, stt_date, end_date)
     house_saving += genSHBhousesaving(userid)
@@ -201,9 +201,15 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
         crd_etc_strategy = '신용체크현금 항목의 소득공제 금액이 이미 한도({}원)를 다 채웠습니다! ' \
                            '각종 혜택이 많은 신용카드를 사용하시는 게 좋습니다.'.format(getInsertComma(int(crd_etc_deduction_limit)))
     elif output_dict['crd_benefit_sum'] >= output_dict['deb_cash_tax_benefit']: #신용카드혜택 > 체크현금혜택
-        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 신용카드를 이용하시면 좋습니다!'
+        crd_etc_strategy = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱({}원)은 넘었습니다! 지금 사용하시는 금액은 ' \
+                           '일정비율(이용금액 x 공제비율 15~30% x 현재 적용세율 {}%)만큼 절세 혜택으로 돌아갑니다. 신용카드와 ' \
+                           '체크/현금을 이용했을 때 기대 혜택이 더 큰 신용카드를 ' \
+                           '이용하시면 좋습니다!'.format(getInsertComma(int(hurdle)), int(max_ratio*100))
     else:
-        crd_etc_strategy = '신용카드와 체크/현금을 이용했을 때 혜택을 비교하세요! 혜택이 더 큰 체크카드나 현금을 이용하시면 좋습니다!'
+        crd_etc_strategy = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱({}원)은 넘었습니다! 지금 사용하시는 금액은 ' \
+                           '일정비율(이용금액 x 공제비율 15~30% x 현재 적용세율 {}%)만큼 절세 혜택으로 돌아갑니다. 신용카드와 ' \
+                           '체크/현금을 이용했을 때 기대 혜택이 더 큰 체크카드/현금을 ' \
+                           '이용하시면 좋습니다!'.format(getInsertComma(int(hurdle)), int(max_ratio*100))
     output_dict['crd_etc_strategy'] = crd_etc_strategy
     # 최근 신용, 체크 카드이용내역 만들기
     crd_card_df = shcSearchUseforDomestic(stt_date, end_date, 0)
