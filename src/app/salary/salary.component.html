@@ -1,15 +1,38 @@
-<form [formGroup]="salaryForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label style="color:darkviolet" for="total_salary">총급여</label>
-        <input placeholder=""  type="text" formControlName="total_salary" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.total_salary.errors }" />
+<div (click)="editing = false; $event.stopPropagation();" style="
+    text-align: center;
+    height: 360px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+"><p style="
+    text-size: 10px;
+    width: 100%;
+    margin-top: 60px;
+"><img src="https://cdn3.iconfinder.com/data/icons/sustainable-development-volume-4/500/Wages_and_Salaries-512.png" width="60px" height="60px"></p><div style="
+    font-size: 14px;
+">
+작년 은행 입금내역에서<br>
+총급여를 가져왔습니다
+<div>
+<img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+</div>
+<div (click)='editing = true; $event.stopPropagation();' [hidden]='editing' style='font-size: 30px;'>
+    {{currentUser.total_salary | number:0}}
+</div>
+</div>
+<form [formGroup]="salaryForm" (ngSubmit)="onSubmit();">
+    <div class="form-group" [hidden]='!editing'>
+        <label style="color:darkviolet" for="total_salary">수정이 필요한 경우 수정해 주세요</label>
+        <input (click)="$event.stopPropagation();" placeholder=""  type="text" formControlName="total_salary" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.total_salary.errors }" />
         <div *ngIf="submitted && f.total_salary.errors" class="invalid-feedback">
             <div *ngIf="f.total_salary.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary" style="float: left; margin-right: 10px;">총급여 저장하기</button>
-        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <button [disabled]="loading" (click)="$event.stopPropagation();" class="btn btn-primary" style="margin-top: 20px;">총급여 저장하기</button>
+        
         <!-- <a routerLink="/register" class="btn btn-link">Register</a> -->
         
     </div>
 </form>
+    </div>
