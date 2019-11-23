@@ -108,3 +108,33 @@ def shcSearchUseforDomestic(stt_date, end_date, debitTF):
         output_list.append([aprvtime,aprvno,aprvamt,cardno,retlno,retlname])
     output_df = pd.DataFrame(output_list, columns=['승인일시','승인번호','승인금액','카드뒷세자리','가맹점번호','가맹점명'])
     return output_df
+
+def shcSearchMonthlyBillingDetail(year='2018'):
+    """
+    전년도 청구내역 호출 & 집계
+    :param year:
+    :return:
+    """
+    uri = '/v1/usecreditcard/searchmonthlybillingdetail'
+    data = {"dataHeader": {},"dataBody":{"nxtQyKey":"","setlDay":year,"setlTypeNo":"0002"}}
+    res = requests.post(shcIP + uri, data=json.dumps(data))
+    databody = res.json()['dataBody']['grp001']
+    output_list = []
+    for i in databody:
+        useCrdC = i.get('useCrdC') # 카드번호뒷세자리
+        if useCrdC is None: useCrdC = '000'
+        else: useCrdC = useCrdC[-3:]
+        useMchtNm = i.get('useMchtNm') # 가맹점명
+        svePntRt = int(i.get('svePntRt'))/1000 # 적립예정포인트율
+        useAmt1 = i.get('useAmt1') # 청구금액
+        if useAmt1 is None: useAmt1 = 5000
+        else: useAmt1 = int(useAmt1)
+        slsAmt = i.get('slsAmt')  # 매출금액
+        if slsAmt is None:
+            slsAmt = useAmt1
+        else:
+            slsAmt = int(slsAmt)
+        useD = i.get('useD') # 매출일자
+        output_list.append([slsAmt, useCrdC, useMchtNm, svePntRt, useAmt1, useD])
+    output_df = pd.DataFrame(output_list, columns=['매출전표금액', '이용카드뒷세자리', '이용가맹점명', '적립예정포인트율', '청구원금금액', '매출일자'])
+    return output_df

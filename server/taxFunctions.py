@@ -1,5 +1,7 @@
 # 세후 급여액으로 (세전)총급여액 계산
 from server.genDummyData import genSHCBill
+from server.api_request import shcSearchMonthlyBillingDetail
+import pandas as pd
 import datetime
 
 def simple_tax_calc(net_income, table_file_dir):
@@ -243,10 +245,11 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
               신용카드혜택합계, 체크/현금 혜택합계,
     """
     # 전년도 신용카드 이용/청구내역 집계해서 신용카드 이용혜택율 계산
-    # TODO: 전년도 신용카드 청구내역 api 호출 & parsing module
-    input_aprvamt = 5000
-    cardno='123'
-    prev_y_df = genSHCBill(userid, input_aprvamt, cardno, '20180101', '20181231')
+    # 전년도 청구상세내역 API 호출 & 가라데이터 만들어 붙이기 & 이용금액과 청구금액의 차이, 적립예정포인트율로 카드혜택크기 계산
+    prev_y_df = shcSearchMonthlyBillingDetail('2018')
+    input_aprvamt = int(prev_y_df['매출전표금액'][0])
+    cardno = prev_y_df['이용카드뒷세자리'][0]
+    prev_y_df = pd.concat([prev_y_df,genSHCBill(userid, input_aprvamt, cardno, '20180101', '20181231')])
     prev_y_df['적립예정포인트'] = prev_y_df['매출전표금액'] * prev_y_df['적립예정포인트율']
     prev_y_df['할인금액'] = prev_y_df['매출전표금액'] - prev_y_df['청구원금금액']
     crd_benefit_ratio = int(prev_y_df['적립예정포인트'].sum() + prev_y_df['할인금액'].sum()) / int(prev_y_df['매출전표금액'].sum())

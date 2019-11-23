@@ -112,7 +112,7 @@ def genSHCBill(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_d
     df['적립예정포인트율'] = 0.001 * int(random_number * 10 + 1)
     df['청구원금금액'] = (df['승인금액'] * (1-df['적립예정포인트율']*1.2)).astype(int)
     df['매출일자'] = df['승인일시'].str[:8]
-    del df['승인일시'], df['가맹점번호']
+    del df['승인일시'], df['가맹점번호'], df['승인번호']
     df.rename(columns={'승인금액': '매출전표금액', '가맹점명': '이용가맹점명', '카드뒷세자리': '이용카드뒷세자리'}, inplace=True)
     return df
 
