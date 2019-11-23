@@ -2,6 +2,7 @@ import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { interval } from 'rxjs';
 
 import { Summary } from '@/_models/summary';
 import { AlertService, AuthenticationService } from '@/_services';
@@ -32,6 +33,10 @@ export class DetailComponent implements OnInit {
     //benefitSource: BenefitElement[]
     // transactionSource: TransactionElement[]
     currentSummary:Summary;
+    progressBar: number[] = [0,50,0,50];
+    div1: number;
+    div2: number;
+
 
     @Input() benefitSource = [
         // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
@@ -51,10 +56,45 @@ export class DetailComponent implements OnInit {
     }
 
     ngOnInit() {
+        const animationCounter = interval(50);
+        animationCounter.subscribe(this.animateBar());
         //this.benefitSource = this.getBenefitSource();
         // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
         // console.log('benefitSource', this.benefitSource.toString());
         // console.log('transactionSource', this.transactionSource.toString());
+
+    }
+
+    animateBar() {
+        return (function(self) {
+            return function() {
+                if (self.currentSummary) {
+                    self.div1 = Math.round(Math.min(self.currentSummary.crd_etc_use_amt / self.currentSummary.crd_etc_deduce_hurdle, 1) * 50);
+                    self.div2 = Math.round(Math.min(self.currentSummary.crd_etc_deduce / self.currentSummary.crd_etc_deduction_limit, 1) * 50);
+
+                    console.log('divs, progressbars', [self.div1, self.div2], self.progressBar);
+                    
+                    if (self.progressBar[2] > 0) {
+                        if (self.div2 > self.progressBar[2]) {
+                            self.progressBar[2] += 1;
+                        } else if (self.div2 < self.progressBar[2]) {
+                            self.progressBar[2] -= 1;
+                        }
+                    } else if (self.progressBar[2] == 0) {
+                        if (self.div1 > self.progressBar[0]) {
+                            self.progressBar[0] += 1;
+                        } else if (self.div1 < self.progressBar[0]) {
+                            self.progressBar[0] -= 1;
+                        } else if (self.div2 > self.progressBar[2]) {
+                            self.progressBar[2] += 1;
+                        }
+                    }
+
+                    self.progressBar[1] = 50 - self.progressBar[0];
+                    self.progressBar[3] = 50 - self.progressBar[2];
+                }
+            }
+        })(this);
     }
 
     refreshValues() {

@@ -1,5 +1,18 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/_components/alert.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/_components/alert.component.html ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"message\" [ngClass]=\"{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }\">{{message.text}}</div>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html":
 /*!**************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
@@ -22,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h5><img src=\"https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif\" width=\"40\" height=\"30\"><b>기대혜택 (원/만원)</b></h5>\r\n<mat-table [dataSource]=\"benefitSource\" class=\"mat-elevation-z8\">\r\n  <!-- Type Column -->\r\n  <ng-container matColumnDef=\"type\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.type}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> <span style='color:brown'><b>최종혜택</b></span> </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Credit card Column -->\r\n  <ng-container matColumnDef=\"credit\">\r\n    <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.credit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Debit card Column -->\r\n  <ng-container matColumnDef=\"debit\">\r\n    <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.debit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"benefitPer10kColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: benefitPer10kColumns;\"></mat-row>\r\n  <mat-footer-row *matFooterRowDef=\"benefitPer10kColumns\"></mat-footer-row>\r\n</mat-table>\r\n<div>\r\n  <div>{{currentSummary.crd_etc_strategy}}</div>\r\n</div>\r\n<h5><img src=\"https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png\" width=\"40\" height=\"40\">받은 혜택 (최근 5건)</h5>\r\n<mat-table [dataSource]=\"transactionSource\" class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"apv_d\">\r\n    <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_d}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"crd_tcd\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.crd_tcd}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"apv_amt\">\r\n    <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_amt}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"mct_nm\">\r\n    <mat-header-cell *matHeaderCellDef> 가맹점 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.mct_nm}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"benefit\">\r\n    <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.benefit}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"cardTransactionColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: cardTransactionColumns;\"></mat-row>\r\n</mat-table>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h5><img src=\"https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif\" width=\"40\" height=\"30\"><b>기대혜택 (원/만원)</b></h5>\r\n<mat-table [dataSource]=\"benefitSource\" class=\"mat-elevation-z8\">\r\n  <!-- Type Column -->\r\n  <ng-container matColumnDef=\"type\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.type}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> <span style='color:brown'><b>최종혜택</b></span> </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Credit card Column -->\r\n  <ng-container matColumnDef=\"credit\">\r\n    <mat-header-cell *matHeaderCellDef> 신용 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.credit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.crd_benefit_sum}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <!-- Debit card Column -->\r\n  <ng-container matColumnDef=\"debit\">\r\n    <mat-header-cell *matHeaderCellDef> 체크 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.debit}} </mat-cell>\r\n    <mat-footer-cell *matFooterCellDef> {{currentSummary.deb_cash_tax_benefit}} </mat-footer-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"benefitPer10kColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: benefitPer10kColumns;\"></mat-row>\r\n  <mat-footer-row *matFooterRowDef=\"benefitPer10kColumns\"></mat-footer-row>\r\n</mat-table>\r\n<div>\r\n  <div>{{currentSummary.crd_etc_strategy}}</div>\r\n</div>\r\n\r\n<div fxLayout=\"row\" fxLayoutGap=\"3px\" style=\"width: 100%\">\r\n  <div [fxFlex]=\"progressBar[0]\" class=\"div1\"></div>\r\n  <div [fxFlex]=\"progressBar[1]\" class=\"div2\"></div>\r\n  <div [fxFlex]=\"progressBar[2]\" class=\"div3\"></div>\r\n  <div [fxFlex]=\"progressBar[3]\" class=\"div4\"></div>\r\n</div>\r\n\r\n<h5><img src=\"https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png\" width=\"40\" height=\"40\">받은 혜택 (최근 5건)</h5>\r\n<mat-table [dataSource]=\"transactionSource\" class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"apv_d\">\r\n    <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_d}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"crd_tcd\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.crd_tcd}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"apv_amt\">\r\n    <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_amt}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"mct_nm\">\r\n    <mat-header-cell *matHeaderCellDef> 가맹점 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.mct_nm}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"benefit\">\r\n    <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.benefit}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"cardTransactionColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: cardTransactionColumns;\"></mat-row>\r\n</mat-table>");
 
 /***/ }),
 
@@ -61,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"summaryForm\" (ngSubmit)=\"onSubmit()\" *ngIf=\"currentSummary\">\r\n    <div class=\"form-group\">\r\n        <label for=\"earned_income_deduce\">근로소득공제</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"earned_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.earned_income_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.earned_income_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.earned_income_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"personal_allowance_deduce\">인적공제</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"personal_allowance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.personal_allowance_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.personal_allowance_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.personal_allowance_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"pension_insurance_deduce\">연금보험료공제</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"pension_insurance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.pension_insurance_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.pension_insurance_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"spec_income_deduce\">특별소득공제</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"spec_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.spec_income_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.spec_income_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.spec_income_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"crd_card_use\">신용카드</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"crd_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.crd_card_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.crd_card_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.crd_card_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"deb_card_use\">체크카드</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"deb_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.deb_card_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.deb_card_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.deb_card_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"cash_use\">현금영수증</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"cash_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.cash_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.cash_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.cash_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"public_trans_use\">대중교통</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"public_trans_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.public_trans_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.public_trans_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.public_trans_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"trad_market_use\">전통시장</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"trad_market_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.trad_market_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.trad_market_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.trad_market_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"book_use\">도서/공연</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"book_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.book_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.book_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.book_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"house_saving\">주택청약저축</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"house_saving\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.house_saving.errors }\" />\r\n        <div *ngIf=\"submitted && f.house_saving.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.house_saving.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"my_stock\">우리사주조합 출연금</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"my_stock\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.my_stock.errors }\" />\r\n        <div *ngIf=\"submitted && f.my_stock.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.my_stock.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"etc_deduce\">기타</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"etc_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.etc_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.etc_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.etc_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">수정 완료하기</button>\r\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\r\n        \r\n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\r\n        \r\n    </div>\r\n</form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"summaryForm\" (ngSubmit)=\"onSubmit()\" *ngIf=\"currentSummary\">\r\n    <div class=\"form-group\">\r\n        <label for=\"earned_income_deduce\">근로소득공제</label>\r\n        <input placeholder=\"\" type=\"number\" formControlName=\"earned_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.earned_income_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.earned_income_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.earned_income_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"personal_allowance_deduce\">인적공제</label>\r\n        <input placeholder=\"\" type=\"number\" formControlName=\"personal_allowance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.personal_allowance_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.personal_allowance_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.personal_allowance_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"pension_insurance_deduce\">연금보험료공제</label>\r\n        <input placeholder=\"\" type=\"number\" formControlName=\"pension_insurance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.pension_insurance_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.pension_insurance_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"spec_income_deduce\">특별소득공제</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"spec_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.spec_income_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.spec_income_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.spec_income_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"crd_card_use\">신용카드</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"crd_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.crd_card_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.crd_card_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.crd_card_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"deb_card_use\">체크카드</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"deb_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.deb_card_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.deb_card_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.deb_card_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"cash_use\">현금영수증</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"cash_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.cash_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.cash_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.cash_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"public_trans_use\">대중교통</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"public_trans_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.public_trans_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.public_trans_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.public_trans_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"trad_market_use\">전통시장</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"trad_market_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.trad_market_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.trad_market_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.trad_market_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"book_use\">도서/공연</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"book_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.book_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.book_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.book_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"house_saving\">주택청약저축</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"house_saving\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.house_saving.errors }\" />\r\n        <div *ngIf=\"submitted && f.house_saving.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.house_saving.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"my_stock\">우리사주조합 출연금</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"my_stock\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.my_stock.errors }\" />\r\n        <div *ngIf=\"submitted && f.my_stock.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.my_stock.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"etc_deduce\">기타</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"etc_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.etc_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.etc_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.etc_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">수정 완료하기</button>\r\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\r\n        \r\n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\r\n        \r\n    </div>\r\n</form>");
 
 /***/ }),
 
@@ -3764,6 +3777,71 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/_components/alert.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/_components/alert.component.ts ***!
+  \************************************************/
+/*! exports provided: AlertComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertComponent", function() { return AlertComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+
+
+
+var AlertComponent = /** @class */ (function () {
+    function AlertComponent(alertService) {
+        this.alertService = alertService;
+    }
+    AlertComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.subscription = this.alertService.getMessage().subscribe(function (message) {
+            _this.message = message;
+        });
+    };
+    AlertComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    AlertComponent.ctorParameters = function () { return [
+        { type: _services__WEBPACK_IMPORTED_MODULE_2__["AlertService"] }
+    ]; };
+    AlertComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'alert',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./alert.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/_components/alert.component.html")).default
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_2__["AlertService"]])
+    ], AlertComponent);
+    return AlertComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_components/index.ts":
+/*!**************************************!*\
+  !*** ./src/app/_components/index.ts ***!
+  \**************************************/
+/*! exports provided: AlertComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _alert_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alert.component */ "./src/app/_components/alert.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AlertComponent", function() { return _alert_component__WEBPACK_IMPORTED_MODULE_1__["AlertComponent"]; });
+
+
+
+
+
+/***/ }),
+
 /***/ "./src/app/_services/alert.service.ts":
 /*!********************************************!*\
   !*** ./src/app/_services/alert.service.ts ***!
@@ -4091,16 +4169,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/esm5/core.es5.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _salary_salary_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./salary/salary.component */ "./src/app/salary/salary.component.ts");
-/* harmony import */ var _summary_summary_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./summary/summary.component */ "./src/app/summary/summary.component.ts");
-/* harmony import */ var _detail_detail_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./detail/detail.component */ "./src/app/detail/detail.component.ts");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./_components */ "./src/app/_components/index.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _salary_salary_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./salary/salary.component */ "./src/app/salary/salary.component.ts");
+/* harmony import */ var _summary_summary_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./summary/summary.component */ "./src/app/summary/summary.component.ts");
+/* harmony import */ var _detail_detail_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./detail/detail.component */ "./src/app/detail/detail.component.ts");
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+
+
 
 
 
@@ -4124,11 +4206,12 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_13__["LoginComponent"],
-                _salary_salary_component__WEBPACK_IMPORTED_MODULE_14__["SalaryComponent"],
-                _summary_summary_component__WEBPACK_IMPORTED_MODULE_15__["SummaryComponent"],
-                _detail_detail_component__WEBPACK_IMPORTED_MODULE_16__["DetailComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+                _components__WEBPACK_IMPORTED_MODULE_7__["AlertComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"],
+                _salary_salary_component__WEBPACK_IMPORTED_MODULE_15__["SalaryComponent"],
+                _summary_summary_component__WEBPACK_IMPORTED_MODULE_16__["SummaryComponent"],
+                _detail_detail_component__WEBPACK_IMPORTED_MODULE_17__["DetailComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"],
@@ -4137,14 +4220,15 @@ var AppModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"],
                 _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatNativeDateModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
-                _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatInputModule"],
-                _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"],
-                _angular_material_table__WEBPACK_IMPORTED_MODULE_12__["MatTableModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]
+                _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__["MatExpansionModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatInputModule"],
+                _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButtonModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_13__["MatTableModule"],
+                _angular_flex_layout__WEBPACK_IMPORTED_MODULE_18__["FlexLayoutModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -4163,7 +4247,7 @@ var AppModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".mat-table {\r\n    overflow: auto;\r\n    max-height: 700px;\r\n    font-size: 14px;\r\n  }\r\n\r\n.mat-header-row {\r\n    background-color: #3897f0;\r\n  }\r\n\r\n.mat-footer-row {\r\n  background-color:#EDF1F5;  \r\n}\r\n\r\n.mat-row:nth-child(even){\r\n  background-color:#EDF1F5;\r\n}\r\n\r\n.mat-row:nth-child(odd){\r\n  background-color:#FDFDFB;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLGlCQUFpQjtJQUNqQixlQUFlO0VBQ2pCOztBQUVGO0lBQ0kseUJBQXlCO0VBQzNCOztBQUVGO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hdC10YWJsZSB7XHJcbiAgICBvdmVyZmxvdzogYXV0bztcclxuICAgIG1heC1oZWlnaHQ6IDcwMHB4O1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gIH1cclxuXHJcbi5tYXQtaGVhZGVyLXJvdyB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzg5N2YwO1xyXG4gIH1cclxuXHJcbi5tYXQtZm9vdGVyLXJvdyB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjojRURGMUY1OyAgXHJcbn1cclxuXHJcbi5tYXQtcm93Om50aC1jaGlsZChldmVuKXtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiNFREYxRjU7XHJcbn1cclxuXHJcbi5tYXQtcm93Om50aC1jaGlsZChvZGQpe1xyXG4gIGJhY2tncm91bmQtY29sb3I6I0ZERkRGQjtcclxufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".mat-table {\r\n    overflow: auto;\r\n    max-height: 700px;\r\n    font-size: 14px;\r\n  }\r\n\r\n.mat-header-row {\r\n    background-color: #3897f0;\r\n  }\r\n\r\n.mat-footer-row {\r\n  background-color:#EDF1F5;  \r\n}\r\n\r\n.mat-row:nth-child(even){\r\n  background-color:#EDF1F5;\r\n}\r\n\r\n.mat-row:nth-child(odd){\r\n  background-color:#FDFDFB;\r\n}\r\n\r\n.div1 {\r\n    height: 15px;\r\n    background-color: blue;\r\n  }\r\n\r\n.div2 {\r\n    height: 15px;\r\n    background-color: cyan;\r\n  }\r\n\r\n.div3 {\r\n    height: 15px;\r\n    background-color: red;\r\n  }\r\n\r\n.div4 {\r\n    height: 15px;\r\n    background-color: burlywood; \r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLGlCQUFpQjtJQUNqQixlQUFlO0VBQ2pCOztBQUVGO0lBQ0kseUJBQXlCO0VBQzNCOztBQUVGO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUdBO0lBQ0ksWUFBWTtJQUNaLHNCQUFzQjtFQUN4Qjs7QUFDQTtJQUNFLFlBQVk7SUFDWixzQkFBc0I7RUFDeEI7O0FBQ0E7SUFDRSxZQUFZO0lBQ1oscUJBQXFCO0VBQ3ZCOztBQUNBO0lBQ0UsWUFBWTtJQUNaLDJCQUEyQjtFQUM3QiIsImZpbGUiOiJzcmMvYXBwL2RldGFpbC9kZXRhaWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtdGFibGUge1xyXG4gICAgb3ZlcmZsb3c6IGF1dG87XHJcbiAgICBtYXgtaGVpZ2h0OiA3MDBweDtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICB9XHJcblxyXG4ubWF0LWhlYWRlci1yb3cge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzM4OTdmMDtcclxuICB9XHJcblxyXG4ubWF0LWZvb3Rlci1yb3cge1xyXG4gIGJhY2tncm91bmQtY29sb3I6I0VERjFGNTsgIFxyXG59XHJcblxyXG4ubWF0LXJvdzpudGgtY2hpbGQoZXZlbil7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjojRURGMUY1O1xyXG59XHJcblxyXG4ubWF0LXJvdzpudGgtY2hpbGQob2RkKXtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiNGREZERkI7XHJcbn1cclxuXHJcblxyXG4uZGl2MSB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBibHVlO1xyXG4gIH1cclxuICAuZGl2MiB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBjeWFuO1xyXG4gIH1cclxuICAuZGl2MyB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7XHJcbiAgfVxyXG4gIC5kaXY0IHtcclxuICAgIGhlaWdodDogMTVweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGJ1cmx5d29vZDsgXHJcbiAgfSJdfQ== */");
 
 /***/ }),
 
@@ -4180,7 +4264,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+
 
 
 
@@ -4195,6 +4281,7 @@ var DetailComponent = /** @class */ (function () {
         this.loading = false;
         this.benefitPer10kColumns = ['type', 'credit', 'debit'];
         this.cardTransactionColumns = ['apv_d', 'crd_tcd', 'apv_amt', 'mct_nm', 'benefit'];
+        this.progressBar = [0, 50, 0, 50];
         this.benefitSource = [
         // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
         // {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
@@ -4204,10 +4291,44 @@ var DetailComponent = /** @class */ (function () {
         this.authenticationService.currentSummary.subscribe(function (x) { return _this.currentSummary = x; });
     }
     DetailComponent.prototype.ngOnInit = function () {
+        var animationCounter = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(50);
+        animationCounter.subscribe(this.animateBar());
         //this.benefitSource = this.getBenefitSource();
         // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
         // console.log('benefitSource', this.benefitSource.toString());
         // console.log('transactionSource', this.transactionSource.toString());
+    };
+    DetailComponent.prototype.animateBar = function () {
+        return (function (self) {
+            return function () {
+                if (self.currentSummary) {
+                    self.div1 = Math.round(Math.min(self.currentSummary.crd_etc_use_amt / self.currentSummary.crd_etc_deduce_hurdle, 1) * 50);
+                    self.div2 = Math.round(Math.min(self.currentSummary.crd_etc_deduce / self.currentSummary.crd_etc_deduction_limit, 1) * 50);
+                    console.log('divs, progressbars', [self.div1, self.div2], self.progressBar);
+                    if (self.progressBar[2] > 0) {
+                        if (self.div2 > self.progressBar[2]) {
+                            self.progressBar[2] += 1;
+                        }
+                        else if (self.div2 < self.progressBar[2]) {
+                            self.progressBar[2] -= 1;
+                        }
+                    }
+                    else if (self.progressBar[2] == 0) {
+                        if (self.div1 > self.progressBar[0]) {
+                            self.progressBar[0] += 1;
+                        }
+                        else if (self.div1 < self.progressBar[0]) {
+                            self.progressBar[0] -= 1;
+                        }
+                        else if (self.div2 > self.progressBar[2]) {
+                            self.progressBar[2] += 1;
+                        }
+                    }
+                    self.progressBar[1] = 50 - self.progressBar[0];
+                    self.progressBar[3] = 50 - self.progressBar[2];
+                }
+            };
+        })(this);
     };
     DetailComponent.prototype.refreshValues = function () {
         // this.benefitSource = this.getBenefitSource();
@@ -4217,8 +4338,8 @@ var DetailComponent = /** @class */ (function () {
     DetailComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-        { type: _services__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"] },
-        { type: _services__WEBPACK_IMPORTED_MODULE_3__["AlertService"] }
+        { type: _services__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"] },
+        { type: _services__WEBPACK_IMPORTED_MODULE_4__["AlertService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -4240,8 +4361,8 @@ var DetailComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-            _services__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"],
-            _services__WEBPACK_IMPORTED_MODULE_3__["AlertService"]])
+            _services__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"],
+            _services__WEBPACK_IMPORTED_MODULE_4__["AlertService"]])
     ], DetailComponent);
     return DetailComponent;
 }());
@@ -4314,6 +4435,7 @@ var LoginComponent = /** @class */ (function () {
             console.log(data);
             _this.setStepInApp.emit(1);
             //this.router.navigate([this.returnUrl]);
+            _this.alertService.success('로그인 되었습니다');
         }, function (error) {
             _this.alertService.error(error);
             _this.loading = false;
@@ -4509,6 +4631,9 @@ var SummaryComponent = /** @class */ (function () {
         // });
         // if(this.currentSummary) {
         this.summaryForm = this.formBuilder.group(this.currentSummary);
+        //this.f.earned_income_deduce.disable({onlySelf:true, emitEvent:true});
+        //this.f.personal_allowance_deduce.disable({onlySelf:true, emitEvent:true});
+        //this.f.pension_insurance_deduce.disable({onlySelf:true, emitEvent:true});
         // } else {
         //     this.summaryForm = this.formBuilder.group({
         //             earned_income_deduce: ['', Validators.required],

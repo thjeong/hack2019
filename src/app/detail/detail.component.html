@@ -28,6 +28,14 @@
 <div>
   <div>{{currentSummary.crd_etc_strategy}}</div>
 </div>
+
+<div fxLayout="row" fxLayoutGap="3px" style="width: 100%">
+  <div [fxFlex]="progressBar[0]" class="div1"></div>
+  <div [fxFlex]="progressBar[1]" class="div2"></div>
+  <div [fxFlex]="progressBar[2]" class="div3"></div>
+  <div [fxFlex]="progressBar[3]" class="div4"></div>
+</div>
+
 <h5><img src="https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png" width="40" height="40">받은 혜택 (최근 5건)</h5>
 <mat-table [dataSource]="transactionSource" class="mat-elevation-z8">
   <ng-container matColumnDef="apv_d">

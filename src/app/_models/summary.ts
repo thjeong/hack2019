@@ -9,6 +9,7 @@ export class Summary {
     crd_etc_use_amt : number; //신용체크현금 이용금액합계
     crd_etc_deduce : number; //신용체크현금영수증 소득공제금액
     crd_etc_deduce_hurdle : number; //신용체크현금영수증 소득공제 허들
+    crd_etc_deduction_limit: number; // 신용체크현금영수증 소득공제 한도
     public_trans_use : number; //대중교통 이용금액
     public_trans_deduce : number; //대중교통 소득공제금액
     trad_market_use : number; //전통시장 이용금액
@@ -29,7 +30,7 @@ export class Summary {
     acc_tax_ratio : number; //누적세율
     txt_msg: string; //적용구간(텍스트)
     max_ratio : number; //현재적용세율(최대세율)
-    huddle_remains : number; //신용/체크/현금 소득공제 문턱 잔여금액
+    hurdle_remains : number; //신용/체크/현금 소득공제 문턱 잔여금액
 
     crd_tax_benefit : number; //신용카드 절세금액(1만원당)
     deb_cash_tax_benefit : number; //체크/현금 절세금액(1만원당)
