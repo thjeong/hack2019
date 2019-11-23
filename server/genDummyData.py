@@ -31,6 +31,34 @@ def genSHBAccountTrans(seed, amt=5000, max_n_of_trans_digit = 2):
         output_list.append([str(inout_idx), in_amt, out_amt, text_data,''])
     return pd.DataFrame(output_list,columns=['입지구분','입금','출금','적요','거래점'])
 
+def genAdditionalSHCTrans(input_aprvamt, cardno, n_of_trans):
+    """
+
+    :param seed:
+    :param input_aprvamt:
+    :param cardno:
+    :param aprv_date:
+    :return:
+    """
+    list_of_mct_nm = ['이마트왕십리', '현대그린푸드', '가야성', '장칼국수', '보건옥', '만족오향족발', '카페드비반트',
+                      '호반집', '주식회사스타필드하남', '남해바다', '알촌한양대점', '라화쿵부명동2호점']
+    output_list = []
+    for i in range(n_of_trans):
+        random.seed(i)
+        random_number = random.random()
+        current_time = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+        aprvno = '{:08d}'.format(int(random_number*1000000))
+        aprvamt = input_aprvamt * int(random_number*10)
+        retlno = '{:010d}'.format(int(random_number * 1000000))
+        retlname = list_of_mct_nm[int(np.mod(int(random_number * 100), len(list_of_mct_nm)))]
+        debit_TF = divmod(int(random_number*10), 2)[1]
+        if debit_TF == 0 : cr_db = '신용'
+        else: cr_db = '체크'
+        output_list.append([current_time, aprvno, aprvamt, cardno, retlno, retlname, cr_db])
+    output_df = pd.DataFrame(output_list,
+                             columns=['승인일시', '승인번호', '승인금액', '카드뒷세자리', '가맹점번호', '가맹점명', '구분'])
+    return output_df
+
 
 def genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_digit = 3):
     """
@@ -40,7 +68,7 @@ def genSHCTrans(seed, input_aprvamt, cardno, stt_date, end_date, max_n_of_trans_
     :param stt_date:
     :param end_date:
     :param max_n_of_trans_digit:
-    :return:
+    :return: end_date=(datetime.datetime.now() + datetime.timedelta(days=-1)).strftime('%Y%m%d')
     """
     random.seed(seed+stt_date+end_date)
     random_number = random.random()

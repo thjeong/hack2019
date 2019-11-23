@@ -21,7 +21,8 @@ def login_func(userid, year='2018'):
     return output_json
 
 
-def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.datetime.now().strftime('%Y%m%d')):
+def summary_func(userid, total_salary, stt_date='20190101',
+                 end_date=(datetime.datetime.now() + datetime.timedelta(days=-1)).strftime('%Y%m%d')):
     """
     근로소득공제금액, 인적공제금액(default 150만), 연금보험료공제, 특별소득공제,
     신용/체크/현금영수증 이용금액, 공제금액, 총급여25%문턱금
@@ -105,7 +106,8 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     return json.dumps(output_dict)
 
 
-def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now().strftime('%Y%m%d'), unit_amt=10000):
+def detail_func(input_json, stt_date='20190101',
+                end_date=(datetime.datetime.now() + datetime.timedelta(days=-1)).strftime('%Y%m%d'), unit_amt=10000):
     """
     ㅇㅇㅇㅇㅇㅇ
     :param input_json:
@@ -204,12 +206,13 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
         hurdle_info_msg = '신용체크현금 항목의 소득공제 금액이 이미 한도({}원)를 채웠습니다.'.format(getInsertComma(int(crd_etc_deduction_limit)))
     elif output_dict['crd_benefit_sum'] >= output_dict['deb_cash_tax_benefit']: # 신용카드혜택 > 체크현금혜택
         crd_etc_strategy = '신용카드와 체크/현금 중, 기대 혜택이 더 큰 신용카드를 이용 하시면 좋습니다!'
-        hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)은 넘었습니다!'
+        hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)을 넘었습니다!'
     else:
         crd_etc_strategy = '신용카드와 체크/현금 중, 기대 혜택이 더 큰 체크카드/현금을 이용하시면 좋습니다!'
-        hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)은 넘었습니다!'
+        hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)을 넘었습니다!'
     output_dict['crd_etc_strategy'] = crd_etc_strategy
     output_dict['hurdle_info_msg'] = hurdle_info_msg
+
     # 최근 신용, 체크 카드이용내역 만들기
     crd_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=0)
     input_aprvamt = int(crd_card_df['승인금액'][0])
@@ -224,6 +227,11 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     crd_card_df['구분'] = '신용'
     deb_card_df['구분'] = '체크'
     card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시', ascending=False).reset_index(drop=True)
+
+    if input_dict.get('req_add_trans') != None:
+        add_trans_df = genAdditionalSHCTrans(input_aprvamt, cardno, input_dict.get('req_add_trans'))
+        card_df = pd.concat([add_trans_df, card_df]).sort_values('승인일시', ascending=False).reset_index(drop=True)
+
     # 공제대상 제외 혹은 별도한도 운영되는 거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')].reset_index(drop=True).head()
     crd_benefit_ratio = result[4] / 10000
