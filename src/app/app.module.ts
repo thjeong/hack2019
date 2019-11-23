@@ -5,6 +5,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AlertComponent } from './_components';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,9 +20,13 @@ import { SalaryComponent } from './salary/salary.component';
 import { SummaryComponent } from './summary/summary.component';
 import { DetailComponent } from './detail/detail.component';
 
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
     LoginComponent,
     SalaryComponent,
     SummaryComponent,
@@ -38,6 +43,7 @@ import { DetailComponent } from './detail/detail.component';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    FlexLayoutModule,
     AppRoutingModule
   ],
   providers: [],

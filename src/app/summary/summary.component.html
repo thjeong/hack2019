@@ -1,21 +1,21 @@
 <form [formGroup]="summaryForm" (ngSubmit)="onSubmit()" *ngIf="currentSummary">
     <div class="form-group">
         <label for="earned_income_deduce">근로소득공제</label>
-        <input placeholder=""  type="number" formControlName="earned_income_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.earned_income_deduce.errors }" />
+        <input placeholder="" type="number" formControlName="earned_income_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.earned_income_deduce.errors }" />
         <div *ngIf="submitted && f.earned_income_deduce.errors" class="invalid-feedback">
             <div *ngIf="f.earned_income_deduce.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="personal_allowance_deduce">인적공제</label>
-        <input placeholder=""  type="number" formControlName="personal_allowance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.personal_allowance_deduce.errors }" />
+        <input placeholder="" type="number" formControlName="personal_allowance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.personal_allowance_deduce.errors }" />
         <div *ngIf="submitted && f.personal_allowance_deduce.errors" class="invalid-feedback">
             <div *ngIf="f.personal_allowance_deduce.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="pension_insurance_deduce">연금보험료공제</label>
-        <input placeholder=""  type="number" formControlName="pension_insurance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }" />
+        <input placeholder="" type="number" formControlName="pension_insurance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }" />
         <div *ngIf="submitted && f.pension_insurance_deduce.errors" class="invalid-feedback">
             <div *ngIf="f.pension_insurance_deduce.errors.required">Input is required</div>
         </div>

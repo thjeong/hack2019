@@ -42,6 +42,9 @@ export class SummaryComponent implements OnInit {
 
         // if(this.currentSummary) {
             this.summaryForm = this.formBuilder.group(this.currentSummary);
+            //this.f.earned_income_deduce.disable({onlySelf:true, emitEvent:true});
+            //this.f.personal_allowance_deduce.disable({onlySelf:true, emitEvent:true});
+            //this.f.pension_insurance_deduce.disable({onlySelf:true, emitEvent:true});
         // } else {
         //     this.summaryForm = this.formBuilder.group({
         //             earned_income_deduce: ['', Validators.required],
