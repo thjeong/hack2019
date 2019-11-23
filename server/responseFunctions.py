@@ -45,14 +45,16 @@ def summary_func(userid, total_salary, stt_date='20190101', end_date=datetime.da
     spec_income_deduce = getTmpSpecIncomeDeduction(total_salary, 1)
 
     #신용,체크카드이용내역 API호출 & 가라데이터 만들어붙이기
-    crd_card_df = shcSearchUseforDomestic(stt_date, end_date, 0)
+    crd_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=0)
     input_aprvamt = int(crd_card_df['승인금액'][0])
     cardno = crd_card_df['카드뒷세자리'][0]
     crd_card_df = pd.concat([crd_card_df, genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
-    deb_card_df = shcSearchUseforDomestic(stt_date, end_date, 1)
+
+    deb_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=1)
     input_aprvamt = int(deb_card_df['승인금액'][0])
     cardno = deb_card_df['카드뒷세자리'][0]
-    deb_card_df = genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)
+    deb_card_df = pd.concat([deb_card_df, genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
+
     # 공제대상 제외거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     crd_card_use = crd_card_df[~crd_card_df['가맹점명'].str.contains('지방세|세금|상품권')]['승인금액'].sum()
     deb_card_use = deb_card_df[~deb_card_df['가맹점명'].str.contains('지방세|세금|상품권')]['승인금액'].sum()
@@ -205,21 +207,23 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
         hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)은 넘었습니다!'
     else:
         crd_etc_strategy = '신용카드와 체크/현금 중, 기대 혜택이 더 큰 체크카드/현금을 이용하시면 좋습니다!'
-        hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)은 넘었습니다! '
+        hurdle_info_msg = '신용체크현금 항목의 소득공제를 받기위한 최소 문턱(연봉의 25%)은 넘었습니다!'
     output_dict['crd_etc_strategy'] = crd_etc_strategy
     output_dict['hurdle_info_msg'] = hurdle_info_msg
     # 최근 신용, 체크 카드이용내역 만들기
-    crd_card_df = shcSearchUseforDomestic(stt_date, end_date, 0)
+    crd_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=0)
     input_aprvamt = int(crd_card_df['승인금액'][0])
     cardno = crd_card_df['카드뒷세자리'][0]
     crd_card_df = pd.concat([crd_card_df, genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
-    deb_card_df = shcSearchUseforDomestic(stt_date, end_date, 1)
+
+    deb_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=1)
     input_aprvamt = int(deb_card_df['승인금액'][0])
     cardno = deb_card_df['카드뒷세자리'][0]
-    deb_card_df = genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)
+    deb_card_df = pd.concat([deb_card_df, genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
+
     crd_card_df['구분'] = '신용'
     deb_card_df['구분'] = '체크'
-    card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시',ascending=False).reset_index(drop=True)
+    card_df = pd.concat([crd_card_df, deb_card_df]).sort_values('승인일시', ascending=False).reset_index(drop=True)
     # 공제대상 제외 혹은 별도한도 운영되는 거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     card_df = card_df[~card_df['가맹점명'].str.contains('지방세|세금|상품권|버스|지하철|전통시장|도서')].reset_index(drop=True).head()
     crd_benefit_ratio = result[4] / 10000
@@ -227,7 +231,7 @@ def detail_func(input_json, stt_date='20190101', end_date=datetime.datetime.now(
     recent_crd_deb_use_list = []
     for row in card_df.iterrows():
         tmp_dict = {}
-        tmp_dict['apv_d'] = '{}.{}.'.format(row[1]['승인일시'][4:6],row[1]['승인일시'][6:8])
+        tmp_dict['apv_d'] = '{}.{}'.format(row[1]['승인일시'][4:6], row[1]['승인일시'][6:8])
         tmp_dict['crd_tcd'] = row[1]['구분']
         tmp_dict['apv_amt'] = row[1]['승인금액']
         tmp_dict['mct_nm'] = row[1]['가맹점명']
