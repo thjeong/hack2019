@@ -257,8 +257,8 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
 
     # max_ratio와 현재기준 신용/체크/현금 이용금액으로 절세혜택 계산
     # 합계가 25%를 못넘은 경우
-    huddle = total_salary * 0.25
-    if crd_card_use + deb_card_use + cash_use < huddle:
+    hurdle = total_salary * 0.25
+    if crd_card_use + deb_card_use + cash_use < hurdle:
         crd_tax_benefit = 0
         cash_deb_tax_benefit = 0
     # 합계는 25% 넘었는데.... 아예 현재 신용체크등등 공제금액이 공제한도를 초과한 경우
@@ -266,7 +266,7 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
         crd_tax_benefit = 0
         cash_deb_tax_benefit = 0
     # 합계는 25%를 넘었는데, 신용카드만으로는 25% 못넘은 경우
-    elif crd_card_use < huddle:
+    elif crd_card_use < hurdle:
         crd_tax_benefit = unit_amt * 0.3 * max_ratio
         cash_deb_tax_benefit = unit_amt * 0.3 * max_ratio
     # 신용카드만으로 25% 넘은 경우

@@ -138,7 +138,7 @@ def detail_func(input_json, stt_date='20190101',
 
     if input_dict.get('req_add_trans') != None:
         add_trans_df = genAdditionalSHCTrans(unit_amt, '312', input_dict.get('req_add_trans'), userid)
-        crd_card_use += int(add_trans_df[add_trans_df['구분']=='신용']['승인금액'].sum())
+        crd_card_use += int(add_trans_df[add_trans_df['구분'] == '신용']['승인금액'].sum())
         deb_card_use += int(add_trans_df[add_trans_df['구분'] == '체크']['승인금액'].sum())
 
 
