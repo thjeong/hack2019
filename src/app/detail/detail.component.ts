@@ -33,7 +33,7 @@ export class DetailComponent implements OnInit {
     //benefitSource: BenefitElement[]
     // transactionSource: TransactionElement[]
     currentSummary:Summary;
-    progressBar: number[] = [0,50,0,50];
+    progressBar: number[] = [0,500,0,500];
     div1: number;
     div2: number;
 
