@@ -42,6 +42,9 @@ export class SummaryComponent implements OnInit {
 
         // if(this.currentSummary) {
             this.summaryForm = this.formBuilder.group(this.currentSummary);
+            //this.f.earned_income_deduce.disable({onlySelf:true, emitEvent:true});
+            //this.f.personal_allowance_deduce.disable({onlySelf:true, emitEvent:true});
+            //this.f.pension_insurance_deduce.disable({onlySelf:true, emitEvent:true});
         // } else {
         //     this.summaryForm = this.formBuilder.group({
         //             earned_income_deduce: ['', Validators.required],
@@ -76,13 +79,18 @@ export class SummaryComponent implements OnInit {
             return;
         }
 
+        
         this.loading = true;
-        this.authenticationService.getDetail(this.currentSummary) //, this.f.password.value)
+        //console.log('formGroup', this.summaryForm.value);
+        this.authenticationService.getDetail(this.summaryForm.value) // this.currentSummary)
             .pipe(first())
             .subscribe(
                 data => {
                     console.log(data);
+                    //this.authenticationService.updateSummaryValue(data);
                     this.loading = false;
+                    this.authenticationService.setSummaryReqAddParms(0);
+                    this.authenticationService.setSummaryTriedRefresh(0);
                     this.setStepInApp.emit(3);
                     //this.router.navigate([this.returnUrl]);
                 },

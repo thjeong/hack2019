@@ -32,7 +32,21 @@ export class AuthenticationService {
         return this.currentSummarySubject.value;
     }
 
+    public updateSummaryValue(summary){
+        this.currentSummarySubject.next(summary);
+      }
+    
+    public setSummaryReqAddParms(n) {
+        this.currentSummaryValue.req_add_trans = n;
+    }
+
+    public setSummaryTriedRefresh(n) {
+        this.currentSummaryValue.tried_refresh = n;
+        //console.log('setSummaryTriedRefresh', this.currentSummaryValue);
+    }
+
     login(userid: string) { //, password: string) {
+        this.host_ip = window.location.origin;
         console.log('login to '+ this.host_ip);
         return this.http.post<any>(this.host_ip + '/login', { userid }) //, password })
             .pipe(map(user => {
@@ -46,9 +60,10 @@ export class AuthenticationService {
             }));
     }
 
-    getSummary(userinfo: User) {
-        console.log('getSummary for ' + userinfo);
-        return this.http.post<any>(this.host_ip + '/summary', userinfo)
+    getSummary(userid, total_salary) {
+        this.host_ip = window.location.origin;
+        console.log('getSummary for ' + userid + '(' + total_salary + ')' + ' to '+ this.host_ip);
+        return this.http.post<any>(this.host_ip + '/summary', {'userid': userid, 'total_salary':total_salary})
             .pipe(map(summary => {
                 if (summary) {
                     localStorage.setItem('currentSummary', JSON.stringify(summary));
@@ -60,7 +75,8 @@ export class AuthenticationService {
     }
 
     getDetail(summaryinfo: Summary) {
-        console.log('getDetail for ' + summaryinfo);
+        this.host_ip = window.location.origin;
+        console.log('getDetail for ' + summaryinfo + ' to '+ this.host_ip);
         return this.http.post<any>(this.host_ip + '/detail', summaryinfo)
             .pipe(map(summary => {
                 if (summary) {

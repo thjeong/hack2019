@@ -1,5 +1,18 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/_components/alert.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/_components/alert.component.html ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"message\" [ngClass]=\"{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }\">{{message.text}}</div>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html":
 /*!**************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
@@ -9,7 +22,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\n  <mat-expansion-panel-header class=\"right-aligned-header\">\n    <mat-panel-title>\n      <h3 style='color:darkred'>naytax!</h3>\n      <!-- <div *ngIf=\"currentUser\">\n        <div>{{currentUser.username}}</div>\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\n      </div>\n      <div *ngIf=\"currentUser == null\">\n        Not logged in yet\n      </div> -->\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          {{currentUser.username}}님 안녕하세요\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          로그인이 필요합니다\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\n</mat-expansion-panel>\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\n  <mat-expansion-panel-header class=\"right-aligned-header\">\n    <mat-panel-title>\n      예상 총 급여\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentUser\">\n          <div>xxx 만원</div>\n        </div>\n        <div *ngIf=\"currentUser == null\">\n          미입력\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <salary-cmp *ngIf=\"currentUser\" (setStepInApp)=\"setStep($event)\"></salary-cmp>\n</mat-expansion-panel>\n<router-outlet></router-outlet>\n<mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\n  <mat-expansion-panel-header class=\"right-aligned-header\">\n    <mat-panel-title>\n      소득공제 항목 합계\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentSummary\">\n          <div>xxx 만원 </div>\n        </div>\n        <div *ngIf=\"currentSummary == null\">\n          미입력\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <summary-cmp *ngIf=\"currentSummary\" (setStepInApp)=\"setStep($event)\"></summary-cmp>\n</mat-expansion-panel>\n<mat-expansion-panel [expanded]=\"step === 3\" (opened)=\"setStep(3)\" hideToggle>\n  <mat-expansion-panel-header class=\"right-aligned-header\">\n    <mat-panel-title>\n      소득공제 전략\n    </mat-panel-title>\n    <mat-panel-description>\n        <div *ngIf=\"currentSummary\">\n          <div>결과를 확인해보세요</div>\n        </div>\n        <div *ngIf=\"currentSummary == null\">\n          미산출\n        </div>\n    </mat-panel-description>\n  </mat-expansion-panel-header>\n  <detail-cmp *ngIf=\"currentSummary && currentSummary.std_assessment\"></detail-cmp>\n</mat-expansion-panel>\n<router-outlet></router-outlet>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-expansion-panel [expanded]=\"step === 0\" (opened)=\"setStep(0)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      <h3 style='color:darkred'>naytax!</h3>\r\n      <!-- <div *ngIf=\"currentUser\">\r\n        <div>{{currentUser.username}}</div>\r\n        <a class=\"nav-item nav-link\" (click)=\"logout()\">Logout</a>\r\n      </div>\r\n      <div *ngIf=\"currentUser == null\">\r\n        Not logged in yet\r\n      </div> -->\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentUser\">\r\n          {{currentUser.username}}님 안녕하세요\r\n        </div>\r\n        <div *ngIf=\"currentUser == null\">\r\n          로그인이 필요합니다\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <login-cmp (setStepInApp)=\"setStep($event)\"></login-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel [expanded]=\"step === 1\" (opened)=\"setStep(1)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      예상 총 급여\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_salary / 10000) | number:'1.0-0' }} 만원</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <salary-cmp *ngIf=\"currentUser\" (setStepInApp)=\"setStep($event)\"></salary-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n<mat-expansion-panel [expanded]=\"step === 2\" (opened)=\"setStep(2)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 항목 합계\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>{{ (currentSummary.total_deduce / 10000) | number:'1.0-0' }} 만원 </div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미입력\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <summary-cmp *ngIf=\"currentSummary\" (setStepInApp)=\"setStep($event)\"></summary-cmp>\r\n</mat-expansion-panel>\r\n<mat-expansion-panel id='detailPanel' [expanded]=\"step === 3\" (opened)=\"setStep(3)\" hideToggle>\r\n  <mat-expansion-panel-header class=\"right-aligned-header\">\r\n    <mat-panel-title>\r\n      소득공제 전략\r\n    </mat-panel-title>\r\n    <mat-panel-description>\r\n        <div *ngIf=\"currentSummary\">\r\n          <div>결과를 확인해보세요</div>\r\n        </div>\r\n        <div *ngIf=\"currentSummary == null\">\r\n          미산출\r\n        </div>\r\n    </mat-panel-description>\r\n  </mat-expansion-panel-header>\r\n  <detail-cmp *ngIf=\"currentSummary && currentSummary.std_assessment\" [benefitSource]=\"getBenefitSource()\" [transactionSource]='currentSummary.recent_crd_deb_use_list'></detail-cmp>\r\n</mat-expansion-panel>\r\n<router-outlet></router-outlet>\r\n");
 
 /***/ }),
 
@@ -22,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-table [dataSource]=\"benefitSource\" class=\"mat-elevation-z8\">\n    <!-- Position Column -->\n    <ng-container matColumnDef=\"type\">\n      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.type}} </mat-cell>\n    </ng-container>\n  \n    <!-- Name Column -->\n    <ng-container matColumnDef=\"tax\">\n      <mat-header-cell *matHeaderCellDef> Tax </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.tax}} </mat-cell>\n    </ng-container>\n  \n    <!-- Weight Column -->\n    <ng-container matColumnDef=\"card\">\n      <mat-header-cell *matHeaderCellDef> Card </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.card}} </mat-cell>\n    </ng-container>\n  \n    <!-- Symbol Column -->\n    <ng-container matColumnDef=\"total\">\n      <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.total}} </mat-cell>\n    </ng-container>\n  \n    <mat-header-row *matHeaderRowDef=\"benefitPer10kColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <img src=\"https://cdn0.iconfinder.com/data/icons/finance-glyph-2/33/tax_cut-512.png\" width=\"30\" height=\"30\"> -->\r\n<h5 style='text-align: center;'><b>신용체크현금 소득공제 받으려면?</b></h5>\r\n\r\n<div fxLayout=\"row\" fxLayoutGap=\"0px\" style=\"width: 100%\">\r\n  <div [fxFlex]=\"progressBar[0]\" class=\"div1\"></div>\r\n  <div [fxFlex]=\"progressBar[1]\" class=\"div2\"></div>\r\n  <div [fxFlex]=\"progressBar[2]\" class=\"div3\"></div>\r\n  <div [fxFlex]=\"progressBar[3]\" class=\"div4\"></div>\r\n</div>\r\n<div fxLayout=\"row\" fxLayoutAlign=\"center\">\r\n  <div fxFlex=\"50\" fxLayout=\"column\" fxLayoutAlign=\"start center\">▲\r\n    </div>\r\n  </div>\r\n<p>{{currentSummary.hurdle_info_msg}}</p>\r\n\r\n<h5 style='text-align: center;'><b>만원 당 혜택 비교!</b></h5>\r\n<div class=\"box-container\" style=\"display: flex; flex-wrap: wrap;\">\r\n  <div style=\"flex: 1;text-align: center;\">\r\n    <img *ngIf=\"currentSummary.crd_benefit_sum > currentSummary.deb_cash_benefit_sum\" src=\"https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif\" width=\"30\" height=\"20\">\r\n    신용 카드\r\n    <img src=\"https://freeiconshop.com/wp-content/uploads/edd/creditcard-outline-filled.png\" width=\"100px\" height=\"90px\">\r\n  </div>\r\n  <div style=\"flex: 1;text-align: center;\">\r\n    <img *ngIf=\"currentSummary.crd_benefit_sum < currentSummary.deb_cash_benefit_sum\" src=\"https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif\" width=\"30\" height=\"20\">\r\n    체크 카드\r\n    <img src=\"https://i2.wp.com/spaceworksnyc.org/app/uploads/2019/02/icon-credit-card.png?ssl=1\" width=\"100px\" height=\"90px\">\r\n  </div>\r\n</div>\r\n<div class=\"box-container\" style=\"display: flex; flex-wrap: wrap;\">\r\n  <div style=\"flex: 1;  font-size: 13px; text-align: right;\">세제 혜택</div>\r\n  <div style=\"flex: 1;  font-size: 22px; text-align: center;\"><b>{{currentSummary.crd_tax_benefit}}</b></div>\r\n  <div style=\"flex: 1;  font-size: 13px; text-align: right;\">세제 혜택</div>\r\n  <div style=\"flex: 1;  font-size: 22px; text-align: center;\"><b>{{currentSummary.deb_cash_tax_benefit}}</b></div>\r\n</div>\r\n<div class=\"box-container\" style=\"display: flex; flex-wrap: wrap;\">\r\n  <div style=\"flex: 1;  font-size: 13px; text-align: right;\">카드 혜택</div>\r\n  <div style=\"flex: 1;  font-size: 22px; text-align: center;\"><b>{{currentSummary.crd_benefit}}</b></div>\r\n  <div style=\"flex: 1;  font-size: 13px; text-align: right;\">카드 혜택</div>\r\n  <div style=\"flex: 1;  font-size: 22px; text-align: center;\"><b>{{currentSummary.deb_benefit}}</b></div>\r\n</div>\r\n<div class=\"box-container\" style=\"display: flex; flex-wrap: wrap;\">\r\n  <div style=\"flex: 1;  font-size: 13px; text-align: right; color:brown\"><b>최종 혜택</b></div>\r\n  <div style=\"flex: 1;  font-size: 22px; text-align: center;\"><b>{{currentSummary.crd_benefit_sum}}</b></div>\r\n  <div style=\"flex: 1;  font-size: 13px; text-align: right; color:brown\"><b>최종 혜택</b></div>\r\n  <div style=\"flex: 1;  font-size: 22px; text-align: center;\"><b>{{currentSummary.deb_cash_benefit_sum}}</b></div>\r\n</div>\r\n\r\n<div style='margin-top:20px'></div>\r\n\r\n<div *ngFor=\"let use_item of currentSummary.recent_crd_deb_use_list\">\r\n  <div style=\"flex: 2;height: 30px;background-color: lightgray;\">\r\n    <div style='float: left;'>{{use_item.apv_d}}</div>\r\n    <div *ngIf=\"use_item.new_trans_TF == 1\" style='font-size:13px; text-align:right; color:brown'>방금 전</div>\r\n  </div>\r\n  <div class=\"box-container\" style=\"display: flex;flex-wrap: wrap;flex-direction: row;\">\r\n      <div style=\"flex: 1;\">{{use_item.mct_nm}}</div>\r\n      <div style=\"flex: 1;text-align: right;\">{{use_item.apv_amt | number:0}} 원</div>\r\n  </div>\r\n  <div class=\"box-container\" style=\"display: flex;flex-wrap: wrap;flex-direction: row;\">\r\n    <div style=\"flex: 1;font-size: 13px;\">{{use_item.crd_tcd}}</div>\r\n    <div style=\"flex: 1;text-align: right;\">\r\n      <div style=\"float: left; font-size: 13px;\">혜택금액</div>\r\n      <div>{{use_item.benefit | number:0}} 원</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div (click)=\"refresh()\" style='float:right'><img src=\"https://www.materialui.co/materialIcons/navigation/refresh_black_192x192.png\" height=\"20\" width=\"20\"></div>\r\n<!-- \r\n<div>\r\n  <div>{{currentSummary.crd_etc_strategy}}</div>\r\n</div> -->\r\n<!-- \r\n<h5><img src=\"https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png\" width=\"40\" height=\"40\">받은 혜택 (최근 5건)\r\n<div (click)=\"refresh()\" style='float:right'><img src=\"https://www.materialui.co/materialIcons/navigation/refresh_black_192x192.png\" height=\"20\" width=\"20\"></div></h5>\r\n<mat-table [dataSource]=\"transactionSource\" class=\"mat-elevation-z8\">\r\n  <ng-container matColumnDef=\"apv_d\">\r\n    <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_d}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"crd_tcd\">\r\n    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.crd_tcd}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"apv_amt\">\r\n    <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.apv_amt | number:0}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"mct_nm\">\r\n    <mat-header-cell *matHeaderCellDef> 가맹점 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> {{element.mct_nm}} </mat-cell>\r\n  </ng-container>\r\n\r\n  <ng-container matColumnDef=\"benefit\">\r\n    <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>\r\n    <mat-cell *matCellDef=\"let element\"> <div><div>{{element.benefit | number:0}}</div><div style=\"font-size:12px;font-weight: bold;\">({{(element.benefit / element.apv_amt * 100) | number:'0.0-1'}} %)</div></div></mat-cell>\r\n  </ng-container>\r\n\r\n  <mat-header-row *matHeaderRowDef=\"cardTransactionColumns\"></mat-header-row>\r\n  <mat-row *matRowDef=\"let row; columns: cardTransactionColumns;\" [ngClass]=\"{'highlight': row.new_trans_TF == 1}\"></mat-row>\r\n</mat-table> -->");
 
 /***/ }),
 
@@ -35,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h2>Login</h2>\n<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label for=\"userid\">Username</label>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        <input placeholder=\"사용자이름\"  type=\"text\" formControlName=\"userid\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.userid.errors }\" />\n        <div *ngIf=\"submitted && f.userid.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.userid.errors.required\">Username is required</div>\n        </div>\n    </div>\n    <!-- <div class=\"form-group\">\n        <label for=\"password\">Password</label>\n        <input type=\"password\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\n        <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.password.errors.required\">Password is required</div>\n        </div>\n    </div> -->\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">Login</button>\n        \n        \n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>\n<button [disabled]=\"loading\" class=\"btn btn-outline-secondary\" (click)=\"logout()\">Logout</button>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h2>Login</h2>\r\n<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n    <div class=\"form-group\">\r\n        <label for=\"userid\">Username</label>\r\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\r\n        <input placeholder=\"사용자이름\"  type=\"text\" formControlName=\"userid\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.userid.errors }\" />\r\n        <div *ngIf=\"submitted && f.userid.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.userid.errors.required\">Username is required</div>\r\n        </div>\r\n    </div>\r\n    <!-- <div class=\"form-group\">\r\n        <label for=\"password\">Password</label>\r\n        <input type=\"password\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\r\n        <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.password.errors.required\">Password is required</div>\r\n        </div>\r\n    </div> -->\r\n    <div class=\"form-group\">\r\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">Login</button>\r\n        \r\n        \r\n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\r\n        \r\n    </div>\r\n</form>\r\n<button [disabled]=\"loading\" class=\"btn btn-outline-secondary\" (click)=\"logout()\">Logout</button>");
 
 /***/ }),
 
@@ -48,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"salaryForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"form-group\">\n        <label style=\"color:darkviolet\" for=\"total_salary\">총급여</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"total_salary\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.total_salary.errors }\" />\n        <div *ngIf=\"submitted && f.total_salary.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.total_salary.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">총급여 저장하기</button>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div (click)=\"editing = false; $event.stopPropagation();\" style=\"\r\n    text-align: center;\r\n    height: 360px;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-direction: column;\r\n\"><p style=\"\r\n    text-size: 10px;\r\n    width: 100%;\r\n    margin-top: 60px;\r\n\"><img src=\"https://cdn3.iconfinder.com/data/icons/sustainable-development-volume-4/500/Wages_and_Salaries-512.png\" width=\"60px\" height=\"60px\"></p><div style=\"\r\n    font-size: 14px;\r\n\">\r\n작년 은행 입금내역에서<br>\r\n총급여를 가져왔습니다\r\n<div>\r\n<img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\r\n</div>\r\n<div (click)='editing = true; $event.stopPropagation();' [hidden]='editing' style='font-size: 30px;'>\r\n    {{currentUser.total_salary | number:0}}\r\n</div>\r\n</div>\r\n<form [formGroup]=\"salaryForm\" (ngSubmit)=\"onSubmit();\">\r\n    <div class=\"form-group\" [hidden]='!editing'>\r\n        <label style=\"color:darkviolet\" for=\"total_salary\">수정이 필요한 경우 수정해 주세요</label>\r\n        <input (click)=\"$event.stopPropagation();\" placeholder=\"\"  type=\"text\" formControlName=\"total_salary\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.total_salary.errors }\" />\r\n        <div *ngIf=\"submitted && f.total_salary.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.total_salary.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button [disabled]=\"loading\" (click)=\"$event.stopPropagation();\" class=\"btn btn-primary\" style=\"margin-top: 20px;\">총급여 저장하기</button>\r\n        \r\n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\r\n        \r\n    </div>\r\n</form>\r\n    </div>\r\n");
 
 /***/ }),
 
@@ -61,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"summaryForm\" (ngSubmit)=\"onSubmit()\" *ngIf=\"currentSummary\">\n    <div class=\"form-group\">\n        <label for=\"earned_income_deduce\">근로소득공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"earned_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.earned_income_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.earned_income_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.earned_income_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"personal_allowance\">인적공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"personal_allowance\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.personal_allowance.errors }\" />\n        <div *ngIf=\"submitted && f.personal_allowance.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.personal_allowance.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"pension_insurance_deduce\">연금보험료공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"pension_insurance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.pension_insurance_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.pension_insurance_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"spec_income_deduce\">특별소득공제</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"spec_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.spec_income_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.spec_income_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.spec_income_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"crd_card_use\">신용카드</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"crd_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.crd_card_use.errors }\" />\n        <div *ngIf=\"submitted && f.crd_card_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.crd_card_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"deb_card_use\">체크카드</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"deb_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.deb_card_use.errors }\" />\n        <div *ngIf=\"submitted && f.deb_card_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.deb_card_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"cash_use\">현금영수증</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"cash_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.cash_use.errors }\" />\n        <div *ngIf=\"submitted && f.cash_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.cash_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"public_trans_use\">대중교통</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"public_trans_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.public_trans_use.errors }\" />\n        <div *ngIf=\"submitted && f.public_trans_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.public_trans_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"trad_market_use\">전통시장</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"trad_market_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.trad_market_use.errors }\" />\n        <div *ngIf=\"submitted && f.trad_market_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.trad_market_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"book_use\">도서/공연</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"book_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.book_use.errors }\" />\n        <div *ngIf=\"submitted && f.book_use.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.book_use.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"house_saving\">주택청약저축</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"house_saving\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.house_saving.errors }\" />\n        <div *ngIf=\"submitted && f.house_saving.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.house_saving.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"my_stock\">우리사주조합 출연금</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"my_stock\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.my_stock.errors }\" />\n        <div *ngIf=\"submitted && f.my_stock.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.my_stock.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"etc_deduce\">기타</label>\n        <input placeholder=\"\"  type=\"text\" formControlName=\"etc_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.etc_deduce.errors }\" />\n        <div *ngIf=\"submitted && f.etc_deduce.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.etc_deduce.errors.required\">Input is required</div>\n        </div>\n    </div>\n    <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">수정 완료하기</button>\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n        \n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\n        \n    </div>\n</form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<form [formGroup]=\"summaryForm\" (ngSubmit)=\"onSubmit()\" *ngIf=\"currentSummary\">\r\n    <div class=\"form-group\">\r\n        <label for=\"earned_income_deduce\">근로소득공제</label>\r\n        <input placeholder=\"\" type=\"number\" formControlName=\"earned_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.earned_income_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.earned_income_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.earned_income_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"personal_allowance_deduce\">인적공제</label>\r\n        <input placeholder=\"\" type=\"number\" formControlName=\"personal_allowance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.personal_allowance_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.personal_allowance_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.personal_allowance_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"pension_insurance_deduce\">연금보험료공제</label>\r\n        <input placeholder=\"\" type=\"number\" formControlName=\"pension_insurance_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.pension_insurance_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.pension_insurance_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"spec_income_deduce\">특별소득공제</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"spec_income_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.spec_income_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.spec_income_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.spec_income_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"crd_card_use\">신용카드</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"crd_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.crd_card_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.crd_card_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.crd_card_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"deb_card_use\">체크카드</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"deb_card_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.deb_card_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.deb_card_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.deb_card_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"cash_use\">현금영수증</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"cash_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.cash_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.cash_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.cash_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"public_trans_use\">대중교통</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"public_trans_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.public_trans_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.public_trans_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.public_trans_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"trad_market_use\">전통시장</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"trad_market_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.trad_market_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.trad_market_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.trad_market_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"book_use\">도서/공연</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"book_use\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.book_use.errors }\" />\r\n        <div *ngIf=\"submitted && f.book_use.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.book_use.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"house_saving\">주택청약저축</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"house_saving\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.house_saving.errors }\" />\r\n        <div *ngIf=\"submitted && f.house_saving.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.house_saving.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"my_stock\">우리사주조합 출연금</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"my_stock\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.my_stock.errors }\" />\r\n        <div *ngIf=\"submitted && f.my_stock.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.my_stock.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"etc_deduce\">기타</label>\r\n        <input placeholder=\"\"  type=\"number\" formControlName=\"etc_deduce\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.etc_deduce.errors }\" />\r\n        <div *ngIf=\"submitted && f.etc_deduce.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.etc_deduce.errors.required\">Input is required</div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button [disabled]=\"loading\" class=\"btn btn-primary\" style=\"float: left; margin-right: 10px;\">수정 완료하기</button>\r\n        <img *ngIf=\"loading\" class=\"pl-3\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\r\n        \r\n        <!-- <a routerLink=\"/register\" class=\"btn btn-link\">Register</a> -->\r\n        \r\n    </div>\r\n</form>");
 
 /***/ }),
 
@@ -3764,6 +3777,71 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/_components/alert.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/_components/alert.component.ts ***!
+  \************************************************/
+/*! exports provided: AlertComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertComponent", function() { return AlertComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+
+
+
+var AlertComponent = /** @class */ (function () {
+    function AlertComponent(alertService) {
+        this.alertService = alertService;
+    }
+    AlertComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.subscription = this.alertService.getMessage().subscribe(function (message) {
+            _this.message = message;
+        });
+    };
+    AlertComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    AlertComponent.ctorParameters = function () { return [
+        { type: _services__WEBPACK_IMPORTED_MODULE_2__["AlertService"] }
+    ]; };
+    AlertComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'alert',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./alert.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/_components/alert.component.html")).default
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_2__["AlertService"]])
+    ], AlertComponent);
+    return AlertComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_components/index.ts":
+/*!**************************************!*\
+  !*** ./src/app/_components/index.ts ***!
+  \**************************************/
+/*! exports provided: AlertComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _alert_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./alert.component */ "./src/app/_components/alert.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AlertComponent", function() { return _alert_component__WEBPACK_IMPORTED_MODULE_1__["AlertComponent"]; });
+
+
+
+
+
+/***/ }),
+
 /***/ "./src/app/_services/alert.service.ts":
 /*!********************************************!*\
   !*** ./src/app/_services/alert.service.ts ***!
@@ -3872,8 +3950,19 @@ var AuthenticationService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    AuthenticationService.prototype.updateSummaryValue = function (summary) {
+        this.currentSummarySubject.next(summary);
+    };
+    AuthenticationService.prototype.setSummaryReqAddParms = function (n) {
+        this.currentSummaryValue.req_add_trans = n;
+    };
+    AuthenticationService.prototype.setSummaryTriedRefresh = function (n) {
+        this.currentSummaryValue.tried_refresh = n;
+        //console.log('setSummaryTriedRefresh', this.currentSummaryValue);
+    };
     AuthenticationService.prototype.login = function (userid) {
         var _this = this;
+        this.host_ip = window.location.origin;
         console.log('login to ' + this.host_ip);
         return this.http.post(this.host_ip + '/login', { userid: userid }) //, password })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (user) {
@@ -3885,10 +3974,11 @@ var AuthenticationService = /** @class */ (function () {
             return user;
         }));
     };
-    AuthenticationService.prototype.getSummary = function (userinfo) {
+    AuthenticationService.prototype.getSummary = function (userid, total_salary) {
         var _this = this;
-        console.log('getSummary for ' + userinfo);
-        return this.http.post(this.host_ip + '/summary', userinfo)
+        this.host_ip = window.location.origin;
+        console.log('getSummary for ' + userid + '(' + total_salary + ')' + ' to ' + this.host_ip);
+        return this.http.post(this.host_ip + '/summary', { 'userid': userid, 'total_salary': total_salary })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (summary) {
             if (summary) {
                 localStorage.setItem('currentSummary', JSON.stringify(summary));
@@ -3899,7 +3989,8 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.getDetail = function (summaryinfo) {
         var _this = this;
-        console.log('getDetail for ' + summaryinfo);
+        this.host_ip = window.location.origin;
+        console.log('getDetail for ' + summaryinfo + ' to ' + this.host_ip);
         return this.http.post(this.host_ip + '/detail', summaryinfo)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (summary) {
             if (summary) {
@@ -3995,7 +4086,7 @@ var AppRoutingModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/* @import \"~@angular/material/prebuilt-themes/indigo-pink.css\"; */\n\n.mat-expansion-panel-header {\n    background-color: 'burlywood'\n}\n\nmat-panel-description {\n    float:'right';\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0VBQWtFOztBQUVsRTtJQUNJO0FBQ0o7O0FBRUE7SUFDSSxhQUFhO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBAaW1wb3J0IFwifkBhbmd1bGFyL21hdGVyaWFsL3ByZWJ1aWx0LXRoZW1lcy9pbmRpZ28tcGluay5jc3NcIjsgKi9cblxuLm1hdC1leHBhbnNpb24tcGFuZWwtaGVhZGVyIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAnYnVybHl3b29kJ1xufVxuXG5tYXQtcGFuZWwtZGVzY3JpcHRpb24ge1xuICAgIGZsb2F0OidyaWdodCc7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("/* @import \"~@angular/material/prebuilt-themes/indigo-pink.css\"; */\r\n\r\n.mat-expansion-panel-header {\r\n    background-color: 'burlywood'\r\n}\r\n\r\nmat-panel-description {\r\n    float:'right';\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0VBQWtFOztBQUVsRTtJQUNJO0FBQ0o7O0FBRUE7SUFDSSxhQUFhO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBAaW1wb3J0IFwifkBhbmd1bGFyL21hdGVyaWFsL3ByZWJ1aWx0LXRoZW1lcy9pbmRpZ28tcGluay5jc3NcIjsgKi9cclxuXHJcbi5tYXQtZXhwYW5zaW9uLXBhbmVsLWhlYWRlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAnYnVybHl3b29kJ1xyXG59XHJcblxyXG5tYXQtcGFuZWwtZGVzY3JpcHRpb24ge1xyXG4gICAgZmxvYXQ6J3JpZ2h0JztcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -4017,6 +4108,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { DetailComponent } from './detail';
 var AppComponent = /** @class */ (function () {
     function AppComponent(router, authenticationService) {
         var _this = this;
@@ -4030,8 +4122,18 @@ var AppComponent = /** @class */ (function () {
             this.setStep(1);
         }
     }
+    // @ViewChild(DetailComponent, {static: false}) private detailComp: DetailComponent;
     AppComponent.prototype.setStep = function (index) {
         this.step = index;
+        // this.detailComp.refreshValues();
+    };
+    AppComponent.prototype.getBenefitSource = function () {
+        if (this.currentSummary) {
+            return [
+                { type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit: this.currentSummary.deb_cash_tax_benefit },
+                { type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 10).toString() + ' %)', debit: 0 }
+            ];
+        }
     };
     AppComponent.prototype.logout = function () {
         this.authenticationService.logout();
@@ -4074,16 +4176,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/esm5/core.es5.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _salary_salary_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./salary/salary.component */ "./src/app/salary/salary.component.ts");
-/* harmony import */ var _summary_summary_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./summary/summary.component */ "./src/app/summary/summary.component.ts");
-/* harmony import */ var _detail_detail_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./detail/detail.component */ "./src/app/detail/detail.component.ts");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./_components */ "./src/app/_components/index.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm5/expansion.es5.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _salary_salary_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./salary/salary.component */ "./src/app/salary/salary.component.ts");
+/* harmony import */ var _summary_summary_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./summary/summary.component */ "./src/app/summary/summary.component.ts");
+/* harmony import */ var _detail_detail_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./detail/detail.component */ "./src/app/detail/detail.component.ts");
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+
+
 
 
 
@@ -4107,11 +4213,12 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_13__["LoginComponent"],
-                _salary_salary_component__WEBPACK_IMPORTED_MODULE_14__["SalaryComponent"],
-                _summary_summary_component__WEBPACK_IMPORTED_MODULE_15__["SummaryComponent"],
-                _detail_detail_component__WEBPACK_IMPORTED_MODULE_16__["DetailComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+                _components__WEBPACK_IMPORTED_MODULE_7__["AlertComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"],
+                _salary_salary_component__WEBPACK_IMPORTED_MODULE_15__["SalaryComponent"],
+                _summary_summary_component__WEBPACK_IMPORTED_MODULE_16__["SummaryComponent"],
+                _detail_detail_component__WEBPACK_IMPORTED_MODULE_17__["DetailComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"],
@@ -4120,20 +4227,34 @@ var AppModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"],
                 _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatNativeDateModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
-                _angular_material_expansion__WEBPACK_IMPORTED_MODULE_9__["MatExpansionModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_10__["MatInputModule"],
-                _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"],
-                _angular_material_table__WEBPACK_IMPORTED_MODULE_12__["MatTableModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]
+                _angular_material_expansion__WEBPACK_IMPORTED_MODULE_10__["MatExpansionModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatInputModule"],
+                _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButtonModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_13__["MatTableModule"],
+                _angular_flex_layout__WEBPACK_IMPORTED_MODULE_18__["FlexLayoutModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
 }());
 
 
+
+/***/ }),
+
+/***/ "./src/app/detail/detail.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/detail/detail.component.css ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".mat-table {\r\n    overflow: auto;\r\n    max-height: 700px;\r\n    font-size: 14px;\r\n  }\r\n\r\n.mat-header-row {\r\n    background-color: #3897f0;\r\n  }\r\n\r\n.mat-footer-row {\r\n  background-color:#EDF1F5;  \r\n}\r\n\r\n.mat-row:nth-child(even){\r\n  background-color:#EDF1F5;\r\n}\r\n\r\n.mat-row:nth-child(odd){\r\n  background-color:#FDFDFB;\r\n}\r\n\r\n.mat-column-credit {\r\n  text-align: center;\r\n  justify-content: flex-end;\r\n  }\r\n\r\n.mat-column-debit {\r\n  text-align: center;\r\n  justify-content: flex-end;\r\n  }\r\n\r\n.mat-column-benefit {\r\ntext-align: right;\r\njustify-content: flex-end;\r\n}\r\n\r\n.highlight{\r\n  color:#bd2130;\r\n  font-weight: bold;\r\n}\r\n\r\n.div1 {\r\n    height: 15px;\r\n    background-color: #3897f0;\r\n  }\r\n\r\n.div2 {\r\n    height: 15px;\r\n    background-color: #3897f070;\r\n  }\r\n\r\n.div3 {\r\n    height: 15px;\r\n    background-color: red;\r\n  }\r\n\r\n.div4 {\r\n    height: 15px;\r\n    background-color: #dc354573; \r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGV0YWlsL2RldGFpbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLGlCQUFpQjtJQUNqQixlQUFlO0VBQ2pCOztBQUVGO0lBQ0kseUJBQXlCO0VBQzNCOztBQUVGO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLHlCQUF5QjtFQUN6Qjs7QUFFRjtFQUNFLGtCQUFrQjtFQUNsQix5QkFBeUI7RUFDekI7O0FBR0Y7QUFDQSxpQkFBaUI7QUFDakIseUJBQXlCO0FBQ3pCOztBQUVBO0VBQ0UsYUFBYTtFQUNiLGlCQUFpQjtBQUNuQjs7QUFFQTtJQUNJLFlBQVk7SUFDWix5QkFBeUI7RUFDM0I7O0FBQ0E7SUFDRSxZQUFZO0lBQ1osMkJBQTJCO0VBQzdCOztBQUNBO0lBQ0UsWUFBWTtJQUNaLHFCQUFxQjtFQUN2Qjs7QUFDQTtJQUNFLFlBQVk7SUFDWiwyQkFBMkI7RUFDN0IiLCJmaWxlIjoic3JjL2FwcC9kZXRhaWwvZGV0YWlsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWF0LXRhYmxlIHtcclxuICAgIG92ZXJmbG93OiBhdXRvO1xyXG4gICAgbWF4LWhlaWdodDogNzAwcHg7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbiAgfVxyXG5cclxuLm1hdC1oZWFkZXItcm93IHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMzODk3ZjA7XHJcbiAgfVxyXG5cclxuLm1hdC1mb290ZXItcm93IHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiNFREYxRjU7ICBcclxufVxyXG5cclxuLm1hdC1yb3c6bnRoLWNoaWxkKGV2ZW4pe1xyXG4gIGJhY2tncm91bmQtY29sb3I6I0VERjFGNTtcclxufVxyXG5cclxuLm1hdC1yb3c6bnRoLWNoaWxkKG9kZCl7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjojRkRGREZCO1xyXG59XHJcblxyXG4ubWF0LWNvbHVtbi1jcmVkaXQge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xyXG4gIH1cclxuXHJcbi5tYXQtY29sdW1uLWRlYml0IHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcclxuICB9XHJcblxyXG4gICAgXHJcbi5tYXQtY29sdW1uLWJlbmVmaXQge1xyXG50ZXh0LWFsaWduOiByaWdodDtcclxuanVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcclxufVxyXG5cclxuLmhpZ2hsaWdodHtcclxuICBjb2xvcjojYmQyMTMwO1xyXG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcblxyXG4uZGl2MSB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzg5N2YwO1xyXG4gIH1cclxuICAuZGl2MiB7XHJcbiAgICBoZWlnaHQ6IDE1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzg5N2YwNzA7XHJcbiAgfVxyXG4gIC5kaXYzIHtcclxuICAgIGhlaWdodDogMTVweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJlZDtcclxuICB9XHJcbiAgLmRpdjQge1xyXG4gICAgaGVpZ2h0OiAxNXB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2RjMzU0NTczOyBcclxuICB9Il19 */");
 
 /***/ }),
 
@@ -4150,7 +4271,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/_services */ "./src/app/_services/index.ts");
+
+
 
 
 
@@ -4163,25 +4288,109 @@ var DetailComponent = /** @class */ (function () {
         this.authenticationService = authenticationService;
         this.alertService = alertService;
         this.loading = false;
-        this.benefitPer10kColumns = ['', 'name', 'weight', 'symbol'];
-        this.cardTransactionColumns = ['position', 'name', 'weight', 'symbol'];
+        this.benefitPer10kColumns = ['type', 'credit', 'debit'];
+        this.cardTransactionColumns = ['apv_d', 'crd_tcd', 'apv_amt', 'mct_nm', 'benefit'];
+        this.progressBar = [0, 500, 0, 500];
+        //tried_refresh = 0;
+        // selectedTransactionRowIndex: number;
+        // highlight(row){
+        //     console.log('highlight', row);
+        //     this.selectedRowIndex = row;`1
+        // }
+        this.benefitSource = [
+        // {type: '절세금액', credit: '' + this.currentSummary.crd_tax_benefit, debit:  this.currentSummary.deb_cash_tax_benefit},
+        // {type: '카드혜택', credit: this.currentSummary.crd_benefit + ' (' + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString() + ' %)', debit: 0}
+        ];
+        this.transactionSource = [];
         this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.authenticationService.currentSummary.subscribe(function (x) { return _this.currentSummary = x; });
     }
     DetailComponent.prototype.ngOnInit = function () {
-        this.benefitSource = [
-            { type: '신용', tax: this.currentSummary.crd_tax_benefit, card: this.currentSummary.crd_benefit + (Math.round(this.currentSummary.crd_benefit_ratio * 1000) / 100).toString(), total: this.currentSummary.crd_benefit_sum },
-            { type: '체크', tax: this.currentSummary.deb_cash_tax_benefit, card: '', total: this.currentSummary.deb_cash_tax_benefit }
-        ];
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        var animationCounter = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(50);
+        animationCounter.subscribe(this.animateBar());
+        this.authenticationService.setSummaryTriedRefresh(0);
+        //this.tried_refresh = 0;
+        // this.selectedTransactionRowIndex = 0;
+        //this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        // console.log('benefitSource', this.benefitSource.toString());
+        // console.log('transactionSource', this.transactionSource.toString());
+    };
+    // ngAfterViewInit() {
+    //     let el = document.getElementById('detailPanel');
+    //     el.scrollIntoView();
+    //   }
+    DetailComponent.prototype.animateBar = function () {
+        return (function (self) {
+            return function () {
+                if (self.currentSummary) {
+                    self.div1 = Math.round(Math.min(self.currentSummary.crd_etc_use_amt / self.currentSummary.crd_etc_deduce_hurdle, 1) * 50);
+                    self.div2 = Math.round(Math.min(self.currentSummary.crd_etc_deduce / self.currentSummary.crd_etc_deduction_limit, 1) * 50);
+                    //console.log('divs, progressbars', [self.div1, self.div2], self.progressBar);
+                    if (self.progressBar[2] > 0) {
+                        if (self.div2 > self.progressBar[2]) {
+                            self.progressBar[2] += 1;
+                        }
+                        else if (self.div2 < self.progressBar[2]) {
+                            self.progressBar[2] -= 1;
+                        }
+                    }
+                    else if (self.progressBar[2] == 0) {
+                        if (self.div1 > self.progressBar[0]) {
+                            self.progressBar[0] += 1;
+                        }
+                        else if (self.div1 < self.progressBar[0]) {
+                            self.progressBar[0] -= 1;
+                        }
+                        else if (self.div2 > self.progressBar[2]) {
+                            self.progressBar[2] += 1;
+                        }
+                    }
+                    self.progressBar[1] = 50 - self.progressBar[0];
+                    self.progressBar[3] = 50 - self.progressBar[2];
+                }
+            };
+        })(this);
+    };
+    DetailComponent.prototype.refresh = function () {
+        var _this = this;
+        this.authenticationService.setSummaryTriedRefresh(this.currentSummary.tried_refresh + 1);
+        // this.benefitSource = this.getBenefitSource();
+        // this.transactionSource = this.currentSummary.recent_crd_deb_use_list;
+        if (this.currentSummary.tried_refresh % 5 == 0) {
+            this.authenticationService.setSummaryReqAddParms(Math.floor(this.currentSummary.tried_refresh / 5));
+            this.loading = true;
+            console.log('retrying in refresh ', this.currentSummary);
+            this.authenticationService.getDetail(this.currentSummary) // this.currentSummary)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
+                .subscribe(function (data) {
+                console.log('return in refresh', data);
+                //this.authenticationService.updateSummaryValue(data);
+                _this.loading = false;
+                //this.selectedTransactionRowIndex = this.currentSummary.req_add_trans;
+                //this.setStepInApp.emit(3);
+                //this.router.navigate([this.returnUrl]);
+            }, function (error) {
+                //this.alertService.error(error);
+                _this.loading = false;
+            });
+            // console.log('right here!');
+        }
     };
     DetailComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-        { type: _services__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"] },
-        { type: _services__WEBPACK_IMPORTED_MODULE_3__["AlertService"] }
+        { type: _services__WEBPACK_IMPORTED_MODULE_5__["AuthenticationService"] },
+        { type: _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], DetailComponent.prototype, "benefitSource", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], DetailComponent.prototype, "transactionSource", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -4189,12 +4398,13 @@ var DetailComponent = /** @class */ (function () {
     DetailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'detail-cmp',
-            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./detail.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/detail/detail.component.html")).default
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./detail.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/detail/detail.component.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./detail.component.css */ "./src/app/detail/detail.component.css")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-            _services__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"],
-            _services__WEBPACK_IMPORTED_MODULE_3__["AlertService"]])
+            _services__WEBPACK_IMPORTED_MODULE_5__["AuthenticationService"],
+            _services__WEBPACK_IMPORTED_MODULE_5__["AlertService"]])
     ], DetailComponent);
     return DetailComponent;
 }());
@@ -4267,6 +4477,7 @@ var LoginComponent = /** @class */ (function () {
             console.log(data);
             _this.setStepInApp.emit(1);
             //this.router.navigate([this.returnUrl]);
+            _this.alertService.success('로그인 되었습니다');
         }, function (error) {
             _this.alertService.error(error);
             _this.loading = false;
@@ -4336,6 +4547,7 @@ var SalaryComponent = /** @class */ (function () {
         this.authenticationService = authenticationService;
         this.alertService = alertService;
         this.loading = false;
+        this.editing = false;
         this.submitted = false;
         this.setStepInApp = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.authenticationService.currentUser.subscribe(function (x) { return _this.currentUser = x; });
@@ -4363,6 +4575,10 @@ var SalaryComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    SalaryComponent.prototype.setEditing = function (on_edit) {
+        //console.log('setediting', on_edit);
+        this.editing = on_edit; //!this.editing;
+    };
     SalaryComponent.prototype.onSubmit = function () {
         var _this = this;
         this.submitted = true;
@@ -4371,7 +4587,7 @@ var SalaryComponent = /** @class */ (function () {
             return;
         }
         this.loading = true;
-        this.authenticationService.getSummary(this.currentUser) //, this.f.password.value)
+        this.authenticationService.getSummary(this.currentUser.userid, +(this.f.total_salary.value)) //, this.f.password.value)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(function (data) {
             console.log(data);
@@ -4462,6 +4678,9 @@ var SummaryComponent = /** @class */ (function () {
         // });
         // if(this.currentSummary) {
         this.summaryForm = this.formBuilder.group(this.currentSummary);
+        //this.f.earned_income_deduce.disable({onlySelf:true, emitEvent:true});
+        //this.f.personal_allowance_deduce.disable({onlySelf:true, emitEvent:true});
+        //this.f.pension_insurance_deduce.disable({onlySelf:true, emitEvent:true});
         // } else {
         //     this.summaryForm = this.formBuilder.group({
         //             earned_income_deduce: ['', Validators.required],
@@ -4496,11 +4715,15 @@ var SummaryComponent = /** @class */ (function () {
             return;
         }
         this.loading = true;
-        this.authenticationService.getDetail(this.currentSummary) //, this.f.password.value)
+        //console.log('formGroup', this.summaryForm.value);
+        this.authenticationService.getDetail(this.summaryForm.value) // this.currentSummary)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(function (data) {
             console.log(data);
+            //this.authenticationService.updateSummaryValue(data);
             _this.loading = false;
+            _this.authenticationService.setSummaryReqAddParms(0);
+            _this.authenticationService.setSummaryTriedRefresh(0);
             _this.setStepInApp.emit(3);
             //this.router.navigate([this.returnUrl]);
         }, function (error) {
@@ -4681,7 +4904,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a80099707/workjs/hack2019/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\work\hack2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -1,9 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+/* body {
+  background-color: beige;
+} */
+
+.h5 {
+  margin-top: 20px;
+}
+
 .mat-expansion-panel-header-description {
     display: flex;
     justify-content: flex-end;
   }
 
-.form-group label {
-    font-size: 15px;
+.mat-expansion-panel {
+  background-color: #EDF1F5;
 }
+
+.mat-expansion-panel-content {
+  background-color: white;
+}
+
+.form-group label {
+    font-size: 12px;
+}
+
+
+.mat-table {
+    overflow: auto;
+    max-height: 700px;
+  }
+
+.mat-header-cell .mat-sort-header-sorted {
+    color: #0A0A0A;
+  }

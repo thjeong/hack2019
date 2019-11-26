@@ -1,28 +1,103 @@
-<mat-table [dataSource]="benefitSource" class="mat-elevation-z8">
-    <!-- Position Column -->
-    <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="tax">
-      <mat-header-cell *matHeaderCellDef> Tax </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.tax}} </mat-cell>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="card">
-      <mat-header-cell *matHeaderCellDef> Card </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.card}} </mat-cell>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="total">
-      <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
-    </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="benefitPer10kColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+<!-- <img src="https://cdn0.iconfinder.com/data/icons/finance-glyph-2/33/tax_cut-512.png" width="30" height="30"> -->
+<h5 style='text-align: center;'><b>신용체크현금 소득공제 받으려면?</b></h5>
+
+<div fxLayout="row" fxLayoutGap="0px" style="width: 100%">
+  <div [fxFlex]="progressBar[0]" class="div1"></div>
+  <div [fxFlex]="progressBar[1]" class="div2"></div>
+  <div [fxFlex]="progressBar[2]" class="div3"></div>
+  <div [fxFlex]="progressBar[3]" class="div4"></div>
+</div>
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex="50" fxLayout="column" fxLayoutAlign="start center">▲
+    </div>
+  </div>
+<p>{{currentSummary.hurdle_info_msg}}</p>
+
+<h5 style='text-align: center;'><b>만원 당 혜택 비교!</b></h5>
+<div class="box-container" style="display: flex; flex-wrap: wrap;">
+  <div style="flex: 1;text-align: center;">
+    <img *ngIf="currentSummary.crd_benefit_sum > currentSummary.deb_cash_benefit_sum" src="https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif" width="30" height="20">
+    신용 카드
+    <img src="https://freeiconshop.com/wp-content/uploads/edd/creditcard-outline-filled.png" width="100px" height="90px">
+  </div>
+  <div style="flex: 1;text-align: center;">
+    <img *ngIf="currentSummary.crd_benefit_sum < currentSummary.deb_cash_benefit_sum" src="https://cdn.dribbble.com/users/282075/screenshots/4756098/icon_reward.gif" width="30" height="20">
+    체크 카드
+    <img src="https://i2.wp.com/spaceworksnyc.org/app/uploads/2019/02/icon-credit-card.png?ssl=1" width="100px" height="90px">
+  </div>
+</div>
+<div class="box-container" style="display: flex; flex-wrap: wrap;">
+  <div style="flex: 1;  font-size: 13px; text-align: right;">세제 혜택</div>
+  <div style="flex: 1;  font-size: 22px; text-align: center;"><b>{{currentSummary.crd_tax_benefit}}</b></div>
+  <div style="flex: 1;  font-size: 13px; text-align: right;">세제 혜택</div>
+  <div style="flex: 1;  font-size: 22px; text-align: center;"><b>{{currentSummary.deb_cash_tax_benefit}}</b></div>
+</div>
+<div class="box-container" style="display: flex; flex-wrap: wrap;">
+  <div style="flex: 1;  font-size: 13px; text-align: right;">카드 혜택</div>
+  <div style="flex: 1;  font-size: 22px; text-align: center;"><b>{{currentSummary.crd_benefit}}</b></div>
+  <div style="flex: 1;  font-size: 13px; text-align: right;">카드 혜택</div>
+  <div style="flex: 1;  font-size: 22px; text-align: center;"><b>{{currentSummary.deb_benefit}}</b></div>
+</div>
+<div class="box-container" style="display: flex; flex-wrap: wrap;">
+  <div style="flex: 1;  font-size: 13px; text-align: right; color:brown"><b>최종 혜택</b></div>
+  <div style="flex: 1;  font-size: 22px; text-align: center;"><b>{{currentSummary.crd_benefit_sum}}</b></div>
+  <div style="flex: 1;  font-size: 13px; text-align: right; color:brown"><b>최종 혜택</b></div>
+  <div style="flex: 1;  font-size: 22px; text-align: center;"><b>{{currentSummary.deb_cash_benefit_sum}}</b></div>
+</div>
+
+<div style='margin-top:20px'></div>
+
+<div *ngFor="let use_item of currentSummary.recent_crd_deb_use_list">
+  <div style="flex: 2;height: 30px;background-color: lightgray;">
+    <div style='float: left;'>{{use_item.apv_d}}</div>
+    <div *ngIf="use_item.new_trans_TF == 1" style='font-size:13px; text-align:right; color:brown'>방금 전</div>
+  </div>
+  <div class="box-container" style="display: flex;flex-wrap: wrap;flex-direction: row;">
+      <div style="flex: 1;">{{use_item.mct_nm}}</div>
+      <div style="flex: 1;text-align: right;">{{use_item.apv_amt | number:0}} 원</div>
+  </div>
+  <div class="box-container" style="display: flex;flex-wrap: wrap;flex-direction: row;">
+    <div style="flex: 1;font-size: 13px;">{{use_item.crd_tcd}}</div>
+    <div style="flex: 1;text-align: right;">
+      <div style="float: left; font-size: 13px;">혜택금액</div>
+      <div>{{use_item.benefit | number:0}} 원</div>
+    </div>
+  </div>
+</div>
+<div (click)="refresh()" style='float:right'><img src="https://www.materialui.co/materialIcons/navigation/refresh_black_192x192.png" height="20" width="20"></div>
+<!-- 
+<div>
+  <div>{{currentSummary.crd_etc_strategy}}</div>
+</div> -->
+<!-- 
+<h5><img src="https://cdn0.iconfinder.com/data/icons/cash-card-add-on-colored/48/JD-11-512.png" width="40" height="40">받은 혜택 (최근 5건)
+<div (click)="refresh()" style='float:right'><img src="https://www.materialui.co/materialIcons/navigation/refresh_black_192x192.png" height="20" width="20"></div></h5>
+<mat-table [dataSource]="transactionSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="apv_d">
+    <mat-header-cell *matHeaderCellDef> 날짜 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.apv_d}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="crd_tcd">
+    <mat-header-cell *matHeaderCellDef> 구분 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.crd_tcd}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="apv_amt">
+    <mat-header-cell *matHeaderCellDef> 금액 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.apv_amt | number:0}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="mct_nm">
+    <mat-header-cell *matHeaderCellDef> 가맹점 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.mct_nm}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="benefit">
+    <mat-header-cell *matHeaderCellDef> 혜택 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> <div><div>{{element.benefit | number:0}}</div><div style="font-size:12px;font-weight: bold;">({{(element.benefit / element.apv_amt * 100) | number:'0.0-1'}} %)</div></div></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="cardTransactionColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: cardTransactionColumns;" [ngClass]="{'highlight': row.new_trans_TF == 1}"></mat-row>
+</mat-table> -->

@@ -1,0 +1,59 @@
+.mat-table {
+    overflow: auto;
+    max-height: 700px;
+    font-size: 14px;
+  }
+
+.mat-header-row {
+    background-color: #3897f0;
+  }
+
+.mat-footer-row {
+  background-color:#EDF1F5;  
+}
+
+.mat-row:nth-child(even){
+  background-color:#EDF1F5;
+}
+
+.mat-row:nth-child(odd){
+  background-color:#FDFDFB;
+}
+
+.mat-column-credit {
+  text-align: center;
+  justify-content: flex-end;
+  }
+
+.mat-column-debit {
+  text-align: center;
+  justify-content: flex-end;
+  }
+
+    
+.mat-column-benefit {
+text-align: right;
+justify-content: flex-end;
+}
+
+.highlight{
+  color:#bd2130;
+  font-weight: bold;
+}
+
+.div1 {
+    height: 15px;
+    background-color: #3897f0;
+  }
+  .div2 {
+    height: 15px;
+    background-color: #3897f070;
+  }
+  .div3 {
+    height: 15px;
+    background-color: red;
+  }
+  .div4 {
+    height: 15px;
+    background-color: #dc354573; 
+  }

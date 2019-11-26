@@ -1,5 +1,7 @@
 # 세후 급여액으로 (세전)총급여액 계산
 from server.genDummyData import genSHCBill
+from server.api_request import shcSearchMonthlyBillingDetail
+import pandas as pd
 import datetime
 
 def simple_tax_calc(net_income, table_file_dir):
@@ -201,7 +203,7 @@ def getCreditCrdEtcDeduction(credit_crd_use, debit_crd_use, cash_use, trad_marke
         else: # 세 개를 다 합쳤을 때 공제문턱(총급여의 25%)를 넘길 때
             crd_etc_deduction = min((total_use - hurdle) * 0.3, deduction_limit)
         # 신용카드의 공제 대상금액
-        crd_card_deduce_valid_amt = credit_crd_use - hurdle
+        crd_card_deduce_valid_amt = max(credit_crd_use - hurdle, 0)
         # 체크/현금의 공제 대상금액
         deb_cash_deduce_valid_amt = debit_crd_use + cash_use
 
@@ -243,18 +245,32 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
               신용카드혜택합계, 체크/현금 혜택합계,
     """
     # 전년도 신용카드 이용/청구내역 집계해서 신용카드 이용혜택율 계산
-    # TODO: 전년도 신용카드 청구내역 api 호출 & parsing module
-    input_aprvamt = 5000
-    prev_y_df = genSHCBill(userid, input_aprvamt, '20180101', '20181231')
+    # 전년도 청구상세내역 API 호출 & 가라데이터 만들어 붙이기 & 이용금액과 청구금액의 차이, 적립예정포인트율로 카드혜택크기 계산
+    firs_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '0101'
+    last_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '12311'
+    prev_y_df = shcSearchMonthlyBillingDetail(firs_day_last_year[0:4])
+    input_aprvamt = int(prev_y_df['매출전표금액'][0])
+    cardno = prev_y_df['이용카드뒷세자리'][0]
+    prev_y_df = genSHCBill(userid, input_aprvamt, cardno, firs_day_last_year, last_day_last_year)
     prev_y_df['적립예정포인트'] = prev_y_df['매출전표금액'] * prev_y_df['적립예정포인트율']
     prev_y_df['할인금액'] = prev_y_df['매출전표금액'] - prev_y_df['청구원금금액']
     crd_benefit_ratio = int(prev_y_df['적립예정포인트'].sum() + prev_y_df['할인금액'].sum()) / int(prev_y_df['매출전표금액'].sum())
     crd_benefit = unit_amt * crd_benefit_ratio
 
+    # 전년도 체크카드 이용/청구내역 집계해서 신용카드 이용혜택율 계산
+    # 가라데이터 만들어 붙이기 & 이용금액과 청구금액의 차이, 적립예정포인트율로 카드혜택크기 계산
+    firs_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '0101'
+    last_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '12311'
+    prev_y_debit_df = genSHCBill(userid, input_aprvamt, cardno, firs_day_last_year, last_day_last_year, debit_TF=1)
+    prev_y_debit_df['적립예정포인트'] = prev_y_debit_df['매출전표금액'] * prev_y_debit_df['적립예정포인트율']
+    prev_y_debit_df['할인금액'] = prev_y_debit_df['매출전표금액'] - prev_y_debit_df['청구원금금액']
+    deb_benefit_ratio = int(prev_y_debit_df['적립예정포인트'].sum() + prev_y_debit_df['할인금액'].sum()) / int(prev_y_debit_df['매출전표금액'].sum())
+    deb_benefit = unit_amt * deb_benefit_ratio
+
     # max_ratio와 현재기준 신용/체크/현금 이용금액으로 절세혜택 계산
     # 합계가 25%를 못넘은 경우
-    huddle = total_salary * 0.25
-    if crd_card_use + deb_card_use + cash_use < huddle:
+    hurdle = total_salary * 0.25
+    if crd_card_use + deb_card_use + cash_use < hurdle:
         crd_tax_benefit = 0
         cash_deb_tax_benefit = 0
     # 합계는 25% 넘었는데.... 아예 현재 신용체크등등 공제금액이 공제한도를 초과한 경우
@@ -262,7 +278,7 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
         crd_tax_benefit = 0
         cash_deb_tax_benefit = 0
     # 합계는 25%를 넘었는데, 신용카드만으로는 25% 못넘은 경우
-    elif crd_card_use < huddle:
+    elif crd_card_use < hurdle:
         crd_tax_benefit = unit_amt * 0.3 * max_ratio
         cash_deb_tax_benefit = unit_amt * 0.3 * max_ratio
     # 신용카드만으로 25% 넘은 경우
@@ -271,7 +287,7 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
         cash_deb_tax_benefit = unit_amt * 0.3 * max_ratio
 
     return int(crd_tax_benefit), int(cash_deb_tax_benefit), int(crd_benefit), crd_benefit_ratio, \
-           int(crd_tax_benefit+crd_benefit)
+           int(crd_tax_benefit+crd_benefit), int(deb_benefit), deb_benefit_ratio, int(cash_deb_tax_benefit+deb_benefit)
 
 def getInsertComma(num):
     a = list(str(num))

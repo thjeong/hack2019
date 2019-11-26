@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
                     console.log(data);
                     this.setStepInApp.emit(1);
                     //this.router.navigate([this.returnUrl]);
+                    this.alertService.success('로그인 되었습니다');
                 },
                 error => {
                     this.alertService.error(error);

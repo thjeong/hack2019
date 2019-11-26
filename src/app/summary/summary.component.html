@@ -1,91 +1,91 @@
 <form [formGroup]="summaryForm" (ngSubmit)="onSubmit()" *ngIf="currentSummary">
     <div class="form-group">
         <label for="earned_income_deduce">근로소득공제</label>
-        <input placeholder=""  type="text" formControlName="earned_income_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.earned_income_deduce.errors }" />
+        <input placeholder="" type="number" formControlName="earned_income_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.earned_income_deduce.errors }" />
         <div *ngIf="submitted && f.earned_income_deduce.errors" class="invalid-feedback">
             <div *ngIf="f.earned_income_deduce.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="personal_allowance">인적공제</label>
-        <input placeholder=""  type="text" formControlName="personal_allowance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.personal_allowance.errors }" />
-        <div *ngIf="submitted && f.personal_allowance.errors" class="invalid-feedback">
-            <div *ngIf="f.personal_allowance.errors.required">Input is required</div>
+        <label for="personal_allowance_deduce">인적공제</label>
+        <input placeholder="" type="number" formControlName="personal_allowance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.personal_allowance_deduce.errors }" />
+        <div *ngIf="submitted && f.personal_allowance_deduce.errors" class="invalid-feedback">
+            <div *ngIf="f.personal_allowance_deduce.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="pension_insurance_deduce">연금보험료공제</label>
-        <input placeholder=""  type="text" formControlName="pension_insurance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }" />
+        <input placeholder="" type="number" formControlName="pension_insurance_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pension_insurance_deduce.errors }" />
         <div *ngIf="submitted && f.pension_insurance_deduce.errors" class="invalid-feedback">
             <div *ngIf="f.pension_insurance_deduce.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="spec_income_deduce">특별소득공제</label>
-        <input placeholder=""  type="text" formControlName="spec_income_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.spec_income_deduce.errors }" />
+        <input placeholder=""  type="number" formControlName="spec_income_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.spec_income_deduce.errors }" />
         <div *ngIf="submitted && f.spec_income_deduce.errors" class="invalid-feedback">
             <div *ngIf="f.spec_income_deduce.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="crd_card_use">신용카드</label>
-        <input placeholder=""  type="text" formControlName="crd_card_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.crd_card_use.errors }" />
+        <input placeholder=""  type="number" formControlName="crd_card_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.crd_card_use.errors }" />
         <div *ngIf="submitted && f.crd_card_use.errors" class="invalid-feedback">
             <div *ngIf="f.crd_card_use.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="deb_card_use">체크카드</label>
-        <input placeholder=""  type="text" formControlName="deb_card_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.deb_card_use.errors }" />
+        <input placeholder=""  type="number" formControlName="deb_card_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.deb_card_use.errors }" />
         <div *ngIf="submitted && f.deb_card_use.errors" class="invalid-feedback">
             <div *ngIf="f.deb_card_use.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="cash_use">현금영수증</label>
-        <input placeholder=""  type="text" formControlName="cash_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cash_use.errors }" />
+        <input placeholder=""  type="number" formControlName="cash_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cash_use.errors }" />
         <div *ngIf="submitted && f.cash_use.errors" class="invalid-feedback">
             <div *ngIf="f.cash_use.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="public_trans_use">대중교통</label>
-        <input placeholder=""  type="text" formControlName="public_trans_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.public_trans_use.errors }" />
+        <input placeholder=""  type="number" formControlName="public_trans_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.public_trans_use.errors }" />
         <div *ngIf="submitted && f.public_trans_use.errors" class="invalid-feedback">
             <div *ngIf="f.public_trans_use.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="trad_market_use">전통시장</label>
-        <input placeholder=""  type="text" formControlName="trad_market_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.trad_market_use.errors }" />
+        <input placeholder=""  type="number" formControlName="trad_market_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.trad_market_use.errors }" />
         <div *ngIf="submitted && f.trad_market_use.errors" class="invalid-feedback">
             <div *ngIf="f.trad_market_use.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="book_use">도서/공연</label>
-        <input placeholder=""  type="text" formControlName="book_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.book_use.errors }" />
+        <input placeholder=""  type="number" formControlName="book_use" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.book_use.errors }" />
         <div *ngIf="submitted && f.book_use.errors" class="invalid-feedback">
             <div *ngIf="f.book_use.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="house_saving">주택청약저축</label>
-        <input placeholder=""  type="text" formControlName="house_saving" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.house_saving.errors }" />
+        <input placeholder=""  type="number" formControlName="house_saving" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.house_saving.errors }" />
         <div *ngIf="submitted && f.house_saving.errors" class="invalid-feedback">
             <div *ngIf="f.house_saving.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="my_stock">우리사주조합 출연금</label>
-        <input placeholder=""  type="text" formControlName="my_stock" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.my_stock.errors }" />
+        <input placeholder=""  type="number" formControlName="my_stock" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.my_stock.errors }" />
         <div *ngIf="submitted && f.my_stock.errors" class="invalid-feedback">
             <div *ngIf="f.my_stock.errors.required">Input is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="etc_deduce">기타</label>
-        <input placeholder=""  type="text" formControlName="etc_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.etc_deduce.errors }" />
+        <input placeholder=""  type="number" formControlName="etc_deduce" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.etc_deduce.errors }" />
         <div *ngIf="submitted && f.etc_deduce.errors" class="invalid-feedback">
             <div *ngIf="f.etc_deduce.errors.required">Input is required</div>
         </div>

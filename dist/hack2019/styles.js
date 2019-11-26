@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\n.mat-expansion-panel-header-description {\n    display: flex;\n    justify-content: flex-end;\n  }\n.form-group label {\n    font-size: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUE4RTtBQUM5RTtJQUNJLGFBQWE7SUFDYix5QkFBeUI7RUFDM0I7QUFFRjtJQUNJLGVBQWU7QUFDbkIiLCJmaWxlIjoic3JjL3N0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBZb3UgY2FuIGFkZCBnbG9iYWwgc3R5bGVzIHRvIHRoaXMgZmlsZSwgYW5kIGFsc28gaW1wb3J0IG90aGVyIHN0eWxlIGZpbGVzICovXG4ubWF0LWV4cGFuc2lvbi1wYW5lbC1oZWFkZXItZGVzY3JpcHRpb24ge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgfVxuXG4uZm9ybS1ncm91cCBsYWJlbCB7XG4gICAgZm9udC1zaXplOiAxNXB4O1xufSJdfQ== */", '', '']]
+module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\r\n/* body {\r\n  background-color: beige;\r\n} */\r\n.h5 {\r\n  margin-top: 20px;\r\n}\r\n.mat-expansion-panel-header-description {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n  }\r\n.mat-expansion-panel {\r\n  background-color: #EDF1F5;\r\n}\r\n.mat-expansion-panel-content {\r\n  background-color: white;\r\n}\r\n.form-group label {\r\n    font-size: 12px;\r\n}\r\n.mat-table {\r\n    overflow: auto;\r\n    max-height: 700px;\r\n  }\r\n.mat-header-cell .mat-sort-header-sorted {\r\n    color: #0A0A0A;\r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUE4RTtBQUM5RTs7R0FFRztBQUVIO0VBQ0UsZ0JBQWdCO0FBQ2xCO0FBRUE7SUFDSSxhQUFhO0lBQ2IseUJBQXlCO0VBQzNCO0FBRUY7RUFDRSx5QkFBeUI7QUFDM0I7QUFFQTtFQUNFLHVCQUF1QjtBQUN6QjtBQUVBO0lBQ0ksZUFBZTtBQUNuQjtBQUdBO0lBQ0ksY0FBYztJQUNkLGlCQUFpQjtFQUNuQjtBQUVGO0lBQ0ksY0FBYztFQUNoQiIsImZpbGUiOiJzcmMvc3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFlvdSBjYW4gYWRkIGdsb2JhbCBzdHlsZXMgdG8gdGhpcyBmaWxlLCBhbmQgYWxzbyBpbXBvcnQgb3RoZXIgc3R5bGUgZmlsZXMgKi9cclxuLyogYm9keSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogYmVpZ2U7XHJcbn0gKi9cclxuXHJcbi5oNSB7XHJcbiAgbWFyZ2luLXRvcDogMjBweDtcclxufVxyXG5cclxuLm1hdC1leHBhbnNpb24tcGFuZWwtaGVhZGVyLWRlc2NyaXB0aW9uIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xyXG4gIH1cclxuXHJcbi5tYXQtZXhwYW5zaW9uLXBhbmVsIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRURGMUY1O1xyXG59XHJcblxyXG4ubWF0LWV4cGFuc2lvbi1wYW5lbC1jb250ZW50IHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuLmZvcm0tZ3JvdXAgbGFiZWwge1xyXG4gICAgZm9udC1zaXplOiAxMnB4O1xyXG59XHJcblxyXG5cclxuLm1hdC10YWJsZSB7XHJcbiAgICBvdmVyZmxvdzogYXV0bztcclxuICAgIG1heC1oZWlnaHQ6IDcwMHB4O1xyXG4gIH1cclxuXHJcbi5tYXQtaGVhZGVyLWNlbGwgLm1hdC1zb3J0LWhlYWRlci1zb3J0ZWQge1xyXG4gICAgY29sb3I6ICMwQTBBMEE7XHJcbiAgfSJdfQ== */", '', '']]
 
 /***/ }),
 
@@ -338,7 +338,7 @@ if (content.locals) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/a80099707/workjs/hack2019/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! C:\work\hack2019\src\styles.css */"./src/styles.css");
 
 
 /***/ })
