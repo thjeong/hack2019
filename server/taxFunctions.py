@@ -248,13 +248,15 @@ def getBenefitPerUsage(userid, max_ratio, crd_card_use, deb_card_use, cash_use, 
     # 전년도 청구상세내역 API 호출 & 가라데이터 만들어 붙이기 & 이용금액과 청구금액의 차이, 적립예정포인트율로 카드혜택크기 계산
     firs_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '0101'
     last_day_last_year = (datetime.datetime.now() + datetime.timedelta(days=-365)).strftime('%Y') + '12311'
-    try:
-        prev_y_df = shcSearchMonthlyBillingDetail(firs_day_last_year[0:4])
-        input_aprvamt = int(prev_y_df['매출전표금액'][0])
-        cardno = prev_y_df['이용카드뒷세자리'][0]
-    except:
-        print('api 없음')
-        input_aprvamt, cardno = 5000, '123'
+    # try:
+    #     prev_y_df = shcSearchMonthlyBillingDetail(firs_day_last_year[0:4])
+    #     input_aprvamt = int(prev_y_df['매출전표금액'][0])
+    #     cardno = prev_y_df['이용카드뒷세자리'][0]
+    # except:
+    #     print('api 없음')
+    #     input_aprvamt, cardno = 5000, '123'
+    input_aprvamt, cardno = 5000, '123'
+
     prev_y_df = genSHCBill(userid, input_aprvamt, cardno, firs_day_last_year, last_day_last_year)
     prev_y_df['적립예정포인트'] = prev_y_df['매출전표금액'] * prev_y_df['적립예정포인트율']
     prev_y_df['할인금액'] = prev_y_df['매출전표금액'] - prev_y_df['청구원금금액']

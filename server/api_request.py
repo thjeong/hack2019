@@ -9,6 +9,7 @@ def shbAccountList(ssn):
     :param ssn: 주민번호
     :return:
     """
+    # 아래는 예전
     uri = '/v1/account/list'
     data = {"dataHeader": {},
             "dataBody": {"serviceCode": "C2010",

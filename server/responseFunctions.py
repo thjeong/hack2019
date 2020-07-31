@@ -11,6 +11,14 @@ def login_func(userid, year='2018'):
     :param userid:
     :return:
     """
+    total_salary = simple_tax_calc(80000000, 'server/data/')
+    output_json = json.dumps({
+        'userid': userid,
+        'username': genUserNm(userid),
+        'total_salary': total_salary
+        })
+    return output_json
+
     # 고객 계좌리스트 API 호출 & 계좌리스트로 거래내역 API호출 & 가라데이터 만들어 붙이기
     try :
         account_no_list = shbAccountList(userid)
@@ -50,23 +58,25 @@ def summary_func(userid, total_salary, stt_date='20190101',
     spec_income_deduce = getTmpSpecIncomeDeduction(total_salary, 1)
 
     #신용,체크카드이용내역 API호출 & 가라데이터 만들어붙이기
-    try:
-        crd_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=0)
-        input_aprvamt = int(crd_card_df['승인금액'][0])
-        cardno = crd_card_df['카드뒷세자리'][0]
-        crd_card_df = pd.concat([crd_card_df, genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
-    except:
-        print('api 없음')
-        crd_card_df = genSHCTrans(userid, 5000,'123',stt_date,end_date)
+    # try:
+    #     crd_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=0)
+    #     input_aprvamt = int(crd_card_df['승인금액'][0])
+    #     cardno = crd_card_df['카드뒷세자리'][0]
+    #     crd_card_df = pd.concat([crd_card_df, genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
+    # except:
+    #     print('api 없음')
+    #     crd_card_df = genSHCTrans(userid, 5000,'123',stt_date,end_date)
+    crd_card_df = genSHCTrans(userid, 5000,'123',stt_date,end_date)
 
-    try:
-        deb_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=1)
-        input_aprvamt = int(deb_card_df['승인금액'][0])
-        cardno = deb_card_df['카드뒷세자리'][0]
-        deb_card_df = pd.concat([deb_card_df, genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
-    except:
-        print('api 없음')
-        deb_card_df = genSHDTrans(userid, 5000, '456', stt_date, end_date)
+    # try:
+    #     deb_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=1)
+    #     input_aprvamt = int(deb_card_df['승인금액'][0])
+    #     cardno = deb_card_df['카드뒷세자리'][0]
+    #     deb_card_df = pd.concat([deb_card_df, genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
+    # except:
+    #     print('api 없음')
+    #     deb_card_df = genSHDTrans(userid, 5000, '456', stt_date, end_date)
+    deb_card_df = genSHDTrans(userid, 5000, '456', stt_date, end_date)
 
     # 공제대상 제외거래 빼기(원래는 가맹점번호리스트, 혹은 업종으로 걸러내야 하지만, 제공 api데이터에 업종정보가 없음)
     crd_card_use = crd_card_df[~crd_card_df['가맹점명'].str.contains('지방세|세금|상품권')]['승인금액'].sum()
@@ -86,12 +96,14 @@ def summary_func(userid, total_salary, stt_date='20190101',
                                                       book_use, total_salary)
     # 주택청약저축
     # 고객 계좌리스트 API호출 & 계좌리스트로 예적금 API호출(주택청약저축 금액) & 가라데이터 만들어 붙이기
-    try:
-        account_no_list = shbAccountList(userid)
-        house_saving = shbDepositInstallmentDetail(account_no_list, stt_date, end_date)
-    except:
-        print('api 없')
-        house_saving = 0
+    # try:
+    #     account_no_list = shbAccountList(userid)
+    #     house_saving = shbDepositInstallmentDetail(account_no_list, stt_date, end_date)
+    # except:
+    #     print('api 없')
+    #     house_saving = 0
+    house_saving = 0
+    
     house_saving += genSHBhousesaving(userid)
     house_saving_deduce = getHouseSaving(house_saving, total_salary)
 
@@ -240,22 +252,25 @@ def detail_func(input_json, stt_date='20190101',
     output_dict['hurdle_info_msg'] = hurdle_info_msg
 
     # 최근 신용, 체크 카드이용내역 만들기
-    try:
-        crd_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=0)
-        input_aprvamt = int(crd_card_df['승인금액'][0])
-        cardno = crd_card_df['카드뒷세자리'][0]
-        crd_card_df = pd.concat([crd_card_df, genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
-    except:
-        print('api 없음')
-        crd_card_df = genSHCTrans(userid, 5000, '123', stt_date, end_date)
+    # try:
+    #     crd_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=0)
+    #     input_aprvamt = int(crd_card_df['승인금액'][0])
+    #     cardno = crd_card_df['카드뒷세자리'][0]
+    #     crd_card_df = pd.concat([crd_card_df, genSHCTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
+    # except:
+    #     print('api 없음')
+    #     crd_card_df = genSHCTrans(userid, 5000, '123', stt_date, end_date)
+    crd_card_df = genSHCTrans(userid, 5000, '123', stt_date, end_date)
 
-    try:
-        deb_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=1)
-        input_aprvamt = int(deb_card_df['승인금액'][0])
-        cardno = deb_card_df['카드뒷세자리'][0]
-        deb_card_df = pd.concat([deb_card_df, genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
-    except:
-        deb_card_df = genSHDTrans(userid, 5000, '456', stt_date, end_date)
+    # try:
+    #     deb_card_df = shcSearchUseforDomestic(stt_date, end_date, debitTF=1)
+    #     input_aprvamt = int(deb_card_df['승인금액'][0])
+    #     cardno = deb_card_df['카드뒷세자리'][0]
+    #     deb_card_df = pd.concat([deb_card_df, genSHDTrans(userid, input_aprvamt, cardno, stt_date, end_date)])
+    # except:
+    #     deb_card_df = genSHDTrans(userid, 5000, '456', stt_date, end_date)
+
+    deb_card_df = genSHDTrans(userid, 5000, '456', stt_date, end_date)
 
     crd_card_df['구분'] = '신용'
     deb_card_df['구분'] = '체크'
